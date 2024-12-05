@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.dati_riepilogo import DatiRiepilogo
+from invoicetronic_invoice_sdk.models.dati_riepilogo import DatiRiepilogo
 
 class TestDatiRiepilogo(unittest.TestCase):
     """DatiRiepilogo unit test stubs"""

@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.dati_contratto import DatiContratto
+from invoicetronic_invoice_sdk.models.dati_contratto import DatiContratto
 
 class TestDatiContratto(unittest.TestCase):
     """DatiContratto unit test stubs"""

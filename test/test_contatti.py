@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.contatti import Contatti
+from invoicetronic_invoice_sdk.models.contatti import Contatti
 
 class TestContatti(unittest.TestCase):
     """Contatti unit test stubs"""

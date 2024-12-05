@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.web_hook import WebHook
+from invoicetronic_invoice_sdk.models.web_hook import WebHook
 
 class TestWebHook(unittest.TestCase):
     """WebHook unit test stubs"""

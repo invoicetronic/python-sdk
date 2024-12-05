@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.dati_convenzione import DatiConvenzione
+from invoicetronic_invoice_sdk.models.dati_convenzione import DatiConvenzione
 
 class TestDatiConvenzione(unittest.TestCase):
     """DatiConvenzione unit test stubs"""

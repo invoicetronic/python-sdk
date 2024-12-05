@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.company import Company
+from invoicetronic_invoice_sdk.models.company import Company
 
 class TestCompany(unittest.TestCase):
     """Company unit test stubs"""

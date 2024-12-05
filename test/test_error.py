@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.error import Error
+from invoicetronic_invoice_sdk.models.error import Error
 
 class TestError(unittest.TestCase):
     """Error unit test stubs"""

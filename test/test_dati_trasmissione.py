@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.dati_trasmissione import DatiTrasmissione
+from invoicetronic_invoice_sdk.models.dati_trasmissione import DatiTrasmissione
 
 class TestDatiTrasmissione(unittest.TestCase):
     """DatiTrasmissione unit test stubs"""
@@ -36,13 +36,13 @@ class TestDatiTrasmissione(unittest.TestCase):
         model = DatiTrasmissione()
         if include_optional:
             return DatiTrasmissione(
-                id_trasmittente = invoicetronic_einvoice_sdk.models.id_trasmittente.IdTrasmittente(
+                id_trasmittente = invoicetronic_invoice_sdk.models.id_trasmittente.IdTrasmittente(
                     id_paese = '', 
                     id_codice = '', ),
                 progressivo_invio = '',
                 formato_trasmissione = '',
                 codice_destinatario = '',
-                contatti_trasmittente = invoicetronic_einvoice_sdk.models.contatti_trasmittente.ContattiTrasmittente(
+                contatti_trasmittente = invoicetronic_invoice_sdk.models.contatti_trasmittente.ContattiTrasmittente(
                     telefono = '', 
                     email = '', ),
                 pec_destinatario = ''

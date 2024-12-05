@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.fattura_elettronica_body import FatturaElettronicaBody
+from invoicetronic_invoice_sdk.models.fattura_elettronica_body import FatturaElettronicaBody
 
 class TestFatturaElettronicaBody(unittest.TestCase):
     """FatturaElettronicaBody unit test stubs"""
@@ -36,24 +36,24 @@ class TestFatturaElettronicaBody(unittest.TestCase):
         model = FatturaElettronicaBody()
         if include_optional:
             return FatturaElettronicaBody(
-                dati_generali = invoicetronic_einvoice_sdk.models.dati_generali.DatiGenerali(
-                    dati_generali_documento = invoicetronic_einvoice_sdk.models.dati_generali_documento.DatiGeneraliDocumento(
+                dati_generali = invoicetronic_invoice_sdk.models.dati_generali.DatiGenerali(
+                    dati_generali_documento = invoicetronic_invoice_sdk.models.dati_generali_documento.DatiGeneraliDocumento(
                         tipo_documento = '', 
                         divisa = '', 
                         data = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         numero = '', 
                         dati_ritenuta = [
-                            invoicetronic_einvoice_sdk.models.dati_ritenuta.DatiRitenuta(
+                            invoicetronic_invoice_sdk.models.dati_ritenuta.DatiRitenuta(
                                 tipo_ritenuta = '', 
                                 importo_ritenuta = 1.337, 
                                 aliquota_ritenuta = 1.337, 
                                 causale_pagamento = '', )
                             ], 
-                        dati_bollo = invoicetronic_einvoice_sdk.models.dati_bollo.DatiBollo(
+                        dati_bollo = invoicetronic_invoice_sdk.models.dati_bollo.DatiBollo(
                             bollo_virtuale = '', 
                             importo_bollo = 1.337, ), 
                         dati_cassa_previdenziale = [
-                            invoicetronic_einvoice_sdk.models.dati_cassa_previdenziale.DatiCassaPrevidenziale(
+                            invoicetronic_invoice_sdk.models.dati_cassa_previdenziale.DatiCassaPrevidenziale(
                                 tipo_cassa = '', 
                                 al_cassa = 1.337, 
                                 importo_contributo_cassa = 1.337, 
@@ -64,7 +64,7 @@ class TestFatturaElettronicaBody(unittest.TestCase):
                                 riferimento_amministrazione = '', )
                             ], 
                         sconto_maggiorazione = [
-                            invoicetronic_einvoice_sdk.models.sconto_maggiorazione.ScontoMaggiorazione(
+                            invoicetronic_invoice_sdk.models.sconto_maggiorazione.ScontoMaggiorazione(
                                 tipo = '', 
                                 percentuale = 1.337, 
                                 importo = 1.337, )
@@ -76,7 +76,7 @@ class TestFatturaElettronicaBody(unittest.TestCase):
                             ], 
                         art73 = '', ), 
                     dati_ordine_acquisto = [
-                        invoicetronic_einvoice_sdk.models.dati_ordine_acquisto.DatiOrdineAcquisto(
+                        invoicetronic_invoice_sdk.models.dati_ordine_acquisto.DatiOrdineAcquisto(
                             riferimento_numero_linea = [
                                 56
                                 ], 
@@ -88,7 +88,7 @@ class TestFatturaElettronicaBody(unittest.TestCase):
                             codice_cig = '', )
                         ], 
                     dati_contratto = [
-                        invoicetronic_einvoice_sdk.models.dati_contratto.DatiContratto(
+                        invoicetronic_invoice_sdk.models.dati_contratto.DatiContratto(
                             id_documento = '', 
                             data = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             num_item = '', 
@@ -97,7 +97,7 @@ class TestFatturaElettronicaBody(unittest.TestCase):
                             codice_cig = '', )
                         ], 
                     dati_convenzione = [
-                        invoicetronic_einvoice_sdk.models.dati_convenzione.DatiConvenzione(
+                        invoicetronic_invoice_sdk.models.dati_convenzione.DatiConvenzione(
                             id_documento = '', 
                             data = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             num_item = '', 
@@ -106,7 +106,7 @@ class TestFatturaElettronicaBody(unittest.TestCase):
                             codice_cig = '', )
                         ], 
                     dati_ricezione = [
-                        invoicetronic_einvoice_sdk.models.dati_ricezione.DatiRicezione(
+                        invoicetronic_invoice_sdk.models.dati_ricezione.DatiRicezione(
                             id_documento = '', 
                             data = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             num_item = '', 
@@ -115,7 +115,7 @@ class TestFatturaElettronicaBody(unittest.TestCase):
                             codice_cig = '', )
                         ], 
                     dati_fatture_collegate = [
-                        invoicetronic_einvoice_sdk.models.dati_fatture_collegate.DatiFattureCollegate(
+                        invoicetronic_invoice_sdk.models.dati_fatture_collegate.DatiFattureCollegate(
                             id_documento = '', 
                             data = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             num_item = '', 
@@ -124,21 +124,21 @@ class TestFatturaElettronicaBody(unittest.TestCase):
                             codice_cig = '', )
                         ], 
                     dati_sal = [
-                        invoicetronic_einvoice_sdk.models.dati_sal.DatiSAL(
+                        invoicetronic_invoice_sdk.models.dati_sal.DatiSAL(
                             riferimento_fase = 56, )
                         ], 
                     dati_ddt = [
-                        invoicetronic_einvoice_sdk.models.dati_ddt.DatiDDT(
+                        invoicetronic_invoice_sdk.models.dati_ddt.DatiDDT(
                             numero_ddt = '', 
                             data_ddt = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                         ], 
-                    dati_trasporto = invoicetronic_einvoice_sdk.models.dati_trasporto.DatiTrasporto(
-                        dati_anagrafici_vettore = invoicetronic_einvoice_sdk.models.dati_anagrafici_vettore.DatiAnagraficiVettore(
-                            id_fiscale_iva = invoicetronic_einvoice_sdk.models.id_fiscale_iva.IdFiscaleIVA(
+                    dati_trasporto = invoicetronic_invoice_sdk.models.dati_trasporto.DatiTrasporto(
+                        dati_anagrafici_vettore = invoicetronic_invoice_sdk.models.dati_anagrafici_vettore.DatiAnagraficiVettore(
+                            id_fiscale_iva = invoicetronic_invoice_sdk.models.id_fiscale_iva.IdFiscaleIVA(
                                 id_paese = '', 
                                 id_codice = '', ), 
                             codice_fiscale = '', 
-                            anagrafica = invoicetronic_einvoice_sdk.models.anagrafica.Anagrafica(
+                            anagrafica = invoicetronic_invoice_sdk.models.anagrafica.Anagrafica(
                                 denominazione = '', 
                                 nome = '', 
                                 cognome = '', 
@@ -155,7 +155,7 @@ class TestFatturaElettronicaBody(unittest.TestCase):
                         data_ora_ritiro = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         data_inizio_trasporto = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         tipo_resa = '', 
-                        indirizzo_resa = invoicetronic_einvoice_sdk.models.indirizzo_resa.IndirizzoResa(
+                        indirizzo_resa = invoicetronic_invoice_sdk.models.indirizzo_resa.IndirizzoResa(
                             indirizzo = '', 
                             numero_civico = '', 
                             cap = '', 
@@ -163,16 +163,16 @@ class TestFatturaElettronicaBody(unittest.TestCase):
                             provincia = '', 
                             nazione = 'IT', ), 
                         data_ora_consegna = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ), 
-                    fattura_principale = invoicetronic_einvoice_sdk.models.fattura_principale.FatturaPrincipale(
+                    fattura_principale = invoicetronic_invoice_sdk.models.fattura_principale.FatturaPrincipale(
                         numero_fattura_principale = '', 
                         data_fattura_principale = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), ), ),
-                dati_beni_servizi = invoicetronic_einvoice_sdk.models.dati_beni_servizi.DatiBeniServizi(
+                dati_beni_servizi = invoicetronic_invoice_sdk.models.dati_beni_servizi.DatiBeniServizi(
                     dettaglio_linee = [
-                        invoicetronic_einvoice_sdk.models.dettaglio_linee.DettaglioLinee(
+                        invoicetronic_invoice_sdk.models.dettaglio_linee.DettaglioLinee(
                             numero_linea = 56, 
                             tipo_cessione_prestazione = '', 
                             codice_articolo = [
-                                invoicetronic_einvoice_sdk.models.codice_articolo.CodiceArticolo(
+                                invoicetronic_invoice_sdk.models.codice_articolo.CodiceArticolo(
                                     codice_tipo = '', 
                                     codice_valore = '', )
                                 ], 
@@ -183,7 +183,7 @@ class TestFatturaElettronicaBody(unittest.TestCase):
                             data_fine_periodo = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                             prezzo_unitario = 1.337, 
                             sconto_maggiorazione = [
-                                invoicetronic_einvoice_sdk.models.sconto_maggiorazione.ScontoMaggiorazione(
+                                invoicetronic_invoice_sdk.models.sconto_maggiorazione.ScontoMaggiorazione(
                                     tipo = '', 
                                     percentuale = 1.337, 
                                     importo = 1.337, )
@@ -194,7 +194,7 @@ class TestFatturaElettronicaBody(unittest.TestCase):
                             natura = '', 
                             riferimento_amministrazione = '', 
                             altri_dati_gestionali = [
-                                invoicetronic_einvoice_sdk.models.altri_dati_gestionali.AltriDatiGestionali(
+                                invoicetronic_invoice_sdk.models.altri_dati_gestionali.AltriDatiGestionali(
                                     tipo_dato = '', 
                                     riferimento_testo = '', 
                                     riferimento_numero = 1.337, 
@@ -202,7 +202,7 @@ class TestFatturaElettronicaBody(unittest.TestCase):
                                 ], )
                         ], 
                     dati_riepilogo = [
-                        invoicetronic_einvoice_sdk.models.dati_riepilogo.DatiRiepilogo(
+                        invoicetronic_invoice_sdk.models.dati_riepilogo.DatiRiepilogo(
                             aliquota_iva = 1.337, 
                             natura = '', 
                             spese_accessorie = 1.337, 
@@ -212,14 +212,14 @@ class TestFatturaElettronicaBody(unittest.TestCase):
                             esigibilita_iva = '', 
                             riferimento_normativo = '', )
                         ], ),
-                dati_veicoli = invoicetronic_einvoice_sdk.models.dati_veicoli.DatiVeicoli(
+                dati_veicoli = invoicetronic_invoice_sdk.models.dati_veicoli.DatiVeicoli(
                     data = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     totale_percorso = '', ),
                 dati_pagamento = [
-                    invoicetronic_einvoice_sdk.models.dati_pagamento.DatiPagamento(
+                    invoicetronic_invoice_sdk.models.dati_pagamento.DatiPagamento(
                         condizioni_pagamento = '', 
                         dettaglio_pagamento = [
-                            invoicetronic_einvoice_sdk.models.dettaglio_pagamento.DettaglioPagamento(
+                            invoicetronic_invoice_sdk.models.dettaglio_pagamento.DettaglioPagamento(
                                 beneficiario = '', 
                                 modalita_pagamento = '', 
                                 data_riferimento_termini_pagamento = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
@@ -244,7 +244,7 @@ class TestFatturaElettronicaBody(unittest.TestCase):
                             ], )
                     ],
                 allegati = [
-                    invoicetronic_einvoice_sdk.models.allegati.Allegati(
+                    invoicetronic_invoice_sdk.models.allegati.Allegati(
                         nome_attachment = '', 
                         algoritmo_compressione = '', 
                         formato_attachment = '', 

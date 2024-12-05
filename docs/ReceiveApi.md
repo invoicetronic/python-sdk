@@ -1,4 +1,4 @@
-# invoicetronic_einvoice_sdk.ReceiveApi
+# invoicetronic_invoice_sdk.ReceiveApi
 
 All URIs are relative to *https://api.invoicetronic.com*
 
@@ -21,14 +21,14 @@ Receive invoices are the invoices that are received from other companies.
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_einvoice_sdk
-from invoicetronic_einvoice_sdk.models.receive import Receive
-from invoicetronic_einvoice_sdk.rest import ApiException
+import invoicetronic_invoice_sdk
+from invoicetronic_invoice_sdk.models.receive import Receive
+from invoicetronic_invoice_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -38,15 +38,15 @@ configuration = invoicetronic_einvoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_einvoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_einvoice_sdk.ReceiveApi(api_client)
+    api_instance = invoicetronic_invoice_sdk.ReceiveApi(api_client)
     company_id = 56 # int | Company id. (optional)
     identifier = 'identifier_example' # str | SDI identifier. (optional)
     unread = True # bool | Unread items only. (optional)
@@ -130,14 +130,14 @@ Receive invoices are the invoices that are received from other companies.
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_einvoice_sdk
-from invoicetronic_einvoice_sdk.models.receive import Receive
-from invoicetronic_einvoice_sdk.rest import ApiException
+import invoicetronic_invoice_sdk
+from invoicetronic_invoice_sdk.models.receive import Receive
+from invoicetronic_invoice_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -147,15 +147,15 @@ configuration = invoicetronic_einvoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_einvoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_einvoice_sdk.ReceiveApi(api_client)
+    api_instance = invoicetronic_invoice_sdk.ReceiveApi(api_client)
     id = 56 # int | Item id.
 
     try:
@@ -210,14 +210,14 @@ Receive invoices are the invoices that are received from other companies.
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_einvoice_sdk
-from invoicetronic_einvoice_sdk.models.receive import Receive
-from invoicetronic_einvoice_sdk.rest import ApiException
+import invoicetronic_invoice_sdk
+from invoicetronic_invoice_sdk.models.receive import Receive
+from invoicetronic_invoice_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -227,15 +227,15 @@ configuration = invoicetronic_einvoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_einvoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_einvoice_sdk.ReceiveApi(api_client)
+    api_instance = invoicetronic_invoice_sdk.ReceiveApi(api_client)
     id = 56 # int | Item id.
 
     try:

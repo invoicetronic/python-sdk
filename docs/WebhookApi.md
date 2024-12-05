@@ -1,4 +1,4 @@
-# invoicetronic_einvoice_sdk.WebhookApi
+# invoicetronic_invoice_sdk.WebhookApi
 
 All URIs are relative to *https://api.invoicetronic.com*
 
@@ -25,14 +25,14 @@ Webhooks are used to notify external services about write events that occur in t
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_einvoice_sdk
-from invoicetronic_einvoice_sdk.models.web_hook import WebHook
-from invoicetronic_einvoice_sdk.rest import ApiException
+import invoicetronic_invoice_sdk
+from invoicetronic_invoice_sdk.models.web_hook import WebHook
+from invoicetronic_invoice_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -42,15 +42,15 @@ configuration = invoicetronic_einvoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_einvoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_einvoice_sdk.WebhookApi(api_client)
+    api_instance = invoicetronic_invoice_sdk.WebhookApi(api_client)
     page = 1 # int | Page number. (optional) (default to 1)
     page_size = 100 # int | Items per page. (optional) (default to 100)
 
@@ -107,14 +107,14 @@ Webhooks are used to notify external services about write events that occur in t
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_einvoice_sdk
-from invoicetronic_einvoice_sdk.models.web_hook import WebHook
-from invoicetronic_einvoice_sdk.rest import ApiException
+import invoicetronic_invoice_sdk
+from invoicetronic_invoice_sdk.models.web_hook import WebHook
+from invoicetronic_invoice_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -124,15 +124,15 @@ configuration = invoicetronic_einvoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_einvoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_einvoice_sdk.WebhookApi(api_client)
+    api_instance = invoicetronic_invoice_sdk.WebhookApi(api_client)
     id = 56 # int | Item id.
 
     try:
@@ -187,14 +187,14 @@ Webhooks are used to notify external services about write events that occur in t
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_einvoice_sdk
-from invoicetronic_einvoice_sdk.models.web_hook import WebHook
-from invoicetronic_einvoice_sdk.rest import ApiException
+import invoicetronic_invoice_sdk
+from invoicetronic_invoice_sdk.models.web_hook import WebHook
+from invoicetronic_invoice_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -204,15 +204,15 @@ configuration = invoicetronic_einvoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_einvoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_einvoice_sdk.WebhookApi(api_client)
+    api_instance = invoicetronic_invoice_sdk.WebhookApi(api_client)
     id = 56 # int | Item id.
 
     try:
@@ -267,14 +267,14 @@ Webhooks are used to notify external services about write events that occur in t
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_einvoice_sdk
-from invoicetronic_einvoice_sdk.models.web_hook import WebHook
-from invoicetronic_einvoice_sdk.rest import ApiException
+import invoicetronic_invoice_sdk
+from invoicetronic_invoice_sdk.models.web_hook import WebHook
+from invoicetronic_invoice_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -284,16 +284,16 @@ configuration = invoicetronic_einvoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_einvoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_einvoice_sdk.WebhookApi(api_client)
-    web_hook = invoicetronic_einvoice_sdk.WebHook() # WebHook | 
+    api_instance = invoicetronic_invoice_sdk.WebhookApi(api_client)
+    web_hook = invoicetronic_invoice_sdk.WebHook() # WebHook | 
 
     try:
         # Add a webhook
@@ -346,14 +346,14 @@ Webhooks are used to notify external services about write events that occur in t
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_einvoice_sdk
-from invoicetronic_einvoice_sdk.models.web_hook import WebHook
-from invoicetronic_einvoice_sdk.rest import ApiException
+import invoicetronic_invoice_sdk
+from invoicetronic_invoice_sdk.models.web_hook import WebHook
+from invoicetronic_invoice_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -363,16 +363,16 @@ configuration = invoicetronic_einvoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_einvoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_einvoice_sdk.WebhookApi(api_client)
-    web_hook = invoicetronic_einvoice_sdk.WebHook() # WebHook | 
+    api_instance = invoicetronic_invoice_sdk.WebhookApi(api_client)
+    web_hook = invoicetronic_invoice_sdk.WebHook() # WebHook | 
 
     try:
         # Update a webhook
@@ -423,14 +423,14 @@ List webhook history items
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_einvoice_sdk
-from invoicetronic_einvoice_sdk.models.web_hook_history import WebHookHistory
-from invoicetronic_einvoice_sdk.rest import ApiException
+import invoicetronic_invoice_sdk
+from invoicetronic_invoice_sdk.models.web_hook_history import WebHookHistory
+from invoicetronic_invoice_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -440,15 +440,15 @@ configuration = invoicetronic_einvoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_einvoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_einvoice_sdk.WebhookApi(api_client)
+    api_instance = invoicetronic_invoice_sdk.WebhookApi(api_client)
     page = 1 # int | Page number. (optional) (default to 1)
     page_size = 100 # int | Items per page. (optional) (default to 100)
 
@@ -503,14 +503,14 @@ Get a webhook history item by id
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_einvoice_sdk
-from invoicetronic_einvoice_sdk.models.web_hook_history import WebHookHistory
-from invoicetronic_einvoice_sdk.rest import ApiException
+import invoicetronic_invoice_sdk
+from invoicetronic_invoice_sdk.models.web_hook_history import WebHookHistory
+from invoicetronic_invoice_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -520,15 +520,15 @@ configuration = invoicetronic_einvoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_einvoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_einvoice_sdk.WebhookApi(api_client)
+    api_instance = invoicetronic_invoice_sdk.WebhookApi(api_client)
     id = 56 # int | Item id.
 
     try:

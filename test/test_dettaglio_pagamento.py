@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.dettaglio_pagamento import DettaglioPagamento
+from invoicetronic_invoice_sdk.models.dettaglio_pagamento import DettaglioPagamento
 
 class TestDettaglioPagamento(unittest.TestCase):
     """DettaglioPagamento unit test stubs"""

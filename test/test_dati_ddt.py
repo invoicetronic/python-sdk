@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.dati_ddt import DatiDDT
+from invoicetronic_invoice_sdk.models.dati_ddt import DatiDDT
 
 class TestDatiDDT(unittest.TestCase):
     """DatiDDT unit test stubs"""

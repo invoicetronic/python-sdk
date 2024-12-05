@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.api.update_api import UpdateApi
+from invoicetronic_invoice_sdk.api.update_api import UpdateApi
 
 
 class TestUpdateApi(unittest.TestCase):

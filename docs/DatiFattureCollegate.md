@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from invoicetronic_einvoice_sdk.models.dati_fatture_collegate import DatiFattureCollegate
+from invoicetronic_invoice_sdk.models.dati_fatture_collegate import DatiFattureCollegate
 
 # TODO update the JSON string below
 json = "{}"

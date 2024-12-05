@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.sconto_maggiorazione import ScontoMaggiorazione
+from invoicetronic_invoice_sdk.models.sconto_maggiorazione import ScontoMaggiorazione
 
 class TestScontoMaggiorazione(unittest.TestCase):
     """ScontoMaggiorazione unit test stubs"""

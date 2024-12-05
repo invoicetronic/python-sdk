@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from invoicetronic_einvoice_sdk.models.rappresentante_fiscale import RappresentanteFiscale
+from invoicetronic_invoice_sdk.models.rappresentante_fiscale import RappresentanteFiscale
 
 # TODO update the JSON string below
 json = "{}"

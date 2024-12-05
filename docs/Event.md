@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from invoicetronic_einvoice_sdk.models.event import Event
+from invoicetronic_invoice_sdk.models.event import Event
 
 # TODO update the JSON string below
 json = "{}"

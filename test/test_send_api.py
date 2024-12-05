@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.api.send_api import SendApi
+from invoicetronic_invoice_sdk.api.send_api import SendApi
 
 
 class TestSendApi(unittest.TestCase):

@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.receive import Receive
+from invoicetronic_invoice_sdk.models.receive import Receive
 
 class TestReceive(unittest.TestCase):
     """Receive unit test stubs"""
@@ -50,7 +50,7 @@ class TestReceive(unittest.TestCase):
                 last_update = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 date_sent = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 documents = [
-                    invoicetronic_einvoice_sdk.models.document_data.DocumentData(
+                    invoicetronic_invoice_sdk.models.document_data.DocumentData(
                         number = '', 
                         date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],

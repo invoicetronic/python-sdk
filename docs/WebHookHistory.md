@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from invoicetronic_einvoice_sdk.models.web_hook_history import WebHookHistory
+from invoicetronic_invoice_sdk.models.web_hook_history import WebHookHistory
 
 # TODO update the JSON string below
 json = "{}"

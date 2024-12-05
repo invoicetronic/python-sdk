@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from invoicetronic_einvoice_sdk.models.dati_anagrafici_cedente_prestatore import DatiAnagraficiCedentePrestatore
+from invoicetronic_invoice_sdk.models.dati_anagrafici_cedente_prestatore import DatiAnagraficiCedentePrestatore
 
 # TODO update the JSON string below
 json = "{}"

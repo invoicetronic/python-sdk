@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.dati_cassa_previdenziale import DatiCassaPrevidenziale
+from invoicetronic_invoice_sdk.models.dati_cassa_previdenziale import DatiCassaPrevidenziale
 
 class TestDatiCassaPrevidenziale(unittest.TestCase):
     """DatiCassaPrevidenziale unit test stubs"""

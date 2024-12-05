@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.dati_bollo import DatiBollo
+from invoicetronic_invoice_sdk.models.dati_bollo import DatiBollo
 
 class TestDatiBollo(unittest.TestCase):
     """DatiBollo unit test stubs"""

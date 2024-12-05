@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.dati_ritenuta import DatiRitenuta
+from invoicetronic_invoice_sdk.models.dati_ritenuta import DatiRitenuta
 
 class TestDatiRitenuta(unittest.TestCase):
     """DatiRitenuta unit test stubs"""

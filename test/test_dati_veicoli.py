@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.dati_veicoli import DatiVeicoli
+from invoicetronic_invoice_sdk.models.dati_veicoli import DatiVeicoli
 
 class TestDatiVeicoli(unittest.TestCase):
     """DatiVeicoli unit test stubs"""

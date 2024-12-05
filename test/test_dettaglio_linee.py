@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.dettaglio_linee import DettaglioLinee
+from invoicetronic_invoice_sdk.models.dettaglio_linee import DettaglioLinee
 
 class TestDettaglioLinee(unittest.TestCase):
     """DettaglioLinee unit test stubs"""
@@ -39,7 +39,7 @@ class TestDettaglioLinee(unittest.TestCase):
                 numero_linea = 56,
                 tipo_cessione_prestazione = '',
                 codice_articolo = [
-                    invoicetronic_einvoice_sdk.models.codice_articolo.CodiceArticolo(
+                    invoicetronic_invoice_sdk.models.codice_articolo.CodiceArticolo(
                         codice_tipo = '', 
                         codice_valore = '', )
                     ],
@@ -50,7 +50,7 @@ class TestDettaglioLinee(unittest.TestCase):
                 data_fine_periodo = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 prezzo_unitario = 1.337,
                 sconto_maggiorazione = [
-                    invoicetronic_einvoice_sdk.models.sconto_maggiorazione.ScontoMaggiorazione(
+                    invoicetronic_invoice_sdk.models.sconto_maggiorazione.ScontoMaggiorazione(
                         tipo = '', 
                         percentuale = 1.337, 
                         importo = 1.337, )
@@ -61,7 +61,7 @@ class TestDettaglioLinee(unittest.TestCase):
                 natura = '',
                 riferimento_amministrazione = '',
                 altri_dati_gestionali = [
-                    invoicetronic_einvoice_sdk.models.altri_dati_gestionali.AltriDatiGestionali(
+                    invoicetronic_invoice_sdk.models.altri_dati_gestionali.AltriDatiGestionali(
                         tipo_dato = '', 
                         riferimento_testo = '', 
                         riferimento_numero = 1.337, 

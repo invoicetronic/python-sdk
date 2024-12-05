@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.cedente_prestatore import CedentePrestatore
+from invoicetronic_invoice_sdk.models.cedente_prestatore import CedentePrestatore
 
 class TestCedentePrestatore(unittest.TestCase):
     """CedentePrestatore unit test stubs"""
@@ -36,12 +36,12 @@ class TestCedentePrestatore(unittest.TestCase):
         model = CedentePrestatore()
         if include_optional:
             return CedentePrestatore(
-                dati_anagrafici = invoicetronic_einvoice_sdk.models.dati_anagrafici_cedente_prestatore.DatiAnagraficiCedentePrestatore(
-                    id_fiscale_iva = invoicetronic_einvoice_sdk.models.id_fiscale_iva.IdFiscaleIVA(
+                dati_anagrafici = invoicetronic_invoice_sdk.models.dati_anagrafici_cedente_prestatore.DatiAnagraficiCedentePrestatore(
+                    id_fiscale_iva = invoicetronic_invoice_sdk.models.id_fiscale_iva.IdFiscaleIVA(
                         id_paese = '', 
                         id_codice = '', ), 
                     codice_fiscale = '', 
-                    anagrafica = invoicetronic_einvoice_sdk.models.anagrafica.Anagrafica(
+                    anagrafica = invoicetronic_invoice_sdk.models.anagrafica.Anagrafica(
                         denominazione = '', 
                         nome = '', 
                         cognome = '', 
@@ -52,27 +52,27 @@ class TestCedentePrestatore(unittest.TestCase):
                     numero_iscrizione_albo = '', 
                     data_iscrizione_albo = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     regime_fiscale = '', ),
-                sede = invoicetronic_einvoice_sdk.models.sede_cedente_prestatore.SedeCedentePrestatore(
+                sede = invoicetronic_invoice_sdk.models.sede_cedente_prestatore.SedeCedentePrestatore(
                     indirizzo = '', 
                     numero_civico = '', 
                     cap = '', 
                     comune = '', 
                     provincia = '', 
                     nazione = 'IT', ),
-                stabile_organizzazione = invoicetronic_einvoice_sdk.models.stabile_organizzazione.StabileOrganizzazione(
+                stabile_organizzazione = invoicetronic_invoice_sdk.models.stabile_organizzazione.StabileOrganizzazione(
                     indirizzo = '', 
                     numero_civico = '', 
                     cap = '', 
                     comune = '', 
                     provincia = '', 
                     nazione = 'IT', ),
-                iscrizione_rea = invoicetronic_einvoice_sdk.models.iscrizione_rea.IscrizioneREA(
+                iscrizione_rea = invoicetronic_invoice_sdk.models.iscrizione_rea.IscrizioneREA(
                     ufficio = '', 
                     numero_rea = '', 
                     capitale_sociale = 1.337, 
                     socio_unico = '', 
                     stato_liquidazione = '', ),
-                contatti = invoicetronic_einvoice_sdk.models.contatti.Contatti(
+                contatti = invoicetronic_invoice_sdk.models.contatti.Contatti(
                     telefono = '', 
                     fax = '', 
                     email = '', ),

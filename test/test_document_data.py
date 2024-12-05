@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.document_data import DocumentData
+from invoicetronic_invoice_sdk.models.document_data import DocumentData
 
 class TestDocumentData(unittest.TestCase):
     """DocumentData unit test stubs"""

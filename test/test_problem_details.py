@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.problem_details import ProblemDetails
+from invoicetronic_invoice_sdk.models.problem_details import ProblemDetails
 
 class TestProblemDetails(unittest.TestCase):
     """ProblemDetails unit test stubs"""

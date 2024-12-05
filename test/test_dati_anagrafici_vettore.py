@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.dati_anagrafici_vettore import DatiAnagraficiVettore
+from invoicetronic_invoice_sdk.models.dati_anagrafici_vettore import DatiAnagraficiVettore
 
 class TestDatiAnagraficiVettore(unittest.TestCase):
     """DatiAnagraficiVettore unit test stubs"""
@@ -36,11 +36,11 @@ class TestDatiAnagraficiVettore(unittest.TestCase):
         model = DatiAnagraficiVettore()
         if include_optional:
             return DatiAnagraficiVettore(
-                id_fiscale_iva = invoicetronic_einvoice_sdk.models.id_fiscale_iva.IdFiscaleIVA(
+                id_fiscale_iva = invoicetronic_invoice_sdk.models.id_fiscale_iva.IdFiscaleIVA(
                     id_paese = '', 
                     id_codice = '', ),
                 codice_fiscale = '',
-                anagrafica = invoicetronic_einvoice_sdk.models.anagrafica.Anagrafica(
+                anagrafica = invoicetronic_invoice_sdk.models.anagrafica.Anagrafica(
                     denominazione = '', 
                     nome = '', 
                     cognome = '', 

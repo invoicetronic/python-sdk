@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from invoicetronic_einvoice_sdk.models.error import Error
+from invoicetronic_invoice_sdk.models.error import Error
 
 # TODO update the JSON string below
 json = "{}"

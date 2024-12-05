@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.dati_pagamento import DatiPagamento
+from invoicetronic_invoice_sdk.models.dati_pagamento import DatiPagamento
 
 class TestDatiPagamento(unittest.TestCase):
     """DatiPagamento unit test stubs"""
@@ -38,7 +38,7 @@ class TestDatiPagamento(unittest.TestCase):
             return DatiPagamento(
                 condizioni_pagamento = '',
                 dettaglio_pagamento = [
-                    invoicetronic_einvoice_sdk.models.dettaglio_pagamento.DettaglioPagamento(
+                    invoicetronic_invoice_sdk.models.dettaglio_pagamento.DettaglioPagamento(
                         beneficiario = '', 
                         modalita_pagamento = '', 
                         data_riferimento_termini_pagamento = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 

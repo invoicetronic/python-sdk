@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.contatti_trasmittente import ContattiTrasmittente
+from invoicetronic_invoice_sdk.models.contatti_trasmittente import ContattiTrasmittente
 
 class TestContattiTrasmittente(unittest.TestCase):
     """ContattiTrasmittente unit test stubs"""

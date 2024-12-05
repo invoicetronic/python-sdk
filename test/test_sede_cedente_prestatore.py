@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.sede_cedente_prestatore import SedeCedentePrestatore
+from invoicetronic_invoice_sdk.models.sede_cedente_prestatore import SedeCedentePrestatore
 
 class TestSedeCedentePrestatore(unittest.TestCase):
     """SedeCedentePrestatore unit test stubs"""

@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.dati_fatture_collegate import DatiFattureCollegate
+from invoicetronic_invoice_sdk.models.dati_fatture_collegate import DatiFattureCollegate
 
 class TestDatiFattureCollegate(unittest.TestCase):
     """DatiFattureCollegate unit test stubs"""

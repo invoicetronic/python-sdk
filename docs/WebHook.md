@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from invoicetronic_einvoice_sdk.models.web_hook import WebHook
+from invoicetronic_invoice_sdk.models.web_hook import WebHook
 
 # TODO update the JSON string below
 json = "{}"

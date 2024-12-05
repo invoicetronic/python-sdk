@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from invoicetronic_einvoice_sdk.models.rappresentante_fiscale_cessionario_committente import RappresentanteFiscaleCessionarioCommittente
+from invoicetronic_invoice_sdk.models.rappresentante_fiscale_cessionario_committente import RappresentanteFiscaleCessionarioCommittente
 
 # TODO update the JSON string below
 json = "{}"

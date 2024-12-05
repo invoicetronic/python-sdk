@@ -1,4 +1,4 @@
-# invoicetronic-einvoice-sdk
+# invoicetronic-invoice-sdk
 The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the
 Italian [Servizio di Interscambio (SDI)][1] (Interchange Service). The API is designed by Invoicetronic to be simple
 and easy to use, abstracting away the Interchange Service's complexity while still providing complete control over the
@@ -39,7 +39,7 @@ pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
 
 Then import the package:
 ```python
-import invoicetronic_einvoice_sdk
+import invoicetronic_invoice_sdk
 ```
 
 ### Setuptools
@@ -53,7 +53,7 @@ python setup.py install --user
 
 Then import the package:
 ```python
-import invoicetronic_einvoice_sdk
+import invoicetronic_invoice_sdk
 ```
 
 ### Tests
@@ -66,13 +66,13 @@ Please follow the [installation procedure](#installation--usage) and then run th
 
 ```python
 
-import invoicetronic_einvoice_sdk
-from invoicetronic_einvoice_sdk.rest import ApiException
+import invoicetronic_invoice_sdk
+from invoicetronic_invoice_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -82,16 +82,16 @@ configuration = invoicetronic_einvoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_einvoice_sdk.Configuration(
+configuration = invoicetronic_invoice_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 
 # Enter a context with an instance of the API client
-with invoicetronic_einvoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_einvoice_sdk.CompanyApi(api_client)
+    api_instance = invoicetronic_invoice_sdk.CompanyApi(api_client)
     page = 1 # int | Page number. (optional) (default to 1)
     page_size = 100 # int | Items per page. (optional) (default to 100)
 

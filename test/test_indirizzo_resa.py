@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_einvoice_sdk.models.indirizzo_resa import IndirizzoResa
+from invoicetronic_invoice_sdk.models.indirizzo_resa import IndirizzoResa
 
 class TestIndirizzoResa(unittest.TestCase):
     """IndirizzoResa unit test stubs"""

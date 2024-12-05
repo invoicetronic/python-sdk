@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from invoicetronic_einvoice_sdk.models.iscrizione_rea import IscrizioneREA
+from invoicetronic_invoice_sdk.models.iscrizione_rea import IscrizioneREA
 
 # TODO update the JSON string below
 json = "{}"
