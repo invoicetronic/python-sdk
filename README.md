@@ -1,4 +1,5 @@
-# invoicetronic-invoice-sdk
+# Python SDK for the Italian eInvoice API
+
 The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the
 Italian [Servizio di Interscambio (SDI)][1] (Interchange Service). The API is designed by Invoicetronic to be simple
 and easy to use, abstracting away the Interchange Service's complexity while still providing complete control over the
