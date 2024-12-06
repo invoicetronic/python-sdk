@@ -5,7 +5,7 @@ description = "Italian eInvoice API"
 authors = ["Invoicetronic <support@invoicetronic.com>"]
 license = "NoLicense"
 readme = "README.md"
-repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
+repository = "https://github.com/invoicetronic/invoice-python-sdk"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Italian eInvoice API"]
 include = ["invoicetronic_invoice_sdk/py.typed"]
 
