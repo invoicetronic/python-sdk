@@ -137,6 +137,7 @@ class UpdateApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Update]",
             '404': None,
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -245,6 +246,7 @@ class UpdateApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Update]",
             '404': None,
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -353,6 +355,7 @@ class UpdateApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Update]",
             '404': None,
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,

@@ -100,6 +100,7 @@ class CompanyApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Company]",
             '404': None,
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -172,6 +173,7 @@ class CompanyApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Company]",
             '404': None,
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -244,6 +246,7 @@ class CompanyApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Company]",
             '404': None,
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -378,6 +381,8 @@ class CompanyApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Company",
+            '422': "ProblemHttpResult",
+            '400': "ProblemHttpResult",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -446,6 +451,8 @@ class CompanyApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Company",
+            '422': "ProblemHttpResult",
+            '400': "ProblemHttpResult",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -514,6 +521,8 @@ class CompanyApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Company",
+            '422': "ProblemHttpResult",
+            '400': "ProblemHttpResult",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -906,6 +915,8 @@ class CompanyApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Company",
+            '400': "ProblemHttpResult",
+            '422': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -973,6 +984,8 @@ class CompanyApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Company",
+            '400': "ProblemHttpResult",
+            '422': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1040,6 +1053,8 @@ class CompanyApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Company",
+            '400': "ProblemHttpResult",
+            '422': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1180,6 +1195,8 @@ class CompanyApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Company",
+            '422': "ProblemHttpResult",
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1247,6 +1264,8 @@ class CompanyApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Company",
+            '422': "ProblemHttpResult",
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1314,6 +1333,8 @@ class CompanyApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Company",
+            '422': "ProblemHttpResult",
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,

@@ -101,6 +101,7 @@ class WebhookApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WebHook]",
             '404': None,
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -173,6 +174,7 @@ class WebhookApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WebHook]",
             '404': None,
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -245,6 +247,7 @@ class WebhookApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WebHook]",
             '404': None,
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -379,6 +382,8 @@ class WebhookApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebHook",
+            '422': "ProblemHttpResult",
+            '400': "ProblemHttpResult",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -447,6 +452,8 @@ class WebhookApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebHook",
+            '422': "ProblemHttpResult",
+            '400': "ProblemHttpResult",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -515,6 +522,8 @@ class WebhookApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebHook",
+            '422': "ProblemHttpResult",
+            '400': "ProblemHttpResult",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -907,6 +916,8 @@ class WebhookApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "WebHook",
+            '400': "ProblemHttpResult",
+            '422': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -974,6 +985,8 @@ class WebhookApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "WebHook",
+            '400': "ProblemHttpResult",
+            '422': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1041,6 +1054,8 @@ class WebhookApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "WebHook",
+            '400': "ProblemHttpResult",
+            '422': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1181,6 +1196,8 @@ class WebhookApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebHook",
+            '422': "ProblemHttpResult",
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1248,6 +1265,8 @@ class WebhookApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebHook",
+            '422': "ProblemHttpResult",
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1315,6 +1334,8 @@ class WebhookApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebHook",
+            '422': "ProblemHttpResult",
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1459,6 +1480,7 @@ class WebhookApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WebHookHistory]",
             '404': None,
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1530,6 +1552,7 @@ class WebhookApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WebHookHistory]",
             '404': None,
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1601,6 +1624,7 @@ class WebhookApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WebHookHistory]",
             '404': None,
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,

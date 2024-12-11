@@ -153,7 +153,7 @@ class ReceiveApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Receive]",
             '404': None,
-            '400': "ProblemDetails",
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -278,7 +278,7 @@ class ReceiveApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Receive]",
             '404': None,
-            '400': "ProblemDetails",
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -403,7 +403,7 @@ class ReceiveApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Receive]",
             '404': None,
-            '400': "ProblemDetails",
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -574,8 +574,7 @@ class ReceiveApi:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    'application/json', 
-                    'application/problem+json'
+                    'application/json'
                 ]
             )
 
@@ -658,6 +657,8 @@ class ReceiveApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Receive",
+            '422': "ProblemHttpResult",
+            '400': "ProblemHttpResult",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -726,6 +727,8 @@ class ReceiveApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Receive",
+            '422': "ProblemHttpResult",
+            '400': "ProblemHttpResult",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -794,6 +797,8 @@ class ReceiveApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Receive",
+            '422': "ProblemHttpResult",
+            '400': "ProblemHttpResult",
             '404': None,
         }
         response_data = self.api_client.call_api(

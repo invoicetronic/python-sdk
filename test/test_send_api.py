@@ -30,42 +30,70 @@ class TestSendApi(unittest.TestCase):
     def test_invoice_v1_send_files_post(self) -> None:
         """Test case for invoice_v1_send_files_post
 
-        Add a send invoice by file
+        Add an invoice by file
         """
         pass
 
     def test_invoice_v1_send_get(self) -> None:
         """Test case for invoice_v1_send_get
 
-        List send invoices
+        List invoices
         """
         pass
 
     def test_invoice_v1_send_id_get(self) -> None:
         """Test case for invoice_v1_send_id_get
 
-        Get a send invoice by id
+        Get a invoice by id
         """
         pass
 
     def test_invoice_v1_send_json_post(self) -> None:
         """Test case for invoice_v1_send_json_post
 
-        Add a send invoice by json
+        Add an invoice by json
         """
         pass
 
     def test_invoice_v1_send_post(self) -> None:
         """Test case for invoice_v1_send_post
 
-        Add a send invoice
+        Add an invoice
+        """
+        pass
+
+    def test_invoice_v1_send_validate_files_post(self) -> None:
+        """Test case for invoice_v1_send_validate_files_post
+
+        Validate an invoice by file
+        """
+        pass
+
+    def test_invoice_v1_send_validate_json_post(self) -> None:
+        """Test case for invoice_v1_send_validate_json_post
+
+        Validate an invoice by json
+        """
+        pass
+
+    def test_invoice_v1_send_validate_post(self) -> None:
+        """Test case for invoice_v1_send_validate_post
+
+        Validate an invoice
+        """
+        pass
+
+    def test_invoice_v1_send_validate_xml_post(self) -> None:
+        """Test case for invoice_v1_send_validate_xml_post
+
+        Validate an invoice by xml
         """
         pass
 
     def test_invoice_v1_send_xml_post(self) -> None:
         """Test case for invoice_v1_send_xml_post
 
-        Add a send invoice by xml
+        Add an invoice by xml
         """
         pass
 

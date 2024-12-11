@@ -100,6 +100,7 @@ class LogApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Event]",
             '404': None,
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -172,6 +173,7 @@ class LogApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Event]",
             '404': None,
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -244,6 +246,7 @@ class LogApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Event]",
             '404': None,
+            '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
             *_param,
