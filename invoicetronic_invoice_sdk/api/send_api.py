@@ -2586,6 +2586,7 @@ class SendApi:
     @validate_call
     def invoice_v1_send_validate_xml_post(
         self,
+        fattura_ordinaria: FatturaOrdinaria,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2603,6 +2604,8 @@ class SendApi:
 
         Send invoices are the invoices that are sent to the SDI.
 
+        :param fattura_ordinaria: (required)
+        :type fattura_ordinaria: FatturaOrdinaria
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2626,6 +2629,7 @@ class SendApi:
         """ # noqa: E501
 
         _param = self._invoice_v1_send_validate_xml_post_serialize(
+            fattura_ordinaria=fattura_ordinaria,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2651,6 +2655,7 @@ class SendApi:
     @validate_call
     def invoice_v1_send_validate_xml_post_with_http_info(
         self,
+        fattura_ordinaria: FatturaOrdinaria,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2668,6 +2673,8 @@ class SendApi:
 
         Send invoices are the invoices that are sent to the SDI.
 
+        :param fattura_ordinaria: (required)
+        :type fattura_ordinaria: FatturaOrdinaria
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2691,6 +2698,7 @@ class SendApi:
         """ # noqa: E501
 
         _param = self._invoice_v1_send_validate_xml_post_serialize(
+            fattura_ordinaria=fattura_ordinaria,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2716,6 +2724,7 @@ class SendApi:
     @validate_call
     def invoice_v1_send_validate_xml_post_without_preload_content(
         self,
+        fattura_ordinaria: FatturaOrdinaria,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2733,6 +2742,8 @@ class SendApi:
 
         Send invoices are the invoices that are sent to the SDI.
 
+        :param fattura_ordinaria: (required)
+        :type fattura_ordinaria: FatturaOrdinaria
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2756,6 +2767,7 @@ class SendApi:
         """ # noqa: E501
 
         _param = self._invoice_v1_send_validate_xml_post_serialize(
+            fattura_ordinaria=fattura_ordinaria,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2776,6 +2788,7 @@ class SendApi:
 
     def _invoice_v1_send_validate_xml_post_serialize(
         self,
+        fattura_ordinaria,
         _request_auth,
         _content_type,
         _headers,
@@ -2801,6 +2814,8 @@ class SendApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if fattura_ordinaria is not None:
+            _body_params = fattura_ordinaria
 
 
         # set the HTTP header `Accept`
@@ -2811,6 +2826,19 @@ class SendApi:
                 ]
             )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/xml'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [

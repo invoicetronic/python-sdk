@@ -690,7 +690,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **invoice_v1_send_validate_xml_post**
-> invoice_v1_send_validate_xml_post()
+> invoice_v1_send_validate_xml_post(fattura_ordinaria)
 
 Validate an invoice by xml
 
@@ -702,6 +702,7 @@ Send invoices are the invoices that are sent to the SDI.
 
 ```python
 import invoicetronic_invoice_sdk
+from invoicetronic_invoice_sdk.models.fattura_ordinaria import FatturaOrdinaria
 from invoicetronic_invoice_sdk.rest import ApiException
 from pprint import pprint
 
@@ -726,10 +727,11 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
+    fattura_ordinaria = invoicetronic_invoice_sdk.FatturaOrdinaria() # FatturaOrdinaria | 
 
     try:
         # Validate an invoice by xml
-        api_instance.invoice_v1_send_validate_xml_post()
+        api_instance.invoice_v1_send_validate_xml_post(fattura_ordinaria)
     except Exception as e:
         print("Exception when calling SendApi->invoice_v1_send_validate_xml_post: %s\n" % e)
 ```
@@ -738,7 +740,10 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fattura_ordinaria** | [**FatturaOrdinaria**](FatturaOrdinaria.md)|  | 
 
 ### Return type
 
@@ -750,7 +755,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/xml
  - **Accept**: application/json
 
 ### HTTP response details
