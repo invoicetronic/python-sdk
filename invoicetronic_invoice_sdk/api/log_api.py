@@ -3,7 +3,7 @@
 """
     Italian eInvoice API
 
-    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@invoicetronic.com
@@ -17,7 +17,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt
+from datetime import datetime
+from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from invoicetronic_invoice_sdk.models.event import Event
@@ -43,8 +44,15 @@ class LogApi:
     @validate_call
     def invoice_v1_log_get(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
+        endpoint: Optional[StrictStr] = None,
+        method: Optional[StrictStr] = None,
+        api_verion: Annotated[Optional[StrictInt], Field(description="Api version")] = None,
+        status_code: Annotated[Optional[StrictInt], Field(description="Response status code")] = None,
+        date_created_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
+        date_created_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62,9 +70,23 @@ class LogApi:
 
         Every API operation is logged and can be retrieved here.
 
-        :param page: Page number.
+        :param company_id: Company id
+        :type company_id: int
+        :param endpoint:
+        :type endpoint: str
+        :param method:
+        :type method: str
+        :param api_verion: Api version
+        :type api_verion: int
+        :param status_code: Response status code
+        :type status_code: int
+        :param date_created_from: UTC ISO 8601 (2024-11-29T12:34:56Z)
+        :type date_created_from: datetime
+        :param date_created_to: UTC ISO 8601 (2024-11-29T12:34:56Z)
+        :type date_created_to: datetime
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -89,6 +111,13 @@ class LogApi:
         """ # noqa: E501
 
         _param = self._invoice_v1_log_get_serialize(
+            company_id=company_id,
+            endpoint=endpoint,
+            method=method,
+            api_verion=api_verion,
+            status_code=status_code,
+            date_created_from=date_created_from,
+            date_created_to=date_created_to,
             page=page,
             page_size=page_size,
             _request_auth=_request_auth,
@@ -116,8 +145,15 @@ class LogApi:
     @validate_call
     def invoice_v1_log_get_with_http_info(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
+        endpoint: Optional[StrictStr] = None,
+        method: Optional[StrictStr] = None,
+        api_verion: Annotated[Optional[StrictInt], Field(description="Api version")] = None,
+        status_code: Annotated[Optional[StrictInt], Field(description="Response status code")] = None,
+        date_created_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
+        date_created_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -135,9 +171,23 @@ class LogApi:
 
         Every API operation is logged and can be retrieved here.
 
-        :param page: Page number.
+        :param company_id: Company id
+        :type company_id: int
+        :param endpoint:
+        :type endpoint: str
+        :param method:
+        :type method: str
+        :param api_verion: Api version
+        :type api_verion: int
+        :param status_code: Response status code
+        :type status_code: int
+        :param date_created_from: UTC ISO 8601 (2024-11-29T12:34:56Z)
+        :type date_created_from: datetime
+        :param date_created_to: UTC ISO 8601 (2024-11-29T12:34:56Z)
+        :type date_created_to: datetime
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -162,6 +212,13 @@ class LogApi:
         """ # noqa: E501
 
         _param = self._invoice_v1_log_get_serialize(
+            company_id=company_id,
+            endpoint=endpoint,
+            method=method,
+            api_verion=api_verion,
+            status_code=status_code,
+            date_created_from=date_created_from,
+            date_created_to=date_created_to,
             page=page,
             page_size=page_size,
             _request_auth=_request_auth,
@@ -189,8 +246,15 @@ class LogApi:
     @validate_call
     def invoice_v1_log_get_without_preload_content(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
+        endpoint: Optional[StrictStr] = None,
+        method: Optional[StrictStr] = None,
+        api_verion: Annotated[Optional[StrictInt], Field(description="Api version")] = None,
+        status_code: Annotated[Optional[StrictInt], Field(description="Response status code")] = None,
+        date_created_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
+        date_created_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -208,9 +272,23 @@ class LogApi:
 
         Every API operation is logged and can be retrieved here.
 
-        :param page: Page number.
+        :param company_id: Company id
+        :type company_id: int
+        :param endpoint:
+        :type endpoint: str
+        :param method:
+        :type method: str
+        :param api_verion: Api version
+        :type api_verion: int
+        :param status_code: Response status code
+        :type status_code: int
+        :param date_created_from: UTC ISO 8601 (2024-11-29T12:34:56Z)
+        :type date_created_from: datetime
+        :param date_created_to: UTC ISO 8601 (2024-11-29T12:34:56Z)
+        :type date_created_to: datetime
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -235,6 +313,13 @@ class LogApi:
         """ # noqa: E501
 
         _param = self._invoice_v1_log_get_serialize(
+            company_id=company_id,
+            endpoint=endpoint,
+            method=method,
+            api_verion=api_verion,
+            status_code=status_code,
+            date_created_from=date_created_from,
+            date_created_to=date_created_to,
             page=page,
             page_size=page_size,
             _request_auth=_request_auth,
@@ -257,6 +342,13 @@ class LogApi:
 
     def _invoice_v1_log_get_serialize(
         self,
+        company_id,
+        endpoint,
+        method,
+        api_verion,
+        status_code,
+        date_created_from,
+        date_created_to,
         page,
         page_size,
         _request_auth,
@@ -281,6 +373,52 @@ class LogApi:
 
         # process the path parameters
         # process the query parameters
+        if company_id is not None:
+            
+            _query_params.append(('company_id', company_id))
+            
+        if endpoint is not None:
+            
+            _query_params.append(('endpoint', endpoint))
+            
+        if method is not None:
+            
+            _query_params.append(('method', method))
+            
+        if api_verion is not None:
+            
+            _query_params.append(('api_verion', api_verion))
+            
+        if status_code is not None:
+            
+            _query_params.append(('status_code', status_code))
+            
+        if date_created_from is not None:
+            if isinstance(date_created_from, datetime):
+                _query_params.append(
+                    (
+                        'date_created_from',
+                        date_created_from.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('date_created_from', date_created_from))
+            
+        if date_created_to is not None:
+            if isinstance(date_created_to, datetime):
+                _query_params.append(
+                    (
+                        'date_created_to',
+                        date_created_to.strftime(
+                            self.api_client.configuration.datetime_format
+                        )
+                    )
+                )
+            else:
+                _query_params.append(('date_created_to', date_created_to))
+            
         if page is not None:
             
             _query_params.append(('page', page))
@@ -329,7 +467,7 @@ class LogApi:
     @validate_call
     def invoice_v1_log_id_get(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -347,7 +485,7 @@ class LogApi:
 
         Every API operation is logged and can be retrieved here.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -397,7 +535,7 @@ class LogApi:
     @validate_call
     def invoice_v1_log_id_get_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -415,7 +553,7 @@ class LogApi:
 
         Every API operation is logged and can be retrieved here.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -465,7 +603,7 @@ class LogApi:
     @validate_call
     def invoice_v1_log_id_get_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -483,7 +621,7 @@ class LogApi:
 
         Every API operation is logged and can be retrieved here.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

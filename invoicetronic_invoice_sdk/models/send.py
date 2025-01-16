@@ -3,7 +3,7 @@
 """
     Italian eInvoice API
 
-    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@invoicetronic.com
@@ -19,8 +19,9 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from invoicetronic_invoice_sdk.models.company import Company
 from invoicetronic_invoice_sdk.models.document_data import DocumentData
 from typing import Optional, Set
 from typing_extensions import Self
@@ -43,8 +44,20 @@ class Send(BaseModel):
     last_update: Optional[datetime] = Field(default=None, description="Last update from SDI.")
     date_sent: Optional[datetime] = Field(default=None, description="When the invoice was sent to SDI.")
     documents: Optional[List[DocumentData]] = Field(default=None, description="The invoices included in the payload. This is set by the system, based on the xml content.")
+    encoding: Optional[StrictStr] = Field(default=None, description="Whether the payload is Base64 encoded or a plain XML (text).")
     meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Optional metadata, as json.")
-    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "committente", "prestatore", "identifier", "file_name", "format", "payload", "last_update", "date_sent", "documents", "meta_data"]
+    company: Optional[Company] = None
+    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "committente", "prestatore", "identifier", "file_name", "format", "payload", "last_update", "date_sent", "documents", "encoding", "meta_data", "company"]
+
+    @field_validator('encoding')
+    def encoding_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['Xml', 'Base64']):
+            raise ValueError("must be one of enum values ('Xml', 'Base64')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -92,6 +105,9 @@ class Send(BaseModel):
                 if _item_documents:
                     _items.append(_item_documents.to_dict())
             _dict['documents'] = _items
+        # override the default output from pydantic by calling `to_dict()` of company
+        if self.company:
+            _dict['company'] = self.company.to_dict()
         # set to None if committente (nullable) is None
         # and model_fields_set contains the field
         if self.committente is None and "committente" in self.model_fields_set:
@@ -168,7 +184,9 @@ class Send(BaseModel):
             "last_update": obj.get("last_update"),
             "date_sent": obj.get("date_sent"),
             "documents": [DocumentData.from_dict(_item) for _item in obj["documents"]] if obj.get("documents") is not None else None,
-            "meta_data": obj.get("meta_data")
+            "encoding": obj.get("encoding"),
+            "meta_data": obj.get("meta_data"),
+            "company": Company.from_dict(obj["company"]) if obj.get("company") is not None else None
         })
         return _obj
 

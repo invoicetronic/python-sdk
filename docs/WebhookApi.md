@@ -51,8 +51,8 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.WebhookApi(api_client)
-    page = 1 # int | Page number. (optional) (default to 1)
-    page_size = 100 # int | Items per page. (optional) (default to 100)
+    page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
+    page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
 
     try:
         # List webhooks
@@ -70,8 +70,8 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| Page number. | [optional] [default to 1]
- **page_size** | **int**| Items per page. | [optional] [default to 100]
+ **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
+ **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
 
 ### Return type
 
@@ -134,7 +134,7 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.WebhookApi(api_client)
-    id = 56 # int | Item id.
+    id = 56 # int | Item id
 
     try:
         # Delete a webhook by id
@@ -152,7 +152,7 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Item id. | 
+ **id** | **int**| Item id | 
 
 ### Return type
 
@@ -216,7 +216,7 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.WebhookApi(api_client)
-    id = 56 # int | Item id.
+    id = 56 # int | Item id
 
     try:
         # Get a webhook by id
@@ -234,7 +234,7 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Item id. | 
+ **id** | **int**| Item id | 
 
 ### Return type
 
@@ -456,8 +456,8 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.WebhookApi(api_client)
-    page = 1 # int | Page number. (optional) (default to 1)
-    page_size = 100 # int | Items per page. (optional) (default to 100)
+    page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
+    page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
 
     try:
         # List webhook history items
@@ -475,8 +475,8 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| Page number. | [optional] [default to 1]
- **page_size** | **int**| Items per page. | [optional] [default to 100]
+ **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
+ **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
 
 ### Return type
 
@@ -537,7 +537,7 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.WebhookApi(api_client)
-    id = 56 # int | Item id.
+    id = 56 # int | Item id
 
     try:
         # Get a webhook history item by id
@@ -555,7 +555,7 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Item id. | 
+ **id** | **int**| Item id | 
 
 ### Return type
 

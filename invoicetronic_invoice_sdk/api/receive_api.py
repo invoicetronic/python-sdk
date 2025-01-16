@@ -3,7 +3,7 @@
 """
     Italian eInvoice API
 
-    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@invoicetronic.com
@@ -44,11 +44,11 @@ class ReceiveApi:
     @validate_call
     def invoice_v1_receive_get(
         self,
-        company_id: Annotated[Optional[StrictInt], Field(description="Company id.")] = None,
+        company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
         identifier: Annotated[Optional[StrictStr], Field(description="SDI identifier.")] = None,
         unread: Annotated[Optional[StrictBool], Field(description="Unread items only.")] = None,
-        committente: Annotated[Optional[StrictStr], Field(description="VAT number or fiscal code.")] = None,
-        prestatore: Annotated[Optional[StrictStr], Field(description="VAT number or fiscal code.")] = None,
+        committente: Annotated[Optional[StrictStr], Field(description="Vat number or fiscal code.")] = None,
+        prestatore: Annotated[Optional[StrictStr], Field(description="Vat number or fiscal code.")] = None,
         file_name: Annotated[Optional[StrictStr], Field(description="File name.")] = None,
         last_update_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         last_update_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
@@ -57,8 +57,8 @@ class ReceiveApi:
         document_date_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_date_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_number: Annotated[Optional[StrictStr], Field(description="Document number.")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -76,15 +76,15 @@ class ReceiveApi:
 
         Receive invoices are the invoices that are received from other companies.
 
-        :param company_id: Company id.
+        :param company_id: Company id
         :type company_id: int
         :param identifier: SDI identifier.
         :type identifier: str
         :param unread: Unread items only.
         :type unread: bool
-        :param committente: VAT number or fiscal code.
+        :param committente: Vat number or fiscal code.
         :type committente: str
-        :param prestatore: VAT number or fiscal code.
+        :param prestatore: Vat number or fiscal code.
         :type prestatore: str
         :param file_name: File name.
         :type file_name: str
@@ -102,9 +102,9 @@ class ReceiveApi:
         :type document_date_to: datetime
         :param document_number: Document number.
         :type document_number: str
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -169,11 +169,11 @@ class ReceiveApi:
     @validate_call
     def invoice_v1_receive_get_with_http_info(
         self,
-        company_id: Annotated[Optional[StrictInt], Field(description="Company id.")] = None,
+        company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
         identifier: Annotated[Optional[StrictStr], Field(description="SDI identifier.")] = None,
         unread: Annotated[Optional[StrictBool], Field(description="Unread items only.")] = None,
-        committente: Annotated[Optional[StrictStr], Field(description="VAT number or fiscal code.")] = None,
-        prestatore: Annotated[Optional[StrictStr], Field(description="VAT number or fiscal code.")] = None,
+        committente: Annotated[Optional[StrictStr], Field(description="Vat number or fiscal code.")] = None,
+        prestatore: Annotated[Optional[StrictStr], Field(description="Vat number or fiscal code.")] = None,
         file_name: Annotated[Optional[StrictStr], Field(description="File name.")] = None,
         last_update_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         last_update_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
@@ -182,8 +182,8 @@ class ReceiveApi:
         document_date_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_date_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_number: Annotated[Optional[StrictStr], Field(description="Document number.")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -201,15 +201,15 @@ class ReceiveApi:
 
         Receive invoices are the invoices that are received from other companies.
 
-        :param company_id: Company id.
+        :param company_id: Company id
         :type company_id: int
         :param identifier: SDI identifier.
         :type identifier: str
         :param unread: Unread items only.
         :type unread: bool
-        :param committente: VAT number or fiscal code.
+        :param committente: Vat number or fiscal code.
         :type committente: str
-        :param prestatore: VAT number or fiscal code.
+        :param prestatore: Vat number or fiscal code.
         :type prestatore: str
         :param file_name: File name.
         :type file_name: str
@@ -227,9 +227,9 @@ class ReceiveApi:
         :type document_date_to: datetime
         :param document_number: Document number.
         :type document_number: str
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -294,11 +294,11 @@ class ReceiveApi:
     @validate_call
     def invoice_v1_receive_get_without_preload_content(
         self,
-        company_id: Annotated[Optional[StrictInt], Field(description="Company id.")] = None,
+        company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
         identifier: Annotated[Optional[StrictStr], Field(description="SDI identifier.")] = None,
         unread: Annotated[Optional[StrictBool], Field(description="Unread items only.")] = None,
-        committente: Annotated[Optional[StrictStr], Field(description="VAT number or fiscal code.")] = None,
-        prestatore: Annotated[Optional[StrictStr], Field(description="VAT number or fiscal code.")] = None,
+        committente: Annotated[Optional[StrictStr], Field(description="Vat number or fiscal code.")] = None,
+        prestatore: Annotated[Optional[StrictStr], Field(description="Vat number or fiscal code.")] = None,
         file_name: Annotated[Optional[StrictStr], Field(description="File name.")] = None,
         last_update_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         last_update_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
@@ -307,8 +307,8 @@ class ReceiveApi:
         document_date_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_date_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_number: Annotated[Optional[StrictStr], Field(description="Document number.")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -326,15 +326,15 @@ class ReceiveApi:
 
         Receive invoices are the invoices that are received from other companies.
 
-        :param company_id: Company id.
+        :param company_id: Company id
         :type company_id: int
         :param identifier: SDI identifier.
         :type identifier: str
         :param unread: Unread items only.
         :type unread: bool
-        :param committente: VAT number or fiscal code.
+        :param committente: Vat number or fiscal code.
         :type committente: str
-        :param prestatore: VAT number or fiscal code.
+        :param prestatore: Vat number or fiscal code.
         :type prestatore: str
         :param file_name: File name.
         :type file_name: str
@@ -352,9 +352,9 @@ class ReceiveApi:
         :type document_date_to: datetime
         :param document_number: Document number.
         :type document_number: str
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -605,7 +605,7 @@ class ReceiveApi:
     @validate_call
     def invoice_v1_receive_id_delete(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -623,7 +623,7 @@ class ReceiveApi:
 
         Receive invoices are the invoices that are received from other companies.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -675,7 +675,7 @@ class ReceiveApi:
     @validate_call
     def invoice_v1_receive_id_delete_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -693,7 +693,7 @@ class ReceiveApi:
 
         Receive invoices are the invoices that are received from other companies.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -745,7 +745,7 @@ class ReceiveApi:
     @validate_call
     def invoice_v1_receive_id_delete_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -763,7 +763,7 @@ class ReceiveApi:
 
         Receive invoices are the invoices that are received from other companies.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -875,7 +875,7 @@ class ReceiveApi:
     @validate_call
     def invoice_v1_receive_id_get(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -893,7 +893,7 @@ class ReceiveApi:
 
         Receive invoices are the invoices that are received from other companies.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -943,7 +943,7 @@ class ReceiveApi:
     @validate_call
     def invoice_v1_receive_id_get_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -961,7 +961,7 @@ class ReceiveApi:
 
         Receive invoices are the invoices that are received from other companies.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1011,7 +1011,7 @@ class ReceiveApi:
     @validate_call
     def invoice_v1_receive_id_get_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1029,7 +1029,7 @@ class ReceiveApi:
 
         Receive invoices are the invoices that are received from other companies.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

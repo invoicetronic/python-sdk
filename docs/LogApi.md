@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **invoice_v1_log_get**
-> List[Event] invoice_v1_log_get(page=page, page_size=page_size)
+> List[Event] invoice_v1_log_get(company_id=company_id, endpoint=endpoint, method=method, api_verion=api_verion, status_code=status_code, date_created_from=date_created_from, date_created_to=date_created_to, page=page, page_size=page_size)
 
 List events
 
@@ -46,12 +46,19 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.LogApi(api_client)
-    page = 1 # int | Page number. (optional) (default to 1)
-    page_size = 100 # int | Items per page. (optional) (default to 100)
+    company_id = 56 # int | Company id (optional)
+    endpoint = 'endpoint_example' # str |  (optional)
+    method = 'method_example' # str |  (optional)
+    api_verion = 56 # int | Api version (optional)
+    status_code = 56 # int | Response status code (optional)
+    date_created_from = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+    date_created_to = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+    page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
+    page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
 
     try:
         # List events
-        api_response = api_instance.invoice_v1_log_get(page=page, page_size=page_size)
+        api_response = api_instance.invoice_v1_log_get(company_id=company_id, endpoint=endpoint, method=method, api_verion=api_verion, status_code=status_code, date_created_from=date_created_from, date_created_to=date_created_to, page=page, page_size=page_size)
         print("The response of LogApi->invoice_v1_log_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -65,8 +72,15 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| Page number. | [optional] [default to 1]
- **page_size** | **int**| Items per page. | [optional] [default to 100]
+ **company_id** | **int**| Company id | [optional] 
+ **endpoint** | **str**|  | [optional] 
+ **method** | **str**|  | [optional] 
+ **api_verion** | **int**| Api version | [optional] 
+ **status_code** | **int**| Response status code | [optional] 
+ **date_created_from** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
+ **date_created_to** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
+ **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
+ **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
 
 ### Return type
 
@@ -129,7 +143,7 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.LogApi(api_client)
-    id = 56 # int | Item id.
+    id = 56 # int | Item id
 
     try:
         # Get an event by id
@@ -147,7 +161,7 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Item id. | 
+ **id** | **int**| Item id | 
 
 ### Return type
 

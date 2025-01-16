@@ -3,7 +3,7 @@
 """
     Italian eInvoice API
 
-    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@invoicetronic.com
@@ -44,8 +44,8 @@ class WebhookApi:
     @validate_call
     def invoice_v1_webhook_get(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -63,9 +63,9 @@ class WebhookApi:
 
         Webhooks are used to notify external services about write events that occur in the API. You can subscribe to specific events and receive a notification when they occur.
 
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -117,8 +117,8 @@ class WebhookApi:
     @validate_call
     def invoice_v1_webhook_get_with_http_info(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -136,9 +136,9 @@ class WebhookApi:
 
         Webhooks are used to notify external services about write events that occur in the API. You can subscribe to specific events and receive a notification when they occur.
 
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -190,8 +190,8 @@ class WebhookApi:
     @validate_call
     def invoice_v1_webhook_get_without_preload_content(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -209,9 +209,9 @@ class WebhookApi:
 
         Webhooks are used to notify external services about write events that occur in the API. You can subscribe to specific events and receive a notification when they occur.
 
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -330,7 +330,7 @@ class WebhookApi:
     @validate_call
     def invoice_v1_webhook_id_delete(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -348,7 +348,7 @@ class WebhookApi:
 
         Webhooks are used to notify external services about write events that occur in the API. You can subscribe to specific events and receive a notification when they occur.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -400,7 +400,7 @@ class WebhookApi:
     @validate_call
     def invoice_v1_webhook_id_delete_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -418,7 +418,7 @@ class WebhookApi:
 
         Webhooks are used to notify external services about write events that occur in the API. You can subscribe to specific events and receive a notification when they occur.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -470,7 +470,7 @@ class WebhookApi:
     @validate_call
     def invoice_v1_webhook_id_delete_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -488,7 +488,7 @@ class WebhookApi:
 
         Webhooks are used to notify external services about write events that occur in the API. You can subscribe to specific events and receive a notification when they occur.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -600,7 +600,7 @@ class WebhookApi:
     @validate_call
     def invoice_v1_webhook_id_get(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -618,7 +618,7 @@ class WebhookApi:
 
         Webhooks are used to notify external services about write events that occur in the API. You can subscribe to specific events and receive a notification when they occur.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -668,7 +668,7 @@ class WebhookApi:
     @validate_call
     def invoice_v1_webhook_id_get_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -686,7 +686,7 @@ class WebhookApi:
 
         Webhooks are used to notify external services about write events that occur in the API. You can subscribe to specific events and receive a notification when they occur.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -736,7 +736,7 @@ class WebhookApi:
     @validate_call
     def invoice_v1_webhook_id_get_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -754,7 +754,7 @@ class WebhookApi:
 
         Webhooks are used to notify external services about write events that occur in the API. You can subscribe to specific events and receive a notification when they occur.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1424,8 +1424,8 @@ class WebhookApi:
     @validate_call
     def invoice_v1_webhookhistory_get(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1442,9 +1442,9 @@ class WebhookApi:
         """List webhook history items
 
 
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1496,8 +1496,8 @@ class WebhookApi:
     @validate_call
     def invoice_v1_webhookhistory_get_with_http_info(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1514,9 +1514,9 @@ class WebhookApi:
         """List webhook history items
 
 
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1568,8 +1568,8 @@ class WebhookApi:
     @validate_call
     def invoice_v1_webhookhistory_get_without_preload_content(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1586,9 +1586,9 @@ class WebhookApi:
         """List webhook history items
 
 
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1707,7 +1707,7 @@ class WebhookApi:
     @validate_call
     def invoice_v1_webhookhistory_id_get(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1724,7 +1724,7 @@ class WebhookApi:
         """Get a webhook history item by id
 
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1774,7 +1774,7 @@ class WebhookApi:
     @validate_call
     def invoice_v1_webhookhistory_id_get_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1791,7 +1791,7 @@ class WebhookApi:
         """Get a webhook history item by id
 
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1841,7 +1841,7 @@ class WebhookApi:
     @validate_call
     def invoice_v1_webhookhistory_id_get_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1858,7 +1858,7 @@ class WebhookApi:
         """Get a webhook history item by id
 
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

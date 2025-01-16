@@ -3,7 +3,7 @@
 """
     Italian eInvoice API
 
-    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@invoicetronic.com
@@ -18,7 +18,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from datetime import datetime
-from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
+from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr, field_validator
 from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from invoicetronic_invoice_sdk.models.fattura_ordinaria import FatturaOrdinaria
@@ -47,6 +47,7 @@ class SendApi:
         self,
         files: List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]],
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
+        signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -68,6 +69,8 @@ class SendApi:
         :type files: List[bytearray]
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
+        :param signature: Whether to digitally sign the document.
+        :type signature: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -93,6 +96,7 @@ class SendApi:
         _param = self._invoice_v1_send_files_post_serialize(
             files=files,
             validate=validate,
+            signature=signature,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -120,6 +124,7 @@ class SendApi:
         self,
         files: List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]],
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
+        signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -141,6 +146,8 @@ class SendApi:
         :type files: List[bytearray]
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
+        :param signature: Whether to digitally sign the document.
+        :type signature: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -166,6 +173,7 @@ class SendApi:
         _param = self._invoice_v1_send_files_post_serialize(
             files=files,
             validate=validate,
+            signature=signature,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -193,6 +201,7 @@ class SendApi:
         self,
         files: List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]],
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
+        signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -214,6 +223,8 @@ class SendApi:
         :type files: List[bytearray]
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
+        :param signature: Whether to digitally sign the document.
+        :type signature: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -239,6 +250,7 @@ class SendApi:
         _param = self._invoice_v1_send_files_post_serialize(
             files=files,
             validate=validate,
+            signature=signature,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -261,6 +273,7 @@ class SendApi:
         self,
         files,
         validate,
+        signature,
         _request_auth,
         _content_type,
         _headers,
@@ -287,6 +300,10 @@ class SendApi:
         if validate is not None:
             
             _query_params.append(('validate', validate))
+            
+        if signature is not None:
+            
+            _query_params.append(('signature', signature))
             
         # process the header parameters
         # process the form parameters
@@ -343,10 +360,10 @@ class SendApi:
     @validate_call
     def invoice_v1_send_get(
         self,
-        company_id: Annotated[Optional[StrictInt], Field(description="Company id.")] = None,
+        company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
         identifier: Annotated[Optional[StrictStr], Field(description="SDI identifier.")] = None,
-        committente: Annotated[Optional[StrictStr], Field(description="VAT number or fiscal code.")] = None,
-        prestatore: Annotated[Optional[StrictStr], Field(description="VAT number or fiscal code.")] = None,
+        committente: Annotated[Optional[StrictStr], Field(description="Vat number or fiscal code.")] = None,
+        prestatore: Annotated[Optional[StrictStr], Field(description="Vat number or fiscal code.")] = None,
         file_name: Annotated[Optional[StrictStr], Field(description="File name.")] = None,
         last_update_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         last_update_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
@@ -355,8 +372,8 @@ class SendApi:
         document_date_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_date_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_number: Annotated[Optional[StrictStr], Field(description="Document number.")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -374,13 +391,13 @@ class SendApi:
 
         test **markdown**.
 
-        :param company_id: Company id.
+        :param company_id: Company id
         :type company_id: int
         :param identifier: SDI identifier.
         :type identifier: str
-        :param committente: VAT number or fiscal code.
+        :param committente: Vat number or fiscal code.
         :type committente: str
-        :param prestatore: VAT number or fiscal code.
+        :param prestatore: Vat number or fiscal code.
         :type prestatore: str
         :param file_name: File name.
         :type file_name: str
@@ -398,9 +415,9 @@ class SendApi:
         :type document_date_to: datetime
         :param document_number: Document number.
         :type document_number: str
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -464,10 +481,10 @@ class SendApi:
     @validate_call
     def invoice_v1_send_get_with_http_info(
         self,
-        company_id: Annotated[Optional[StrictInt], Field(description="Company id.")] = None,
+        company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
         identifier: Annotated[Optional[StrictStr], Field(description="SDI identifier.")] = None,
-        committente: Annotated[Optional[StrictStr], Field(description="VAT number or fiscal code.")] = None,
-        prestatore: Annotated[Optional[StrictStr], Field(description="VAT number or fiscal code.")] = None,
+        committente: Annotated[Optional[StrictStr], Field(description="Vat number or fiscal code.")] = None,
+        prestatore: Annotated[Optional[StrictStr], Field(description="Vat number or fiscal code.")] = None,
         file_name: Annotated[Optional[StrictStr], Field(description="File name.")] = None,
         last_update_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         last_update_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
@@ -476,8 +493,8 @@ class SendApi:
         document_date_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_date_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_number: Annotated[Optional[StrictStr], Field(description="Document number.")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -495,13 +512,13 @@ class SendApi:
 
         test **markdown**.
 
-        :param company_id: Company id.
+        :param company_id: Company id
         :type company_id: int
         :param identifier: SDI identifier.
         :type identifier: str
-        :param committente: VAT number or fiscal code.
+        :param committente: Vat number or fiscal code.
         :type committente: str
-        :param prestatore: VAT number or fiscal code.
+        :param prestatore: Vat number or fiscal code.
         :type prestatore: str
         :param file_name: File name.
         :type file_name: str
@@ -519,9 +536,9 @@ class SendApi:
         :type document_date_to: datetime
         :param document_number: Document number.
         :type document_number: str
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -585,10 +602,10 @@ class SendApi:
     @validate_call
     def invoice_v1_send_get_without_preload_content(
         self,
-        company_id: Annotated[Optional[StrictInt], Field(description="Company id.")] = None,
+        company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
         identifier: Annotated[Optional[StrictStr], Field(description="SDI identifier.")] = None,
-        committente: Annotated[Optional[StrictStr], Field(description="VAT number or fiscal code.")] = None,
-        prestatore: Annotated[Optional[StrictStr], Field(description="VAT number or fiscal code.")] = None,
+        committente: Annotated[Optional[StrictStr], Field(description="Vat number or fiscal code.")] = None,
+        prestatore: Annotated[Optional[StrictStr], Field(description="Vat number or fiscal code.")] = None,
         file_name: Annotated[Optional[StrictStr], Field(description="File name.")] = None,
         last_update_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         last_update_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
@@ -597,8 +614,8 @@ class SendApi:
         document_date_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_date_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_number: Annotated[Optional[StrictStr], Field(description="Document number.")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -616,13 +633,13 @@ class SendApi:
 
         test **markdown**.
 
-        :param company_id: Company id.
+        :param company_id: Company id
         :type company_id: int
         :param identifier: SDI identifier.
         :type identifier: str
-        :param committente: VAT number or fiscal code.
+        :param committente: Vat number or fiscal code.
         :type committente: str
-        :param prestatore: VAT number or fiscal code.
+        :param prestatore: Vat number or fiscal code.
         :type prestatore: str
         :param file_name: File name.
         :type file_name: str
@@ -640,9 +657,9 @@ class SendApi:
         :type document_date_to: datetime
         :param document_number: Document number.
         :type document_number: str
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -887,7 +904,7 @@ class SendApi:
     @validate_call
     def invoice_v1_send_id_get(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -905,7 +922,7 @@ class SendApi:
 
         Send invoices are the invoices that are sent to the SDI.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -955,7 +972,7 @@ class SendApi:
     @validate_call
     def invoice_v1_send_id_get_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -973,7 +990,7 @@ class SendApi:
 
         Send invoices are the invoices that are sent to the SDI.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1023,7 +1040,7 @@ class SendApi:
     @validate_call
     def invoice_v1_send_id_get_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1041,7 +1058,7 @@ class SendApi:
 
         Send invoices are the invoices that are sent to the SDI.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1153,6 +1170,7 @@ class SendApi:
         self,
         fattura_ordinaria: FatturaOrdinaria,
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
+        signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1174,6 +1192,8 @@ class SendApi:
         :type fattura_ordinaria: FatturaOrdinaria
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
+        :param signature: Whether to digitally sign the document.
+        :type signature: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1199,6 +1219,7 @@ class SendApi:
         _param = self._invoice_v1_send_json_post_serialize(
             fattura_ordinaria=fattura_ordinaria,
             validate=validate,
+            signature=signature,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1226,6 +1247,7 @@ class SendApi:
         self,
         fattura_ordinaria: FatturaOrdinaria,
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
+        signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1247,6 +1269,8 @@ class SendApi:
         :type fattura_ordinaria: FatturaOrdinaria
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
+        :param signature: Whether to digitally sign the document.
+        :type signature: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1272,6 +1296,7 @@ class SendApi:
         _param = self._invoice_v1_send_json_post_serialize(
             fattura_ordinaria=fattura_ordinaria,
             validate=validate,
+            signature=signature,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1299,6 +1324,7 @@ class SendApi:
         self,
         fattura_ordinaria: FatturaOrdinaria,
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
+        signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1320,6 +1346,8 @@ class SendApi:
         :type fattura_ordinaria: FatturaOrdinaria
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
+        :param signature: Whether to digitally sign the document.
+        :type signature: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1345,6 +1373,7 @@ class SendApi:
         _param = self._invoice_v1_send_json_post_serialize(
             fattura_ordinaria=fattura_ordinaria,
             validate=validate,
+            signature=signature,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1367,6 +1396,7 @@ class SendApi:
         self,
         fattura_ordinaria,
         validate,
+        signature,
         _request_auth,
         _content_type,
         _headers,
@@ -1392,6 +1422,10 @@ class SendApi:
         if validate is not None:
             
             _query_params.append(('validate', validate))
+            
+        if signature is not None:
+            
+            _query_params.append(('signature', signature))
             
         # process the header parameters
         # process the form parameters
@@ -1450,6 +1484,7 @@ class SendApi:
         self,
         send: Send,
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
+        signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1471,6 +1506,8 @@ class SendApi:
         :type send: Send
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
+        :param signature: Whether to digitally sign the document.
+        :type signature: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1496,6 +1533,7 @@ class SendApi:
         _param = self._invoice_v1_send_post_serialize(
             send=send,
             validate=validate,
+            signature=signature,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1523,6 +1561,7 @@ class SendApi:
         self,
         send: Send,
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
+        signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1544,6 +1583,8 @@ class SendApi:
         :type send: Send
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
+        :param signature: Whether to digitally sign the document.
+        :type signature: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1569,6 +1610,7 @@ class SendApi:
         _param = self._invoice_v1_send_post_serialize(
             send=send,
             validate=validate,
+            signature=signature,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1596,6 +1638,7 @@ class SendApi:
         self,
         send: Send,
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
+        signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1617,6 +1660,8 @@ class SendApi:
         :type send: Send
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
+        :param signature: Whether to digitally sign the document.
+        :type signature: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1642,6 +1687,7 @@ class SendApi:
         _param = self._invoice_v1_send_post_serialize(
             send=send,
             validate=validate,
+            signature=signature,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1664,6 +1710,7 @@ class SendApi:
         self,
         send,
         validate,
+        signature,
         _request_auth,
         _content_type,
         _headers,
@@ -1689,6 +1736,10 @@ class SendApi:
         if validate is not None:
             
             _query_params.append(('validate', validate))
+            
+        if signature is not None:
+            
+            _query_params.append(('signature', signature))
             
         # process the header parameters
         # process the form parameters
@@ -2868,6 +2919,7 @@ class SendApi:
         self,
         fattura_ordinaria: FatturaOrdinaria,
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
+        signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2889,6 +2941,8 @@ class SendApi:
         :type fattura_ordinaria: FatturaOrdinaria
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
+        :param signature: Whether to digitally sign the document.
+        :type signature: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2914,6 +2968,7 @@ class SendApi:
         _param = self._invoice_v1_send_xml_post_serialize(
             fattura_ordinaria=fattura_ordinaria,
             validate=validate,
+            signature=signature,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2941,6 +2996,7 @@ class SendApi:
         self,
         fattura_ordinaria: FatturaOrdinaria,
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
+        signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2962,6 +3018,8 @@ class SendApi:
         :type fattura_ordinaria: FatturaOrdinaria
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
+        :param signature: Whether to digitally sign the document.
+        :type signature: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2987,6 +3045,7 @@ class SendApi:
         _param = self._invoice_v1_send_xml_post_serialize(
             fattura_ordinaria=fattura_ordinaria,
             validate=validate,
+            signature=signature,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3014,6 +3073,7 @@ class SendApi:
         self,
         fattura_ordinaria: FatturaOrdinaria,
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
+        signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3035,6 +3095,8 @@ class SendApi:
         :type fattura_ordinaria: FatturaOrdinaria
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
+        :param signature: Whether to digitally sign the document.
+        :type signature: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3060,6 +3122,7 @@ class SendApi:
         _param = self._invoice_v1_send_xml_post_serialize(
             fattura_ordinaria=fattura_ordinaria,
             validate=validate,
+            signature=signature,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3082,6 +3145,7 @@ class SendApi:
         self,
         fattura_ordinaria,
         validate,
+        signature,
         _request_auth,
         _content_type,
         _headers,
@@ -3107,6 +3171,10 @@ class SendApi:
         if validate is not None:
             
             _query_params.append(('validate', validate))
+            
+        if signature is not None:
+            
+            _query_params.append(('signature', signature))
             
         # process the header parameters
         # process the form parameters

@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **invoice_v1_send_files_post**
-> Send invoice_v1_send_files_post(files, validate=validate)
+> Send invoice_v1_send_files_post(files, validate=validate, signature=signature)
 
 Add an invoice by file
 
@@ -56,10 +56,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
     files = None # List[bytearray] | 
     validate = False # bool | Validate the document first, and reject it on failure. (optional) (default to False)
+    signature = Auto # str | Whether to digitally sign the document. (optional) (default to Auto)
 
     try:
         # Add an invoice by file
-        api_response = api_instance.invoice_v1_send_files_post(files, validate=validate)
+        api_response = api_instance.invoice_v1_send_files_post(files, validate=validate, signature=signature)
         print("The response of SendApi->invoice_v1_send_files_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -75,6 +76,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **files** | **List[bytearray]**|  | 
  **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to False]
+ **signature** | **str**| Whether to digitally sign the document. | [optional] [default to Auto]
 
 ### Return type
 
@@ -137,10 +139,10 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
-    company_id = 56 # int | Company id. (optional)
+    company_id = 56 # int | Company id (optional)
     identifier = 'identifier_example' # str | SDI identifier. (optional)
-    committente = 'committente_example' # str | VAT number or fiscal code. (optional)
-    prestatore = 'prestatore_example' # str | VAT number or fiscal code. (optional)
+    committente = 'committente_example' # str | Vat number or fiscal code. (optional)
+    prestatore = 'prestatore_example' # str | Vat number or fiscal code. (optional)
     file_name = 'file_name_example' # str | File name. (optional)
     last_update_from = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
     last_update_to = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
@@ -149,8 +151,8 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     document_date_from = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
     document_date_to = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
     document_number = 'document_number_example' # str | Document number. (optional)
-    page = 1 # int | Page number. (optional) (default to 1)
-    page_size = 100 # int | Items per page. (optional) (default to 100)
+    page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
+    page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
 
     try:
         # List invoices
@@ -168,10 +170,10 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **company_id** | **int**| Company id. | [optional] 
+ **company_id** | **int**| Company id | [optional] 
  **identifier** | **str**| SDI identifier. | [optional] 
- **committente** | **str**| VAT number or fiscal code. | [optional] 
- **prestatore** | **str**| VAT number or fiscal code. | [optional] 
+ **committente** | **str**| Vat number or fiscal code. | [optional] 
+ **prestatore** | **str**| Vat number or fiscal code. | [optional] 
  **file_name** | **str**| File name. | [optional] 
  **last_update_from** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
  **last_update_to** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
@@ -180,8 +182,8 @@ Name | Type | Description  | Notes
  **document_date_from** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
  **document_date_to** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
  **document_number** | **str**| Document number. | [optional] 
- **page** | **int**| Page number. | [optional] [default to 1]
- **page_size** | **int**| Items per page. | [optional] [default to 100]
+ **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
+ **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
 
 ### Return type
 
@@ -244,7 +246,7 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
-    id = 56 # int | Item id.
+    id = 56 # int | Item id
 
     try:
         # Get a invoice by id
@@ -262,7 +264,7 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Item id. | 
+ **id** | **int**| Item id | 
 
 ### Return type
 
@@ -287,7 +289,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **invoice_v1_send_json_post**
-> Send invoice_v1_send_json_post(fattura_ordinaria, validate=validate)
+> Send invoice_v1_send_json_post(fattura_ordinaria, validate=validate, signature=signature)
 
 Add an invoice by json
 
@@ -327,10 +329,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
     fattura_ordinaria = invoicetronic_invoice_sdk.FatturaOrdinaria() # FatturaOrdinaria | 
     validate = False # bool | Validate the document first, and reject it on failure. (optional) (default to False)
+    signature = Auto # str | Whether to digitally sign the document. (optional) (default to Auto)
 
     try:
         # Add an invoice by json
-        api_response = api_instance.invoice_v1_send_json_post(fattura_ordinaria, validate=validate)
+        api_response = api_instance.invoice_v1_send_json_post(fattura_ordinaria, validate=validate, signature=signature)
         print("The response of SendApi->invoice_v1_send_json_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -346,6 +349,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fattura_ordinaria** | [**FatturaOrdinaria**](FatturaOrdinaria.md)|  | 
  **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to False]
+ **signature** | **str**| Whether to digitally sign the document. | [optional] [default to Auto]
 
 ### Return type
 
@@ -371,7 +375,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **invoice_v1_send_post**
-> Send invoice_v1_send_post(send, validate=validate)
+> Send invoice_v1_send_post(send, validate=validate, signature=signature)
 
 Add an invoice
 
@@ -410,10 +414,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
     send = invoicetronic_invoice_sdk.Send() # Send | 
     validate = False # bool | Validate the document first, and reject it on failure. (optional) (default to False)
+    signature = Auto # str | Whether to digitally sign the document. (optional) (default to Auto)
 
     try:
         # Add an invoice
-        api_response = api_instance.invoice_v1_send_post(send, validate=validate)
+        api_response = api_instance.invoice_v1_send_post(send, validate=validate, signature=signature)
         print("The response of SendApi->invoice_v1_send_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -429,6 +434,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **send** | [**Send**](Send.md)|  | 
  **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to False]
+ **signature** | **str**| Whether to digitally sign the document. | [optional] [default to Auto]
 
 ### Return type
 
@@ -769,7 +775,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **invoice_v1_send_xml_post**
-> Send invoice_v1_send_xml_post(fattura_ordinaria, validate=validate)
+> Send invoice_v1_send_xml_post(fattura_ordinaria, validate=validate, signature=signature)
 
 Add an invoice by xml
 
@@ -809,10 +815,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
     fattura_ordinaria = invoicetronic_invoice_sdk.FatturaOrdinaria() # FatturaOrdinaria | 
     validate = False # bool | Validate the document first, and reject it on failure. (optional) (default to False)
+    signature = Auto # str | Whether to digitally sign the document. (optional) (default to Auto)
 
     try:
         # Add an invoice by xml
-        api_response = api_instance.invoice_v1_send_xml_post(fattura_ordinaria, validate=validate)
+        api_response = api_instance.invoice_v1_send_xml_post(fattura_ordinaria, validate=validate, signature=signature)
         print("The response of SendApi->invoice_v1_send_xml_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -828,6 +835,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fattura_ordinaria** | [**FatturaOrdinaria**](FatturaOrdinaria.md)|  | 
  **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to False]
+ **signature** | **str**| Whether to digitally sign the document. | [optional] [default to Auto]
 
 ### Return type
 

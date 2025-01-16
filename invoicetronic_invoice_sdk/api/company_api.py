@@ -3,7 +3,7 @@
 """
     Italian eInvoice API
 
-    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@invoicetronic.com
@@ -43,8 +43,8 @@ class CompanyApi:
     @validate_call
     def invoice_v1_company_get(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,11 +60,11 @@ class CompanyApi:
     ) -> List[Company]:
         """List companies
 
-        Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -116,8 +116,8 @@ class CompanyApi:
     @validate_call
     def invoice_v1_company_get_with_http_info(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -133,11 +133,11 @@ class CompanyApi:
     ) -> ApiResponse[List[Company]]:
         """List companies
 
-        Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -189,8 +189,8 @@ class CompanyApi:
     @validate_call
     def invoice_v1_company_get_without_preload_content(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -206,11 +206,11 @@ class CompanyApi:
     ) -> RESTResponseType:
         """List companies
 
-        Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -287,7 +287,7 @@ class CompanyApi:
             
         if page_size is not None:
             
-            _query_params.append(('pageSize', page_size))
+            _query_params.append(('page_size', page_size))
             
         # process the header parameters
         # process the form parameters
@@ -329,7 +329,7 @@ class CompanyApi:
     @validate_call
     def invoice_v1_company_id_delete(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -345,9 +345,9 @@ class CompanyApi:
     ) -> Company:
         """Delete a company
 
-        Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -399,7 +399,7 @@ class CompanyApi:
     @validate_call
     def invoice_v1_company_id_delete_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -415,9 +415,9 @@ class CompanyApi:
     ) -> ApiResponse[Company]:
         """Delete a company
 
-        Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -469,7 +469,7 @@ class CompanyApi:
     @validate_call
     def invoice_v1_company_id_delete_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -485,9 +485,9 @@ class CompanyApi:
     ) -> RESTResponseType:
         """Delete a company
 
-        Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -599,7 +599,7 @@ class CompanyApi:
     @validate_call
     def invoice_v1_company_id_get(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -615,9 +615,9 @@ class CompanyApi:
     ) -> Company:
         """Get a company by id
 
-        Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -667,7 +667,7 @@ class CompanyApi:
     @validate_call
     def invoice_v1_company_id_get_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -683,9 +683,9 @@ class CompanyApi:
     ) -> ApiResponse[Company]:
         """Get a company by id
 
-        Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -735,7 +735,7 @@ class CompanyApi:
     @validate_call
     def invoice_v1_company_id_get_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -751,9 +751,9 @@ class CompanyApi:
     ) -> RESTResponseType:
         """Get a company by id
 
-        Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -879,7 +879,7 @@ class CompanyApi:
     ) -> Company:
         """Add a company
 
-        Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
         :param company: (required)
         :type company: Company
@@ -948,7 +948,7 @@ class CompanyApi:
     ) -> ApiResponse[Company]:
         """Add a company
 
-        Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
         :param company: (required)
         :type company: Company
@@ -1017,7 +1017,7 @@ class CompanyApi:
     ) -> RESTResponseType:
         """Add a company
 
-        Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
         :param company: (required)
         :type company: Company
@@ -1159,7 +1159,7 @@ class CompanyApi:
     ) -> Company:
         """Update a company
 
-        Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
         :param company: (required)
         :type company: Company
@@ -1228,7 +1228,7 @@ class CompanyApi:
     ) -> ApiResponse[Company]:
         """Update a company
 
-        Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
         :param company: (required)
         :type company: Company
@@ -1297,7 +1297,7 @@ class CompanyApi:
     ) -> RESTResponseType:
         """Update a company
 
-        Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
         :param company: (required)
         :type company: Company

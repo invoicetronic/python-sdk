@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 List companies
 
-Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
 ### Example
 
@@ -49,8 +49,8 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.CompanyApi(api_client)
-    page = 1 # int | Page number. (optional) (default to 1)
-    page_size = 100 # int | Items per page. (optional) (default to 100)
+    page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
+    page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
 
     try:
         # List companies
@@ -68,8 +68,8 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| Page number. | [optional] [default to 1]
- **page_size** | **int**| Items per page. | [optional] [default to 100]
+ **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
+ **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
 
 ### Return type
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 Delete a company
 
-Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
 ### Example
 
@@ -132,7 +132,7 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.CompanyApi(api_client)
-    id = 56 # int | Item id.
+    id = 56 # int | Item id
 
     try:
         # Delete a company
@@ -150,7 +150,7 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Item id. | 
+ **id** | **int**| Item id | 
 
 ### Return type
 
@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 
 Get a company by id
 
-Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
 ### Example
 
@@ -214,7 +214,7 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.CompanyApi(api_client)
-    id = 56 # int | Item id.
+    id = 56 # int | Item id
 
     try:
         # Get a company by id
@@ -232,7 +232,7 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Item id. | 
+ **id** | **int**| Item id | 
 
 ### Return type
 
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 
 Add a company
 
-Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
 ### Example
 
@@ -342,7 +342,7 @@ Name | Type | Description  | Notes
 
 Update a company
 
-Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
 ### Example
 

@@ -3,7 +3,7 @@
 """
     Italian eInvoice API
 
-    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@invoicetronic.com
@@ -44,17 +44,17 @@ class UpdateApi:
     @validate_call
     def invoice_v1_update_get(
         self,
-        company_id: Annotated[Optional[StrictInt], Field(description="Company id.")] = None,
+        company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
         identifier: Annotated[Optional[StrictStr], Field(description="SDI identifier.")] = None,
-        unread: Annotated[Optional[StrictBool], Field(description="Only unread items.")] = None,
+        unread: Annotated[Optional[StrictBool], Field(description="Unread items only.")] = None,
         send_id: Annotated[Optional[StrictInt], Field(description="Send item's id.")] = None,
         state: Annotated[Optional[StrictStr], Field(description="SDI state")] = None,
         last_update_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         last_update_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         date_sent_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
-        date_sent_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 format (2024-11-29T12:34:56Z)")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        date_sent_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -72,11 +72,11 @@ class UpdateApi:
 
         Updates are notifications that are sent by the SDI about the status of sent invoices.
 
-        :param company_id: Company id.
+        :param company_id: Company id
         :type company_id: int
         :param identifier: SDI identifier.
         :type identifier: str
-        :param unread: Only unread items.
+        :param unread: Unread items only.
         :type unread: bool
         :param send_id: Send item's id.
         :type send_id: int
@@ -88,11 +88,11 @@ class UpdateApi:
         :type last_update_to: datetime
         :param date_sent_from: UTC ISO 8601 (2024-11-29T12:34:56Z)
         :type date_sent_from: datetime
-        :param date_sent_to: UTC ISO 8601 format (2024-11-29T12:34:56Z)
+        :param date_sent_to: UTC ISO 8601 (2024-11-29T12:34:56Z)
         :type date_sent_to: datetime
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -153,17 +153,17 @@ class UpdateApi:
     @validate_call
     def invoice_v1_update_get_with_http_info(
         self,
-        company_id: Annotated[Optional[StrictInt], Field(description="Company id.")] = None,
+        company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
         identifier: Annotated[Optional[StrictStr], Field(description="SDI identifier.")] = None,
-        unread: Annotated[Optional[StrictBool], Field(description="Only unread items.")] = None,
+        unread: Annotated[Optional[StrictBool], Field(description="Unread items only.")] = None,
         send_id: Annotated[Optional[StrictInt], Field(description="Send item's id.")] = None,
         state: Annotated[Optional[StrictStr], Field(description="SDI state")] = None,
         last_update_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         last_update_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         date_sent_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
-        date_sent_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 format (2024-11-29T12:34:56Z)")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        date_sent_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -181,11 +181,11 @@ class UpdateApi:
 
         Updates are notifications that are sent by the SDI about the status of sent invoices.
 
-        :param company_id: Company id.
+        :param company_id: Company id
         :type company_id: int
         :param identifier: SDI identifier.
         :type identifier: str
-        :param unread: Only unread items.
+        :param unread: Unread items only.
         :type unread: bool
         :param send_id: Send item's id.
         :type send_id: int
@@ -197,11 +197,11 @@ class UpdateApi:
         :type last_update_to: datetime
         :param date_sent_from: UTC ISO 8601 (2024-11-29T12:34:56Z)
         :type date_sent_from: datetime
-        :param date_sent_to: UTC ISO 8601 format (2024-11-29T12:34:56Z)
+        :param date_sent_to: UTC ISO 8601 (2024-11-29T12:34:56Z)
         :type date_sent_to: datetime
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -262,17 +262,17 @@ class UpdateApi:
     @validate_call
     def invoice_v1_update_get_without_preload_content(
         self,
-        company_id: Annotated[Optional[StrictInt], Field(description="Company id.")] = None,
+        company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
         identifier: Annotated[Optional[StrictStr], Field(description="SDI identifier.")] = None,
-        unread: Annotated[Optional[StrictBool], Field(description="Only unread items.")] = None,
+        unread: Annotated[Optional[StrictBool], Field(description="Unread items only.")] = None,
         send_id: Annotated[Optional[StrictInt], Field(description="Send item's id.")] = None,
         state: Annotated[Optional[StrictStr], Field(description="SDI state")] = None,
         last_update_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         last_update_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         date_sent_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
-        date_sent_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 format (2024-11-29T12:34:56Z)")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page.")] = None,
+        date_sent_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -290,11 +290,11 @@ class UpdateApi:
 
         Updates are notifications that are sent by the SDI about the status of sent invoices.
 
-        :param company_id: Company id.
+        :param company_id: Company id
         :type company_id: int
         :param identifier: SDI identifier.
         :type identifier: str
-        :param unread: Only unread items.
+        :param unread: Unread items only.
         :type unread: bool
         :param send_id: Send item's id.
         :type send_id: int
@@ -306,11 +306,11 @@ class UpdateApi:
         :type last_update_to: datetime
         :param date_sent_from: UTC ISO 8601 (2024-11-29T12:34:56Z)
         :type date_sent_from: datetime
-        :param date_sent_to: UTC ISO 8601 format (2024-11-29T12:34:56Z)
+        :param date_sent_to: UTC ISO 8601 (2024-11-29T12:34:56Z)
         :type date_sent_to: datetime
-        :param page: Page number.
+        :param page: Page number. Defaults to 1.
         :type page: int
-        :param page_size: Items per page.
+        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -519,7 +519,7 @@ class UpdateApi:
     @validate_call
     def invoice_v1_update_id_get(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -537,7 +537,7 @@ class UpdateApi:
 
         Updates are notifications that are sent by the SDI about the status of sent invoices.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -587,7 +587,7 @@ class UpdateApi:
     @validate_call
     def invoice_v1_update_id_get_with_http_info(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -605,7 +605,7 @@ class UpdateApi:
 
         Updates are notifications that are sent by the SDI about the status of sent invoices.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -655,7 +655,7 @@ class UpdateApi:
     @validate_call
     def invoice_v1_update_id_get_without_preload_content(
         self,
-        id: Annotated[StrictInt, Field(description="Item id.")],
+        id: Annotated[StrictInt, Field(description="Item id")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -673,7 +673,7 @@ class UpdateApi:
 
         Updates are notifications that are sent by the SDI about the status of sent invoices.
 
-        :param id: Item id. (required)
+        :param id: Item id (required)
         :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

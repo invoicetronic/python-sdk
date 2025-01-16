@@ -46,17 +46,17 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.UpdateApi(api_client)
-    company_id = 56 # int | Company id. (optional)
+    company_id = 56 # int | Company id (optional)
     identifier = 'identifier_example' # str | SDI identifier. (optional)
-    unread = True # bool | Only unread items. (optional)
+    unread = True # bool | Unread items only. (optional)
     send_id = 56 # int | Send item's id. (optional)
     state = 'state_example' # str | SDI state (optional)
     last_update_from = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
     last_update_to = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
     date_sent_from = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-    date_sent_to = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 format (2024-11-29T12:34:56Z) (optional)
-    page = 1 # int | Page number. (optional) (default to 1)
-    page_size = 100 # int | Items per page. (optional) (default to 100)
+    date_sent_to = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+    page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
+    page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
 
     try:
         # List updates
@@ -74,17 +74,17 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **company_id** | **int**| Company id. | [optional] 
+ **company_id** | **int**| Company id | [optional] 
  **identifier** | **str**| SDI identifier. | [optional] 
- **unread** | **bool**| Only unread items. | [optional] 
+ **unread** | **bool**| Unread items only. | [optional] 
  **send_id** | **int**| Send item&#39;s id. | [optional] 
  **state** | **str**| SDI state | [optional] 
  **last_update_from** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
  **last_update_to** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
  **date_sent_from** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
- **date_sent_to** | **datetime**| UTC ISO 8601 format (2024-11-29T12:34:56Z) | [optional] 
- **page** | **int**| Page number. | [optional] [default to 1]
- **page_size** | **int**| Items per page. | [optional] [default to 100]
+ **date_sent_to** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
+ **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
+ **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
 
 ### Return type
 
@@ -147,7 +147,7 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.UpdateApi(api_client)
-    id = 56 # int | Item id.
+    id = 56 # int | Item id
 
     try:
         # Get an update by id
@@ -165,7 +165,7 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Item id. | 
+ **id** | **int**| Item id | 
 
 ### Return type
 

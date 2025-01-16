@@ -19,7 +19,9 @@ Name | Type | Description | Notes
 **last_update** | **datetime** | Last update from SDI. | [optional] 
 **date_sent** | **datetime** | When the invoice was sent to SDI. | [optional] 
 **documents** | [**List[DocumentData]**](DocumentData.md) | The invoices included in the payload. This is set by the system, based on the xml content. | [optional] 
+**encoding** | **str** | Whether the payload is Base64 encoded or a plain XML (text). | [optional] 
 **is_read** | **bool** | Wether the invoice has been read at least once. | [optional] 
+**message_id** | **str** | SDI message id. | [optional] 
 
 ## Example
 

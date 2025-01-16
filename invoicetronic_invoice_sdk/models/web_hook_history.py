@@ -3,7 +3,7 @@
 """
     Italian eInvoice API
 
-    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@invoicetronic.com
@@ -35,11 +35,9 @@ class WebHookHistory(BaseModel):
     user_id: Optional[StrictInt] = Field(default=None, description="User id.")
     event: Optional[StrictStr] = Field(default=None, description="Event name.")
     status_code: Optional[StrictInt] = Field(default=None, description="Status code.")
-    request_body: Optional[StrictStr] = Field(default=None, description="Webhook request body.")
-    response_body: Optional[StrictStr] = Field(default=None, description="Webhook response body.")
     date_time: Optional[datetime] = Field(default=None, description="Date and time of the request.")
     success: Optional[StrictBool] = Field(default=None, description="Wether the request was successful.")
-    __properties: ClassVar[List[str]] = ["id", "created", "version", "web_hook_id", "user_id", "event", "status_code", "request_body", "response_body", "date_time", "success"]
+    __properties: ClassVar[List[str]] = ["id", "created", "version", "web_hook_id", "user_id", "event", "status_code", "date_time", "success"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,16 +85,6 @@ class WebHookHistory(BaseModel):
         if self.event is None and "event" in self.model_fields_set:
             _dict['event'] = None
 
-        # set to None if request_body (nullable) is None
-        # and model_fields_set contains the field
-        if self.request_body is None and "request_body" in self.model_fields_set:
-            _dict['request_body'] = None
-
-        # set to None if response_body (nullable) is None
-        # and model_fields_set contains the field
-        if self.response_body is None and "response_body" in self.model_fields_set:
-            _dict['response_body'] = None
-
         return _dict
 
     @classmethod
@@ -116,8 +104,6 @@ class WebHookHistory(BaseModel):
             "user_id": obj.get("user_id"),
             "event": obj.get("event"),
             "status_code": obj.get("status_code"),
-            "request_body": obj.get("request_body"),
-            "response_body": obj.get("response_body"),
             "date_time": obj.get("date_time"),
             "success": obj.get("success")
         })

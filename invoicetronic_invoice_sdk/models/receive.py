@@ -3,7 +3,7 @@
 """
     Italian eInvoice API
 
-    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+    The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
 
     The version of the OpenAPI document: 1.0.0
     Contact: support@invoicetronic.com
@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from invoicetronic_invoice_sdk.models.document_data import DocumentData
 from typing import Optional, Set
@@ -43,8 +43,20 @@ class Receive(BaseModel):
     last_update: Optional[datetime] = Field(default=None, description="Last update from SDI.")
     date_sent: Optional[datetime] = Field(default=None, description="When the invoice was sent to SDI.")
     documents: Optional[List[DocumentData]] = Field(default=None, description="The invoices included in the payload. This is set by the system, based on the xml content.")
+    encoding: Optional[StrictStr] = Field(default=None, description="Whether the payload is Base64 encoded or a plain XML (text).")
     is_read: Optional[StrictBool] = Field(default=None, description="Wether the invoice has been read at least once.")
-    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "committente", "prestatore", "identifier", "file_name", "format", "payload", "last_update", "date_sent", "documents", "is_read"]
+    message_id: Optional[StrictStr] = Field(default=None, description="SDI message id.")
+    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "committente", "prestatore", "identifier", "file_name", "format", "payload", "last_update", "date_sent", "documents", "encoding", "is_read", "message_id"]
+
+    @field_validator('encoding')
+    def encoding_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['Xml', 'Base64']):
+            raise ValueError("must be one of enum values ('Xml', 'Base64')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -137,6 +149,11 @@ class Receive(BaseModel):
         if self.documents is None and "documents" in self.model_fields_set:
             _dict['documents'] = None
 
+        # set to None if message_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.message_id is None and "message_id" in self.model_fields_set:
+            _dict['message_id'] = None
+
         return _dict
 
     @classmethod
@@ -163,7 +180,9 @@ class Receive(BaseModel):
             "last_update": obj.get("last_update"),
             "date_sent": obj.get("date_sent"),
             "documents": [DocumentData.from_dict(_item) for _item in obj["documents"]] if obj.get("documents") is not None else None,
-            "is_read": obj.get("is_read")
+            "encoding": obj.get("encoding"),
+            "is_read": obj.get("is_read"),
+            "message_id": obj.get("message_id")
         })
         return _obj
 

@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **id** | **int** | Unique identifier. Leave it at 0 for new records as it will be set automatically. | [optional] 
 **created** | **datetime** | Creation date. It is set automatically. | [optional] 
 **version** | **int** | Row version, for optimistic concurrency. It is set automatically. | [optional] 
+**user_id** | **int** | User id. | [optional] 
+**api_key_id** | **int** | Api key id. | [optional] 
 **company_id** | **int** | Company id. | [optional] 
 **method** | **str** | Request method. | [optional] 
 **query** | **str** | Request query. | [optional] 
@@ -16,11 +18,8 @@ Name | Type | Description | Notes
 **status_code** | **int** | Status code returned by the API. | [optional] 
 **date_time** | **datetime** | Date and time of the request. | [optional] 
 **error** | **str** | Response error. | [optional] 
-**request_body** | **str** | Request payload. It is guaranteed to be cyphered at rest. | [optional] 
-**response_body** | **str** | Response payload. It is guaranteed to be cyphered at rest. | [optional] 
 **success** | **bool** | Wether the request was successful. | [optional] [readonly] 
-**user_id** | **int** | User id. | [optional] 
-**api_key_id** | **int** | Api key id. | [optional] 
+**response_body** | **str** | Response payload. It is guaranteed to be cyphered at rest. | [optional] 
 
 ## Example
 
