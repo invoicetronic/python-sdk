@@ -4,20 +4,20 @@ All URIs are relative to *https://api.invoicetronic.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**invoice_v1_send_files_post**](SendApi.md#invoice_v1_send_files_post) | **POST** /invoice/v1/send/files | Add an invoice by file
-[**invoice_v1_send_get**](SendApi.md#invoice_v1_send_get) | **GET** /invoice/v1/send | List invoices
-[**invoice_v1_send_id_get**](SendApi.md#invoice_v1_send_id_get) | **GET** /invoice/v1/send/{id} | Get a invoice by id
-[**invoice_v1_send_json_post**](SendApi.md#invoice_v1_send_json_post) | **POST** /invoice/v1/send/json | Add an invoice by json
-[**invoice_v1_send_post**](SendApi.md#invoice_v1_send_post) | **POST** /invoice/v1/send | Add an invoice
-[**invoice_v1_send_validate_files_post**](SendApi.md#invoice_v1_send_validate_files_post) | **POST** /invoice/v1/send/validate/files | Validate an invoice by file
-[**invoice_v1_send_validate_json_post**](SendApi.md#invoice_v1_send_validate_json_post) | **POST** /invoice/v1/send/validate/json | Validate an invoice by json
-[**invoice_v1_send_validate_post**](SendApi.md#invoice_v1_send_validate_post) | **POST** /invoice/v1/send/validate | Validate an invoice
-[**invoice_v1_send_validate_xml_post**](SendApi.md#invoice_v1_send_validate_xml_post) | **POST** /invoice/v1/send/validate/xml | Validate an invoice by xml
-[**invoice_v1_send_xml_post**](SendApi.md#invoice_v1_send_xml_post) | **POST** /invoice/v1/send/xml | Add an invoice by xml
+[**send_file_post**](SendApi.md#send_file_post) | **POST** /send/file | Add an invoice by file
+[**send_get**](SendApi.md#send_get) | **GET** /send | List invoices
+[**send_id_get**](SendApi.md#send_id_get) | **GET** /send/{id} | Get a invoice by id
+[**send_json_post**](SendApi.md#send_json_post) | **POST** /send/json | Add an invoice by json
+[**send_post**](SendApi.md#send_post) | **POST** /send | Add an invoice
+[**send_validate_files_post**](SendApi.md#send_validate_files_post) | **POST** /send/validate/files | Validate an invoice by file
+[**send_validate_json_post**](SendApi.md#send_validate_json_post) | **POST** /send/validate/json | Validate an invoice by json
+[**send_validate_post**](SendApi.md#send_validate_post) | **POST** /send/validate | Validate an invoice
+[**send_validate_xml_post**](SendApi.md#send_validate_xml_post) | **POST** /send/validate/xml | Validate an invoice by xml
+[**send_xml_post**](SendApi.md#send_xml_post) | **POST** /send/xml | Add an invoice by xml
 
 
-# **invoice_v1_send_files_post**
-> Send invoice_v1_send_files_post(files, validate=validate, signature=signature)
+# **send_file_post**
+> Send send_file_post(file, validate=validate, signature=signature)
 
 Add an invoice by file
 
@@ -54,17 +54,17 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
-    files = None # List[bytearray] | 
+    file = None # bytearray | 
     validate = False # bool | Validate the document first, and reject it on failure. (optional) (default to False)
     signature = Auto # str | Whether to digitally sign the document. (optional) (default to Auto)
 
     try:
         # Add an invoice by file
-        api_response = api_instance.invoice_v1_send_files_post(files, validate=validate, signature=signature)
-        print("The response of SendApi->invoice_v1_send_files_post:\n")
+        api_response = api_instance.send_file_post(file, validate=validate, signature=signature)
+        print("The response of SendApi->send_file_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SendApi->invoice_v1_send_files_post: %s\n" % e)
+        print("Exception when calling SendApi->send_file_post: %s\n" % e)
 ```
 
 
@@ -74,7 +74,7 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **files** | **List[bytearray]**|  | 
+ **file** | **bytearray**|  | 
  **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to False]
  **signature** | **str**| Whether to digitally sign the document. | [optional] [default to Auto]
 
@@ -101,8 +101,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_send_get**
-> List[Send] invoice_v1_send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, page=page, page_size=page_size)
+# **send_get**
+> List[Send] send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, page=page, page_size=page_size, sort=sort)
 
 List invoices
 
@@ -153,14 +153,15 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     document_number = 'document_number_example' # str | Document number. (optional)
     page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
     page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
+    sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)
 
     try:
         # List invoices
-        api_response = api_instance.invoice_v1_send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, page=page, page_size=page_size)
-        print("The response of SendApi->invoice_v1_send_get:\n")
+        api_response = api_instance.send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, page=page, page_size=page_size, sort=sort)
+        print("The response of SendApi->send_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SendApi->invoice_v1_send_get: %s\n" % e)
+        print("Exception when calling SendApi->send_get: %s\n" % e)
 ```
 
 
@@ -184,6 +185,7 @@ Name | Type | Description  | Notes
  **document_number** | **str**| Document number. | [optional] 
  **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
  **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
+ **sort** | **str**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] 
 
 ### Return type
 
@@ -208,8 +210,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_send_id_get**
-> Send invoice_v1_send_id_get(id)
+# **send_id_get**
+> Send send_id_get(id)
 
 Get a invoice by id
 
@@ -250,11 +252,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Get a invoice by id
-        api_response = api_instance.invoice_v1_send_id_get(id)
-        print("The response of SendApi->invoice_v1_send_id_get:\n")
+        api_response = api_instance.send_id_get(id)
+        print("The response of SendApi->send_id_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SendApi->invoice_v1_send_id_get: %s\n" % e)
+        print("Exception when calling SendApi->send_id_get: %s\n" % e)
 ```
 
 
@@ -288,8 +290,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_send_json_post**
-> Send invoice_v1_send_json_post(fattura_ordinaria, validate=validate, signature=signature)
+# **send_json_post**
+> Send send_json_post(fattura_ordinaria, validate=validate, signature=signature)
 
 Add an invoice by json
 
@@ -333,11 +335,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Add an invoice by json
-        api_response = api_instance.invoice_v1_send_json_post(fattura_ordinaria, validate=validate, signature=signature)
-        print("The response of SendApi->invoice_v1_send_json_post:\n")
+        api_response = api_instance.send_json_post(fattura_ordinaria, validate=validate, signature=signature)
+        print("The response of SendApi->send_json_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SendApi->invoice_v1_send_json_post: %s\n" % e)
+        print("Exception when calling SendApi->send_json_post: %s\n" % e)
 ```
 
 
@@ -374,8 +376,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_send_post**
-> Send invoice_v1_send_post(send, validate=validate, signature=signature)
+# **send_post**
+> Send send_post(send, validate=validate, signature=signature)
 
 Add an invoice
 
@@ -418,11 +420,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Add an invoice
-        api_response = api_instance.invoice_v1_send_post(send, validate=validate, signature=signature)
-        print("The response of SendApi->invoice_v1_send_post:\n")
+        api_response = api_instance.send_post(send, validate=validate, signature=signature)
+        print("The response of SendApi->send_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SendApi->invoice_v1_send_post: %s\n" % e)
+        print("Exception when calling SendApi->send_post: %s\n" % e)
 ```
 
 
@@ -459,8 +461,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_send_validate_files_post**
-> invoice_v1_send_validate_files_post(files)
+# **send_validate_files_post**
+> send_validate_files_post(files)
 
 Validate an invoice by file
 
@@ -500,9 +502,9 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Validate an invoice by file
-        api_instance.invoice_v1_send_validate_files_post(files)
+        api_instance.send_validate_files_post(files)
     except Exception as e:
-        print("Exception when calling SendApi->invoice_v1_send_validate_files_post: %s\n" % e)
+        print("Exception when calling SendApi->send_validate_files_post: %s\n" % e)
 ```
 
 
@@ -537,8 +539,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_send_validate_json_post**
-> invoice_v1_send_validate_json_post(fattura_ordinaria)
+# **send_validate_json_post**
+> send_validate_json_post(fattura_ordinaria)
 
 Validate an invoice by json
 
@@ -579,9 +581,9 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Validate an invoice by json
-        api_instance.invoice_v1_send_validate_json_post(fattura_ordinaria)
+        api_instance.send_validate_json_post(fattura_ordinaria)
     except Exception as e:
-        print("Exception when calling SendApi->invoice_v1_send_validate_json_post: %s\n" % e)
+        print("Exception when calling SendApi->send_validate_json_post: %s\n" % e)
 ```
 
 
@@ -616,8 +618,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_send_validate_post**
-> invoice_v1_send_validate_post(send)
+# **send_validate_post**
+> send_validate_post(send)
 
 Validate an invoice
 
@@ -658,9 +660,9 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Validate an invoice
-        api_instance.invoice_v1_send_validate_post(send)
+        api_instance.send_validate_post(send)
     except Exception as e:
-        print("Exception when calling SendApi->invoice_v1_send_validate_post: %s\n" % e)
+        print("Exception when calling SendApi->send_validate_post: %s\n" % e)
 ```
 
 
@@ -695,8 +697,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_send_validate_xml_post**
-> invoice_v1_send_validate_xml_post(fattura_ordinaria)
+# **send_validate_xml_post**
+> send_validate_xml_post(fattura_ordinaria)
 
 Validate an invoice by xml
 
@@ -737,9 +739,9 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Validate an invoice by xml
-        api_instance.invoice_v1_send_validate_xml_post(fattura_ordinaria)
+        api_instance.send_validate_xml_post(fattura_ordinaria)
     except Exception as e:
-        print("Exception when calling SendApi->invoice_v1_send_validate_xml_post: %s\n" % e)
+        print("Exception when calling SendApi->send_validate_xml_post: %s\n" % e)
 ```
 
 
@@ -774,8 +776,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_send_xml_post**
-> Send invoice_v1_send_xml_post(fattura_ordinaria, validate=validate, signature=signature)
+# **send_xml_post**
+> Send send_xml_post(fattura_ordinaria, validate=validate, signature=signature)
 
 Add an invoice by xml
 
@@ -819,11 +821,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Add an invoice by xml
-        api_response = api_instance.invoice_v1_send_xml_post(fattura_ordinaria, validate=validate, signature=signature)
-        print("The response of SendApi->invoice_v1_send_xml_post:\n")
+        api_response = api_instance.send_xml_post(fattura_ordinaria, validate=validate, signature=signature)
+        print("The response of SendApi->send_xml_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SendApi->invoice_v1_send_xml_post: %s\n" % e)
+        print("Exception when calling SendApi->send_xml_post: %s\n" % e)
 ```
 
 

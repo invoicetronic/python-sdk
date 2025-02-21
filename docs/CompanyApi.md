@@ -4,15 +4,15 @@ All URIs are relative to *https://api.invoicetronic.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**invoice_v1_company_get**](CompanyApi.md#invoice_v1_company_get) | **GET** /invoice/v1/company | List companies
-[**invoice_v1_company_id_delete**](CompanyApi.md#invoice_v1_company_id_delete) | **DELETE** /invoice/v1/company/{id} | Delete a company
-[**invoice_v1_company_id_get**](CompanyApi.md#invoice_v1_company_id_get) | **GET** /invoice/v1/company/{id} | Get a company by id
-[**invoice_v1_company_post**](CompanyApi.md#invoice_v1_company_post) | **POST** /invoice/v1/company | Add a company
-[**invoice_v1_company_put**](CompanyApi.md#invoice_v1_company_put) | **PUT** /invoice/v1/company | Update a company
+[**company_get**](CompanyApi.md#company_get) | **GET** /company | List companies
+[**company_id_delete**](CompanyApi.md#company_id_delete) | **DELETE** /company/{id} | Delete a company
+[**company_id_get**](CompanyApi.md#company_id_get) | **GET** /company/{id} | Get a company by id
+[**company_post**](CompanyApi.md#company_post) | **POST** /company | Add a company
+[**company_put**](CompanyApi.md#company_put) | **PUT** /company | Update a company
 
 
-# **invoice_v1_company_get**
-> List[Company] invoice_v1_company_get(page=page, page_size=page_size)
+# **company_get**
+> List[Company] company_get(page=page, page_size=page_size, sort=sort)
 
 List companies
 
@@ -51,14 +51,15 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     api_instance = invoicetronic_invoice_sdk.CompanyApi(api_client)
     page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
     page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
+    sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)
 
     try:
         # List companies
-        api_response = api_instance.invoice_v1_company_get(page=page, page_size=page_size)
-        print("The response of CompanyApi->invoice_v1_company_get:\n")
+        api_response = api_instance.company_get(page=page, page_size=page_size, sort=sort)
+        print("The response of CompanyApi->company_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CompanyApi->invoice_v1_company_get: %s\n" % e)
+        print("Exception when calling CompanyApi->company_get: %s\n" % e)
 ```
 
 
@@ -70,6 +71,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
  **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
+ **sort** | **str**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] 
 
 ### Return type
 
@@ -94,8 +96,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_company_id_delete**
-> Company invoice_v1_company_id_delete(id)
+# **company_id_delete**
+> Company company_id_delete(id)
 
 Delete a company
 
@@ -136,11 +138,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Delete a company
-        api_response = api_instance.invoice_v1_company_id_delete(id)
-        print("The response of CompanyApi->invoice_v1_company_id_delete:\n")
+        api_response = api_instance.company_id_delete(id)
+        print("The response of CompanyApi->company_id_delete:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CompanyApi->invoice_v1_company_id_delete: %s\n" % e)
+        print("Exception when calling CompanyApi->company_id_delete: %s\n" % e)
 ```
 
 
@@ -176,8 +178,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_company_id_get**
-> Company invoice_v1_company_id_get(id)
+# **company_id_get**
+> Company company_id_get(id)
 
 Get a company by id
 
@@ -218,11 +220,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Get a company by id
-        api_response = api_instance.invoice_v1_company_id_get(id)
-        print("The response of CompanyApi->invoice_v1_company_id_get:\n")
+        api_response = api_instance.company_id_get(id)
+        print("The response of CompanyApi->company_id_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CompanyApi->invoice_v1_company_id_get: %s\n" % e)
+        print("Exception when calling CompanyApi->company_id_get: %s\n" % e)
 ```
 
 
@@ -256,8 +258,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_company_post**
-> Company invoice_v1_company_post(company)
+# **company_post**
+> Company company_post(company)
 
 Add a company
 
@@ -298,11 +300,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Add a company
-        api_response = api_instance.invoice_v1_company_post(company)
-        print("The response of CompanyApi->invoice_v1_company_post:\n")
+        api_response = api_instance.company_post(company)
+        print("The response of CompanyApi->company_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CompanyApi->invoice_v1_company_post: %s\n" % e)
+        print("Exception when calling CompanyApi->company_post: %s\n" % e)
 ```
 
 
@@ -337,8 +339,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_company_put**
-> Company invoice_v1_company_put(company)
+# **company_put**
+> Company company_put(company)
 
 Update a company
 
@@ -379,11 +381,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Update a company
-        api_response = api_instance.invoice_v1_company_put(company)
-        print("The response of CompanyApi->invoice_v1_company_put:\n")
+        api_response = api_instance.company_put(company)
+        print("The response of CompanyApi->company_put:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CompanyApi->invoice_v1_company_put: %s\n" % e)
+        print("Exception when calling CompanyApi->company_put: %s\n" % e)
 ```
 
 

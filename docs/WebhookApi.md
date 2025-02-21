@@ -4,17 +4,17 @@ All URIs are relative to *https://api.invoicetronic.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**invoice_v1_webhook_get**](WebhookApi.md#invoice_v1_webhook_get) | **GET** /invoice/v1/webhook | List webhooks
-[**invoice_v1_webhook_id_delete**](WebhookApi.md#invoice_v1_webhook_id_delete) | **DELETE** /invoice/v1/webhook/{id} | Delete a webhook by id
-[**invoice_v1_webhook_id_get**](WebhookApi.md#invoice_v1_webhook_id_get) | **GET** /invoice/v1/webhook/{id} | Get a webhook by id
-[**invoice_v1_webhook_post**](WebhookApi.md#invoice_v1_webhook_post) | **POST** /invoice/v1/webhook | Add a webhook
-[**invoice_v1_webhook_put**](WebhookApi.md#invoice_v1_webhook_put) | **PUT** /invoice/v1/webhook | Update a webhook
-[**invoice_v1_webhookhistory_get**](WebhookApi.md#invoice_v1_webhookhistory_get) | **GET** /invoice/v1/webhookhistory | List webhook history items
-[**invoice_v1_webhookhistory_id_get**](WebhookApi.md#invoice_v1_webhookhistory_id_get) | **GET** /invoice/v1/webhookhistory/{id} | Get a webhook history item by id
+[**webhook_get**](WebhookApi.md#webhook_get) | **GET** /webhook | List webhooks
+[**webhook_id_delete**](WebhookApi.md#webhook_id_delete) | **DELETE** /webhook/{id} | Delete a webhook by id
+[**webhook_id_get**](WebhookApi.md#webhook_id_get) | **GET** /webhook/{id} | Get a webhook by id
+[**webhook_post**](WebhookApi.md#webhook_post) | **POST** /webhook | Add a webhook
+[**webhook_put**](WebhookApi.md#webhook_put) | **PUT** /webhook | Update a webhook
+[**webhookhistory_get**](WebhookApi.md#webhookhistory_get) | **GET** /webhookhistory | List webhook history items
+[**webhookhistory_id_get**](WebhookApi.md#webhookhistory_id_get) | **GET** /webhookhistory/{id} | Get a webhook history item by id
 
 
-# **invoice_v1_webhook_get**
-> List[WebHook] invoice_v1_webhook_get(page=page, page_size=page_size)
+# **webhook_get**
+> List[WebHook] webhook_get(page=page, page_size=page_size, sort=sort)
 
 List webhooks
 
@@ -53,14 +53,15 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     api_instance = invoicetronic_invoice_sdk.WebhookApi(api_client)
     page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
     page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
+    sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)
 
     try:
         # List webhooks
-        api_response = api_instance.invoice_v1_webhook_get(page=page, page_size=page_size)
-        print("The response of WebhookApi->invoice_v1_webhook_get:\n")
+        api_response = api_instance.webhook_get(page=page, page_size=page_size, sort=sort)
+        print("The response of WebhookApi->webhook_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling WebhookApi->invoice_v1_webhook_get: %s\n" % e)
+        print("Exception when calling WebhookApi->webhook_get: %s\n" % e)
 ```
 
 
@@ -72,6 +73,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
  **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
+ **sort** | **str**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] 
 
 ### Return type
 
@@ -96,8 +98,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_webhook_id_delete**
-> WebHook invoice_v1_webhook_id_delete(id)
+# **webhook_id_delete**
+> WebHook webhook_id_delete(id)
 
 Delete a webhook by id
 
@@ -138,11 +140,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Delete a webhook by id
-        api_response = api_instance.invoice_v1_webhook_id_delete(id)
-        print("The response of WebhookApi->invoice_v1_webhook_id_delete:\n")
+        api_response = api_instance.webhook_id_delete(id)
+        print("The response of WebhookApi->webhook_id_delete:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling WebhookApi->invoice_v1_webhook_id_delete: %s\n" % e)
+        print("Exception when calling WebhookApi->webhook_id_delete: %s\n" % e)
 ```
 
 
@@ -178,8 +180,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_webhook_id_get**
-> WebHook invoice_v1_webhook_id_get(id)
+# **webhook_id_get**
+> WebHook webhook_id_get(id)
 
 Get a webhook by id
 
@@ -220,11 +222,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Get a webhook by id
-        api_response = api_instance.invoice_v1_webhook_id_get(id)
-        print("The response of WebhookApi->invoice_v1_webhook_id_get:\n")
+        api_response = api_instance.webhook_id_get(id)
+        print("The response of WebhookApi->webhook_id_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling WebhookApi->invoice_v1_webhook_id_get: %s\n" % e)
+        print("Exception when calling WebhookApi->webhook_id_get: %s\n" % e)
 ```
 
 
@@ -258,8 +260,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_webhook_post**
-> WebHook invoice_v1_webhook_post(web_hook)
+# **webhook_post**
+> WebHook webhook_post(web_hook)
 
 Add a webhook
 
@@ -300,11 +302,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Add a webhook
-        api_response = api_instance.invoice_v1_webhook_post(web_hook)
-        print("The response of WebhookApi->invoice_v1_webhook_post:\n")
+        api_response = api_instance.webhook_post(web_hook)
+        print("The response of WebhookApi->webhook_post:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling WebhookApi->invoice_v1_webhook_post: %s\n" % e)
+        print("Exception when calling WebhookApi->webhook_post: %s\n" % e)
 ```
 
 
@@ -339,8 +341,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_webhook_put**
-> WebHook invoice_v1_webhook_put(web_hook)
+# **webhook_put**
+> WebHook webhook_put(web_hook)
 
 Update a webhook
 
@@ -381,11 +383,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Update a webhook
-        api_response = api_instance.invoice_v1_webhook_put(web_hook)
-        print("The response of WebhookApi->invoice_v1_webhook_put:\n")
+        api_response = api_instance.webhook_put(web_hook)
+        print("The response of WebhookApi->webhook_put:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling WebhookApi->invoice_v1_webhook_put: %s\n" % e)
+        print("Exception when calling WebhookApi->webhook_put: %s\n" % e)
 ```
 
 
@@ -420,8 +422,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_webhookhistory_get**
-> List[WebHookHistory] invoice_v1_webhookhistory_get(page=page, page_size=page_size)
+# **webhookhistory_get**
+> List[WebHookHistory] webhookhistory_get(page=page, page_size=page_size, sort=sort)
 
 List webhook history items
 
@@ -458,14 +460,15 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     api_instance = invoicetronic_invoice_sdk.WebhookApi(api_client)
     page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
     page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
+    sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)
 
     try:
         # List webhook history items
-        api_response = api_instance.invoice_v1_webhookhistory_get(page=page, page_size=page_size)
-        print("The response of WebhookApi->invoice_v1_webhookhistory_get:\n")
+        api_response = api_instance.webhookhistory_get(page=page, page_size=page_size, sort=sort)
+        print("The response of WebhookApi->webhookhistory_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling WebhookApi->invoice_v1_webhookhistory_get: %s\n" % e)
+        print("Exception when calling WebhookApi->webhookhistory_get: %s\n" % e)
 ```
 
 
@@ -477,6 +480,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
  **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
+ **sort** | **str**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] 
 
 ### Return type
 
@@ -501,8 +505,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_webhookhistory_id_get**
-> WebHookHistory invoice_v1_webhookhistory_id_get(id)
+# **webhookhistory_id_get**
+> WebHookHistory webhookhistory_id_get(id)
 
 Get a webhook history item by id
 
@@ -541,11 +545,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Get a webhook history item by id
-        api_response = api_instance.invoice_v1_webhookhistory_id_get(id)
-        print("The response of WebhookApi->invoice_v1_webhookhistory_id_get:\n")
+        api_response = api_instance.webhookhistory_id_get(id)
+        print("The response of WebhookApi->webhookhistory_id_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling WebhookApi->invoice_v1_webhookhistory_id_get: %s\n" % e)
+        print("Exception when calling WebhookApi->webhookhistory_id_get: %s\n" % e)
 ```
 
 

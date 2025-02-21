@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "invoicetronic_invoice_sdk"
-version = "1.0.0"
-description = "Italian eInvoice API"
+version = "1"
+description = "Italian eInvoice API v1"
 authors = ["Invoicetronic <support@invoicetronic.com>"]
 license = "NoLicense"
 readme = "README.md"
 repository = "https://github.com/invoicetronic/invoice-python-sdk"
-keywords = ["OpenAPI", "OpenAPI-Generator", "Italian eInvoice API"]
+keywords = ["OpenAPI", "OpenAPI-Generator", "Italian eInvoice API v1"]
 include = ["invoicetronic_invoice_sdk/py.typed"]
 
 [tool.poetry.dependencies]

@@ -4,13 +4,13 @@ All URIs are relative to *https://api.invoicetronic.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**invoice_v1_receive_get**](ReceiveApi.md#invoice_v1_receive_get) | **GET** /invoice/v1/receive | List incoming invoices
-[**invoice_v1_receive_id_delete**](ReceiveApi.md#invoice_v1_receive_id_delete) | **DELETE** /invoice/v1/receive/{id} | Delete an incoming invoice by id
-[**invoice_v1_receive_id_get**](ReceiveApi.md#invoice_v1_receive_id_get) | **GET** /invoice/v1/receive/{id} | Get an incoming invoice by id
+[**receive_get**](ReceiveApi.md#receive_get) | **GET** /receive | List incoming invoices
+[**receive_id_delete**](ReceiveApi.md#receive_id_delete) | **DELETE** /receive/{id} | Delete an incoming invoice by id
+[**receive_id_get**](ReceiveApi.md#receive_id_get) | **GET** /receive/{id} | Get an incoming invoice by id
 
 
-# **invoice_v1_receive_get**
-> List[Receive] invoice_v1_receive_get(company_id=company_id, identifier=identifier, unread=unread, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, page=page, page_size=page_size)
+# **receive_get**
+> List[Receive] receive_get(company_id=company_id, identifier=identifier, unread=unread, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, page=page, page_size=page_size, sort=sort)
 
 List incoming invoices
 
@@ -62,14 +62,15 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     document_number = 'document_number_example' # str | Document number. (optional)
     page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
     page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
+    sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)
 
     try:
         # List incoming invoices
-        api_response = api_instance.invoice_v1_receive_get(company_id=company_id, identifier=identifier, unread=unread, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, page=page, page_size=page_size)
-        print("The response of ReceiveApi->invoice_v1_receive_get:\n")
+        api_response = api_instance.receive_get(company_id=company_id, identifier=identifier, unread=unread, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, page=page, page_size=page_size, sort=sort)
+        print("The response of ReceiveApi->receive_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ReceiveApi->invoice_v1_receive_get: %s\n" % e)
+        print("Exception when calling ReceiveApi->receive_get: %s\n" % e)
 ```
 
 
@@ -94,6 +95,7 @@ Name | Type | Description  | Notes
  **document_number** | **str**| Document number. | [optional] 
  **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
  **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
+ **sort** | **str**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] 
 
 ### Return type
 
@@ -118,8 +120,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_receive_id_delete**
-> Receive invoice_v1_receive_id_delete(id)
+# **receive_id_delete**
+> Receive receive_id_delete(id)
 
 Delete an incoming invoice by id
 
@@ -160,11 +162,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Delete an incoming invoice by id
-        api_response = api_instance.invoice_v1_receive_id_delete(id)
-        print("The response of ReceiveApi->invoice_v1_receive_id_delete:\n")
+        api_response = api_instance.receive_id_delete(id)
+        print("The response of ReceiveApi->receive_id_delete:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ReceiveApi->invoice_v1_receive_id_delete: %s\n" % e)
+        print("Exception when calling ReceiveApi->receive_id_delete: %s\n" % e)
 ```
 
 
@@ -200,8 +202,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_receive_id_get**
-> Receive invoice_v1_receive_id_get(id)
+# **receive_id_get**
+> Receive receive_id_get(id)
 
 Get an incoming invoice by id
 
@@ -242,11 +244,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Get an incoming invoice by id
-        api_response = api_instance.invoice_v1_receive_id_get(id)
-        print("The response of ReceiveApi->invoice_v1_receive_id_get:\n")
+        api_response = api_instance.receive_id_get(id)
+        print("The response of ReceiveApi->receive_id_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ReceiveApi->invoice_v1_receive_id_get: %s\n" % e)
+        print("Exception when calling ReceiveApi->receive_id_get: %s\n" % e)
 ```
 
 

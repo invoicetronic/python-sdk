@@ -4,12 +4,12 @@ All URIs are relative to *https://api.invoicetronic.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**invoice_v1_log_get**](LogApi.md#invoice_v1_log_get) | **GET** /invoice/v1/log | List events
-[**invoice_v1_log_id_get**](LogApi.md#invoice_v1_log_id_get) | **GET** /invoice/v1/log/{id} | Get an event by id
+[**log_get**](LogApi.md#log_get) | **GET** /log | List events
+[**log_id_get**](LogApi.md#log_id_get) | **GET** /log/{id} | Get an event by id
 
 
-# **invoice_v1_log_get**
-> List[Event] invoice_v1_log_get(company_id=company_id, endpoint=endpoint, method=method, api_verion=api_verion, status_code=status_code, date_created_from=date_created_from, date_created_to=date_created_to, page=page, page_size=page_size)
+# **log_get**
+> List[Event] log_get(company_id=company_id, endpoint=endpoint, method=method, api_verion=api_verion, status_code=status_code, date_created_from=date_created_from, date_created_to=date_created_to, page=page, page_size=page_size, sort=sort, query=query, success=success, date_time_from=date_time_from, date_time_to=date_time_to)
 
 List events
 
@@ -55,14 +55,19 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     date_created_to = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
     page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
     page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
+    sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)
+    query = 'query_example' # str |  (optional)
+    success = True # bool |  (optional)
+    date_time_from = '2013-10-20T19:20:30+01:00' # datetime | Date and time of the event (optional)
+    date_time_to = '2013-10-20T19:20:30+01:00' # datetime | Date and time of the event (optional)
 
     try:
         # List events
-        api_response = api_instance.invoice_v1_log_get(company_id=company_id, endpoint=endpoint, method=method, api_verion=api_verion, status_code=status_code, date_created_from=date_created_from, date_created_to=date_created_to, page=page, page_size=page_size)
-        print("The response of LogApi->invoice_v1_log_get:\n")
+        api_response = api_instance.log_get(company_id=company_id, endpoint=endpoint, method=method, api_verion=api_verion, status_code=status_code, date_created_from=date_created_from, date_created_to=date_created_to, page=page, page_size=page_size, sort=sort, query=query, success=success, date_time_from=date_time_from, date_time_to=date_time_to)
+        print("The response of LogApi->log_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LogApi->invoice_v1_log_get: %s\n" % e)
+        print("Exception when calling LogApi->log_get: %s\n" % e)
 ```
 
 
@@ -81,6 +86,11 @@ Name | Type | Description  | Notes
  **date_created_to** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
  **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
  **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
+ **sort** | **str**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] 
+ **query** | **str**|  | [optional] 
+ **success** | **bool**|  | [optional] 
+ **date_time_from** | **datetime**| Date and time of the event | [optional] 
+ **date_time_to** | **datetime**| Date and time of the event | [optional] 
 
 ### Return type
 
@@ -105,8 +115,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_log_id_get**
-> Event invoice_v1_log_id_get(id)
+# **log_id_get**
+> Event log_id_get(id)
 
 Get an event by id
 
@@ -147,11 +157,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Get an event by id
-        api_response = api_instance.invoice_v1_log_id_get(id)
-        print("The response of LogApi->invoice_v1_log_id_get:\n")
+        api_response = api_instance.log_id_get(id)
+        print("The response of LogApi->log_id_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LogApi->invoice_v1_log_id_get: %s\n" % e)
+        print("Exception when calling LogApi->log_id_get: %s\n" % e)
 ```
 
 

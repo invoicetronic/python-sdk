@@ -4,12 +4,12 @@ All URIs are relative to *https://api.invoicetronic.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**invoice_v1_update_get**](UpdateApi.md#invoice_v1_update_get) | **GET** /invoice/v1/update | List updates
-[**invoice_v1_update_id_get**](UpdateApi.md#invoice_v1_update_id_get) | **GET** /invoice/v1/update/{id} | Get an update by id
+[**update_get**](UpdateApi.md#update_get) | **GET** /update | List updates
+[**update_id_get**](UpdateApi.md#update_id_get) | **GET** /update/{id} | Get an update by id
 
 
-# **invoice_v1_update_get**
-> List[Update] invoice_v1_update_get(company_id=company_id, identifier=identifier, unread=unread, send_id=send_id, state=state, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, page=page, page_size=page_size)
+# **update_get**
+> List[Update] update_get(company_id=company_id, identifier=identifier, unread=unread, send_id=send_id, state=state, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, page=page, page_size=page_size, sort=sort)
 
 List updates
 
@@ -57,14 +57,15 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
     date_sent_to = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
     page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
     page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
+    sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)
 
     try:
         # List updates
-        api_response = api_instance.invoice_v1_update_get(company_id=company_id, identifier=identifier, unread=unread, send_id=send_id, state=state, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, page=page, page_size=page_size)
-        print("The response of UpdateApi->invoice_v1_update_get:\n")
+        api_response = api_instance.update_get(company_id=company_id, identifier=identifier, unread=unread, send_id=send_id, state=state, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, page=page, page_size=page_size, sort=sort)
+        print("The response of UpdateApi->update_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UpdateApi->invoice_v1_update_get: %s\n" % e)
+        print("Exception when calling UpdateApi->update_get: %s\n" % e)
 ```
 
 
@@ -85,6 +86,7 @@ Name | Type | Description  | Notes
  **date_sent_to** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
  **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
  **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
+ **sort** | **str**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] 
 
 ### Return type
 
@@ -109,8 +111,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **invoice_v1_update_id_get**
-> Update invoice_v1_update_id_get(id)
+# **update_id_get**
+> Update update_id_get(id)
 
 Get an update by id
 
@@ -151,11 +153,11 @@ with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
 
     try:
         # Get an update by id
-        api_response = api_instance.invoice_v1_update_id_get(id)
-        print("The response of UpdateApi->invoice_v1_update_id_get:\n")
+        api_response = api_instance.update_id_get(id)
+        print("The response of UpdateApi->update_id_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling UpdateApi->invoice_v1_update_id_get: %s\n" % e)
+        print("Exception when calling UpdateApi->update_id_get: %s\n" % e)
 ```
 
 
