@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Italian eInvoice API v1
+    Invoicetronic API
 
-    The [Italian eInvoice API][2] is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+    The [Invoicetronic API][2] is a RESTful service that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. It provides advanced features as encryption at rest, multi-language pre-flight invoice validation, multiple upload formats, webhooks, event logging, client SDKs, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
 
     The version of the OpenAPI document: 1
     Contact: support@invoicetronic.com
@@ -75,7 +75,7 @@ class ReceiveApi:
     ) -> List[Receive]:
         """List incoming invoices
 
-        Receive invoices are the invoices that are received from other companies.
+        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
 
         :param company_id: Company id
         :type company_id: int
@@ -204,7 +204,7 @@ class ReceiveApi:
     ) -> ApiResponse[List[Receive]]:
         """List incoming invoices
 
-        Receive invoices are the invoices that are received from other companies.
+        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
 
         :param company_id: Company id
         :type company_id: int
@@ -333,7 +333,7 @@ class ReceiveApi:
     ) -> RESTResponseType:
         """List incoming invoices
 
-        Receive invoices are the invoices that are received from other companies.
+        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
 
         :param company_id: Company id
         :type company_id: int
@@ -638,7 +638,7 @@ class ReceiveApi:
     ) -> Receive:
         """Delete an incoming invoice by id
 
-        Receive invoices are the invoices that are received from other companies.
+        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
 
         :param id: Item id (required)
         :type id: int
@@ -708,7 +708,7 @@ class ReceiveApi:
     ) -> ApiResponse[Receive]:
         """Delete an incoming invoice by id
 
-        Receive invoices are the invoices that are received from other companies.
+        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
 
         :param id: Item id (required)
         :type id: int
@@ -778,7 +778,7 @@ class ReceiveApi:
     ) -> RESTResponseType:
         """Delete an incoming invoice by id
 
-        Receive invoices are the invoices that are received from other companies.
+        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
 
         :param id: Item id (required)
         :type id: int
@@ -908,7 +908,7 @@ class ReceiveApi:
     ) -> Receive:
         """Get an incoming invoice by id
 
-        Receive invoices are the invoices that are received from other companies.
+        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
 
         :param id: Item id (required)
         :type id: int
@@ -976,7 +976,7 @@ class ReceiveApi:
     ) -> ApiResponse[Receive]:
         """Get an incoming invoice by id
 
-        Receive invoices are the invoices that are received from other companies.
+        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
 
         :param id: Item id (required)
         :type id: int
@@ -1044,7 +1044,7 @@ class ReceiveApi:
     ) -> RESTResponseType:
         """Get an incoming invoice by id
 
-        Receive invoices are the invoices that are received from other companies.
+        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
 
         :param id: Item id (required)
         :type id: int

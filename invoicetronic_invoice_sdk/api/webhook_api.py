@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Italian eInvoice API v1
+    Invoicetronic API
 
-    The [Italian eInvoice API][2] is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+    The [Invoicetronic API][2] is a RESTful service that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. It provides advanced features as encryption at rest, multi-language pre-flight invoice validation, multiple upload formats, webhooks, event logging, client SDKs, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
 
     The version of the OpenAPI document: 1
     Contact: support@invoicetronic.com
@@ -934,7 +934,7 @@ class WebhookApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "WebHook",
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1003,7 +1003,7 @@ class WebhookApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "WebHook",
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1072,7 +1072,7 @@ class WebhookApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "WebHook",
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1213,7 +1213,7 @@ class WebhookApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebHook",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
             '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
@@ -1282,7 +1282,7 @@ class WebhookApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebHook",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
             '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
@@ -1351,7 +1351,7 @@ class WebhookApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "WebHook",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
             '400': "ProblemHttpResult",
         }
         response_data = self.api_client.call_api(
@@ -1459,6 +1459,7 @@ class WebhookApi:
     ) -> List[WebHookHistory]:
         """List webhook history items
 
+        Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 in both the live and sandbox environments.
 
         :param page: Page number. Defaults to 1.
         :type page: int
@@ -1535,6 +1536,7 @@ class WebhookApi:
     ) -> ApiResponse[List[WebHookHistory]]:
         """List webhook history items
 
+        Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 in both the live and sandbox environments.
 
         :param page: Page number. Defaults to 1.
         :type page: int
@@ -1611,6 +1613,7 @@ class WebhookApi:
     ) -> RESTResponseType:
         """List webhook history items
 
+        Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 in both the live and sandbox environments.
 
         :param page: Page number. Defaults to 1.
         :type page: int
@@ -1757,6 +1760,7 @@ class WebhookApi:
     ) -> WebHookHistory:
         """Get a webhook history item by id
 
+        Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 in both the live and sandbox environments.
 
         :param id: Item id (required)
         :type id: int
@@ -1824,6 +1828,7 @@ class WebhookApi:
     ) -> ApiResponse[WebHookHistory]:
         """Get a webhook history item by id
 
+        Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 in both the live and sandbox environments.
 
         :param id: Item id (required)
         :type id: int
@@ -1891,6 +1896,7 @@ class WebhookApi:
     ) -> RESTResponseType:
         """Get a webhook history item by id
 
+        Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 in both the live and sandbox environments.
 
         :param id: Item id (required)
         :type id: int

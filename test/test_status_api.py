@@ -15,29 +15,22 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.api.log_api import LogApi
+from invoicetronic_invoice_sdk.api.status_api import StatusApi
 
 
-class TestLogApi(unittest.TestCase):
-    """LogApi unit test stubs"""
+class TestStatusApi(unittest.TestCase):
+    """StatusApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = LogApi()
+        self.api = StatusApi()
 
     def tearDown(self) -> None:
         pass
 
-    def test_log_get(self) -> None:
-        """Test case for log_get
+    def test_status_get(self) -> None:
+        """Test case for status_get
 
-        List events
-        """
-        pass
-
-    def test_log_id_get(self) -> None:
-        """Test case for log_id_get
-
-        Get an event by id
+        Account status
         """
         pass
 

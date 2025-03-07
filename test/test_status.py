@@ -15,10 +15,10 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.allegati import Allegati
+from invoicetronic_invoice_sdk.models.status import Status
 
-class TestAllegati(unittest.TestCase):
-    """Allegati unit test stubs"""
+class TestStatus(unittest.TestCase):
+    """Status unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,29 +26,26 @@ class TestAllegati(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Allegati:
-        """Test Allegati
+    def make_instance(self, include_optional) -> Status:
+        """Test Status
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Allegati`
+        # uncomment below to create an instance of `Status`
         """
-        model = Allegati()
+        model = Status()
         if include_optional:
-            return Allegati(
-                nome_attachment = '',
-                algoritmo_compressione = '',
-                formato_attachment = '',
-                descrizione_attachment = '',
-                attachment = 'YQ=='
+            return Status(
+                operation_left = 56,
+                signature_left = 56
             )
         else:
-            return Allegati(
+            return Status(
         )
         """
 
-    def testAllegati(self):
-        """Test Allegati"""
+    def testStatus(self):
+        """Test Status"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Italian eInvoice API v1
+    Invoicetronic API
 
-    The [Italian eInvoice API][2] is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+    The [Invoicetronic API][2] is a RESTful service that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. It provides advanced features as encryption at rest, multi-language pre-flight invoice validation, multiple upload formats, webhooks, event logging, client SDKs, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
 
     The version of the OpenAPI document: 1
     Contact: support@invoicetronic.com
@@ -63,7 +63,7 @@ class SendApi:
     ) -> Send:
         """Add an invoice by file
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param file: (required)
         :type file: bytearray
@@ -106,7 +106,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Send",
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -140,7 +140,7 @@ class SendApi:
     ) -> ApiResponse[Send]:
         """Add an invoice by file
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param file: (required)
         :type file: bytearray
@@ -183,7 +183,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Send",
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -217,7 +217,7 @@ class SendApi:
     ) -> RESTResponseType:
         """Add an invoice by file
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param file: (required)
         :type file: bytearray
@@ -260,7 +260,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Send",
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -936,7 +936,7 @@ class SendApi:
     ) -> Send:
         """Get a invoice by id
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param id: Item id (required)
         :type id: int
@@ -1004,7 +1004,7 @@ class SendApi:
     ) -> ApiResponse[Send]:
         """Get a invoice by id
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param id: Item id (required)
         :type id: int
@@ -1072,7 +1072,7 @@ class SendApi:
     ) -> RESTResponseType:
         """Get a invoice by id
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param id: Item id (required)
         :type id: int
@@ -1202,7 +1202,7 @@ class SendApi:
     ) -> Send:
         """Add an invoice by json
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param fattura_ordinaria: (required)
         :type fattura_ordinaria: FatturaOrdinaria
@@ -1245,7 +1245,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Send",
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1279,7 +1279,7 @@ class SendApi:
     ) -> ApiResponse[Send]:
         """Add an invoice by json
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param fattura_ordinaria: (required)
         :type fattura_ordinaria: FatturaOrdinaria
@@ -1322,7 +1322,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Send",
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1356,7 +1356,7 @@ class SendApi:
     ) -> RESTResponseType:
         """Add an invoice by json
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param fattura_ordinaria: (required)
         :type fattura_ordinaria: FatturaOrdinaria
@@ -1399,7 +1399,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Send",
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1516,7 +1516,7 @@ class SendApi:
     ) -> Send:
         """Add an invoice
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param send: (required)
         :type send: Send
@@ -1559,7 +1559,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Send",
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1593,7 +1593,7 @@ class SendApi:
     ) -> ApiResponse[Send]:
         """Add an invoice
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param send: (required)
         :type send: Send
@@ -1636,7 +1636,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Send",
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1670,7 +1670,7 @@ class SendApi:
     ) -> RESTResponseType:
         """Add an invoice
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param send: (required)
         :type send: Send
@@ -1713,7 +1713,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Send",
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1828,7 +1828,7 @@ class SendApi:
     ) -> None:
         """Validate an invoice by file
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param files: (required)
         :type files: List[bytearray]
@@ -1865,7 +1865,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1897,7 +1897,7 @@ class SendApi:
     ) -> ApiResponse[None]:
         """Validate an invoice by file
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param files: (required)
         :type files: List[bytearray]
@@ -1934,7 +1934,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1966,7 +1966,7 @@ class SendApi:
     ) -> RESTResponseType:
         """Validate an invoice by file
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param files: (required)
         :type files: List[bytearray]
@@ -2003,7 +2003,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2109,7 +2109,7 @@ class SendApi:
     ) -> None:
         """Validate an invoice by json
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param fattura_ordinaria: (required)
         :type fattura_ordinaria: FatturaOrdinaria
@@ -2146,7 +2146,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2178,7 +2178,7 @@ class SendApi:
     ) -> ApiResponse[None]:
         """Validate an invoice by json
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param fattura_ordinaria: (required)
         :type fattura_ordinaria: FatturaOrdinaria
@@ -2215,7 +2215,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2247,7 +2247,7 @@ class SendApi:
     ) -> RESTResponseType:
         """Validate an invoice by json
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param fattura_ordinaria: (required)
         :type fattura_ordinaria: FatturaOrdinaria
@@ -2284,7 +2284,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2389,7 +2389,7 @@ class SendApi:
     ) -> None:
         """Validate an invoice
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param send: (required)
         :type send: Send
@@ -2426,7 +2426,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2458,7 +2458,7 @@ class SendApi:
     ) -> ApiResponse[None]:
         """Validate an invoice
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param send: (required)
         :type send: Send
@@ -2495,7 +2495,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2527,7 +2527,7 @@ class SendApi:
     ) -> RESTResponseType:
         """Validate an invoice
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param send: (required)
         :type send: Send
@@ -2564,7 +2564,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2669,7 +2669,7 @@ class SendApi:
     ) -> None:
         """Validate an invoice by xml
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param fattura_ordinaria: (required)
         :type fattura_ordinaria: FatturaOrdinaria
@@ -2706,7 +2706,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2738,7 +2738,7 @@ class SendApi:
     ) -> ApiResponse[None]:
         """Validate an invoice by xml
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param fattura_ordinaria: (required)
         :type fattura_ordinaria: FatturaOrdinaria
@@ -2775,7 +2775,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2807,7 +2807,7 @@ class SendApi:
     ) -> RESTResponseType:
         """Validate an invoice by xml
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param fattura_ordinaria: (required)
         :type fattura_ordinaria: FatturaOrdinaria
@@ -2844,7 +2844,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '204': None,
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2951,7 +2951,7 @@ class SendApi:
     ) -> Send:
         """Add an invoice by xml
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param fattura_ordinaria: (required)
         :type fattura_ordinaria: FatturaOrdinaria
@@ -2994,7 +2994,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Send",
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3028,7 +3028,7 @@ class SendApi:
     ) -> ApiResponse[Send]:
         """Add an invoice by xml
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param fattura_ordinaria: (required)
         :type fattura_ordinaria: FatturaOrdinaria
@@ -3071,7 +3071,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Send",
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3105,7 +3105,7 @@ class SendApi:
     ) -> RESTResponseType:
         """Add an invoice by xml
 
-        Send invoices are the invoices that are sent to the SDI.
+        Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
         :param fattura_ordinaria: (required)
         :type fattura_ordinaria: FatturaOrdinaria
@@ -3148,7 +3148,7 @@ class SendApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Send",
             '400': "ProblemHttpResult",
-            '422': "ProblemHttpResult",
+            '422': "ProblemDetails",
         }
         response_data = self.api_client.call_api(
             *_param,

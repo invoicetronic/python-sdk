@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Italian eInvoice API v1
+    Invoicetronic API
 
-    The [Italian eInvoice API][2] is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+    The [Invoicetronic API][2] is a RESTful service that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. It provides advanced features as encryption at rest, multi-language pre-flight invoice validation, multiple upload formats, webhooks, event logging, client SDKs, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
 
     The version of the OpenAPI document: 1
     Contact: support@invoicetronic.com
@@ -73,7 +73,7 @@ class LogApi:
     ) -> List[Event]:
         """List events
 
-        Every API operation is logged and can be retrieved here.
+        Every API operation is logged and can be retrieved here. Log records are preserved for 15 days.
 
         :param company_id: Company id
         :type company_id: int
@@ -194,7 +194,7 @@ class LogApi:
     ) -> ApiResponse[List[Event]]:
         """List events
 
-        Every API operation is logged and can be retrieved here.
+        Every API operation is logged and can be retrieved here. Log records are preserved for 15 days.
 
         :param company_id: Company id
         :type company_id: int
@@ -315,7 +315,7 @@ class LogApi:
     ) -> RESTResponseType:
         """List events
 
-        Every API operation is logged and can be retrieved here.
+        Every API operation is logged and can be retrieved here. Log records are preserved for 15 days.
 
         :param company_id: Company id
         :type company_id: int
@@ -586,7 +586,7 @@ class LogApi:
     ) -> Event:
         """Get an event by id
 
-        Every API operation is logged and can be retrieved here.
+        Every API operation is logged and can be retrieved here. Log records are preserved for 15 days.
 
         :param id: Item id (required)
         :type id: int
@@ -654,7 +654,7 @@ class LogApi:
     ) -> ApiResponse[Event]:
         """Get an event by id
 
-        Every API operation is logged and can be retrieved here.
+        Every API operation is logged and can be retrieved here. Log records are preserved for 15 days.
 
         :param id: Item id (required)
         :type id: int
@@ -722,7 +722,7 @@ class LogApi:
     ) -> RESTResponseType:
         """Get an event by id
 
-        Every API operation is logged and can be retrieved here.
+        Every API operation is logged and can be retrieved here. Log records are preserved for 15 days.
 
         :param id: Item id (required)
         :type id: int

@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Italian eInvoice API v1
+    Invoicetronic API
 
-    The [Italian eInvoice API][2] is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+    The [Invoicetronic API][2] is a RESTful service that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. It provides advanced features as encryption at rest, multi-language pre-flight invoice validation, multiple upload formats, webhooks, event logging, client SDKs, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
 
     The version of the OpenAPI document: 1
     Contact: support@invoicetronic.com
@@ -19,7 +19,7 @@ import logging
 from logging import FileHandler
 import multiprocessing
 import sys
-from typing import Any, ClassVar, Dict, List, Literal, Optional, TypedDict
+from typing import Any, ClassVar, Dict, List, Literal, Optional, TypedDict, Union
 from typing_extensions import NotRequired, Self
 
 import urllib3
@@ -162,6 +162,8 @@ class Configuration:
     :param ssl_ca_cert: str - the path to a file of concatenated CA certificates
       in PEM format.
     :param retries: Number of retries for API requests.
+    :param ca_cert_data: verify the peer using concatenated CA certificate data
+      in PEM (str) or DER (bytes) format.
 
     :Example:
 
@@ -192,13 +194,14 @@ conf = invoicetronic_invoice_sdk.Configuration(
         username: Optional[str]=None,
         password: Optional[str]=None,
         access_token: Optional[str]=None,
-        server_index: Optional[int]=None, 
+        server_index: Optional[int]=None,
         server_variables: Optional[ServerVariablesT]=None,
         server_operation_index: Optional[Dict[int, int]]=None,
         server_operation_variables: Optional[Dict[int, ServerVariablesT]]=None,
         ignore_operation_servers: bool=False,
         ssl_ca_cert: Optional[str]=None,
         retries: Optional[int] = None,
+        ca_cert_data: Optional[Union[str, bytes]] = None,
         *,
         debug: Optional[bool] = None,
     ) -> None:
@@ -275,6 +278,10 @@ conf = invoicetronic_invoice_sdk.Configuration(
         """
         self.ssl_ca_cert = ssl_ca_cert
         """Set this to customize the certificate file to verify the peer.
+        """
+        self.ca_cert_data = ca_cert_data
+        """Set this to verify the peer using PEM (str) or DER (bytes)
+           certificate data.
         """
         self.cert_file = None
         """client certificate file

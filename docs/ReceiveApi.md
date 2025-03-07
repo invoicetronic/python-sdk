@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 List incoming invoices
 
-Receive invoices are the invoices that are received from other companies.
+Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
 
 ### Example
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 Delete an incoming invoice by id
 
-Receive invoices are the invoices that are received from other companies.
+Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
 
 ### Example
 
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 Get an incoming invoice by id
 
-Receive invoices are the invoices that are received from other companies.
+Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
 
 ### Example
 

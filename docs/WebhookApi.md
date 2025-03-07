@@ -427,6 +427,8 @@ Name | Type | Description  | Notes
 
 List webhook history items
 
+Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 in both the live and sandbox environments.
+
 ### Example
 
 * Basic Authentication (Basic):
@@ -509,6 +511,8 @@ Name | Type | Description  | Notes
 > WebHookHistory webhookhistory_id_get(id)
 
 Get a webhook history item by id
+
+Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 in both the live and sandbox environments.
 
 ### Example
 

@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 List companies
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
 
 ### Example
 
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 
 Delete a company
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
 
 ### Example
 
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 
 Get a company by id
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
 
 ### Example
 
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 
 Add a company
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
 
 ### Example
 
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 
 Update a company
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
 
 ### Example
 

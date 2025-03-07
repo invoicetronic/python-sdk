@@ -18,21 +18,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from invoicetronic_invoice_sdk.models.anagrafica import Anagrafica
-from invoicetronic_invoice_sdk.models.id_fiscale_iva import IdFiscaleIVA
 from typing import Optional, Set
 from typing_extensions import Self
 
-class DatiAnagrafici(BaseModel):
+class Status(BaseModel):
     """
-    DatiAnagrafici
+    Status
     """ # noqa: E501
-    id_fiscale_iva: Optional[IdFiscaleIVA] = None
-    codice_fiscale: Optional[StrictStr] = None
-    anagrafica: Optional[Anagrafica] = None
-    __properties: ClassVar[List[str]] = ["id_fiscale_iva", "codice_fiscale", "anagrafica"]
+    operation_left: Optional[StrictInt] = Field(default=None, description="Operations (invoices and validations) left.")
+    signature_left: Optional[StrictInt] = Field(default=None, description="Signatures left.")
+    __properties: ClassVar[List[str]] = ["operation_left", "signature_left"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +49,7 @@ class DatiAnagrafici(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DatiAnagrafici from a JSON string"""
+        """Create an instance of Status from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,22 +70,11 @@ class DatiAnagrafici(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of id_fiscale_iva
-        if self.id_fiscale_iva:
-            _dict['id_fiscale_iva'] = self.id_fiscale_iva.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of anagrafica
-        if self.anagrafica:
-            _dict['anagrafica'] = self.anagrafica.to_dict()
-        # set to None if codice_fiscale (nullable) is None
-        # and model_fields_set contains the field
-        if self.codice_fiscale is None and "codice_fiscale" in self.model_fields_set:
-            _dict['codice_fiscale'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DatiAnagrafici from a dict"""
+        """Create an instance of Status from a dict"""
         if obj is None:
             return None
 
@@ -96,9 +82,8 @@ class DatiAnagrafici(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id_fiscale_iva": IdFiscaleIVA.from_dict(obj["id_fiscale_iva"]) if obj.get("id_fiscale_iva") is not None else None,
-            "codice_fiscale": obj.get("codice_fiscale"),
-            "anagrafica": Anagrafica.from_dict(obj["anagrafica"]) if obj.get("anagrafica") is not None else None
+            "operation_left": obj.get("operation_left"),
+            "signature_left": obj.get("signature_left")
         })
         return _obj
 

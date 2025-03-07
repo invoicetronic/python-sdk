@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Italian eInvoice API v1
+    Invoicetronic API
 
-    The [Italian eInvoice API][2] is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+    The [Invoicetronic API][2] is a RESTful service that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. It provides advanced features as encryption at rest, multi-language pre-flight invoice validation, multiple upload formats, webhooks, event logging, client SDKs, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
 
     The version of the OpenAPI document: 1
     Contact: support@invoicetronic.com
@@ -35,9 +35,9 @@ class WebHook(BaseModel):
     company_id: Optional[StrictInt] = Field(default=None, description="Company id.")
     url: Optional[StrictStr] = Field(default=None, description="The url of your application's endpoint that will receive a POST request when the webhook is fired.")
     enabled: Optional[StrictBool] = Field(default=None, description="Wetehr the webhooks is enabled or not. On creation, this is set to `true`.")
-    secret: Optional[StrictStr] = Field(default=None, description="The secret used to generate webhook signatures, only returned on creation. You should store this value securely and validate it on every call, to ensure that the caller is InvoiceApi.")
+    secret: Optional[StrictStr] = Field(default=None, description="The secret used to generate webhook signatures, only returned on creation. You should store this value securely and validate it on every call, to ensure that the caller is InvoicetronicApi.")
     description: Optional[StrictStr] = Field(default=None, description="An optional description.")
-    events: Optional[List[StrictStr]] = Field(default=None, description="List of events to that trigger the webhook.  See InvoiceApi.SupportedEvents.Available for a list of valid event names.")
+    events: Optional[List[StrictStr]] = Field(default=None, description="List of events to that trigger the webhook.  See Invoicetronic.SupportedEvents.Available for a list of valid event names.")
     __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "url", "enabled", "secret", "description", "events"]
 
     model_config = ConfigDict(

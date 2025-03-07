@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 List events
 
-Every API operation is logged and can be retrieved here.
+Every API operation is logged and can be retrieved here. Log records are preserved for 15 days.
 
 ### Example
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 Get an event by id
 
-Every API operation is logged and can be retrieved here.
+Every API operation is logged and can be retrieved here. Log records are preserved for 15 days.
 
 ### Example
 
