@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.api.receive_api import ReceiveApi
+from invoicetronic_sdk.api.receive_api import ReceiveApi
 
 
 class TestReceiveApi(unittest.TestCase):

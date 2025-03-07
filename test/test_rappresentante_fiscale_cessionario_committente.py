@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.rappresentante_fiscale_cessionario_committente import RappresentanteFiscaleCessionarioCommittente
+from invoicetronic_sdk.models.rappresentante_fiscale_cessionario_committente import RappresentanteFiscaleCessionarioCommittente
 
 class TestRappresentanteFiscaleCessionarioCommittente(unittest.TestCase):
     """RappresentanteFiscaleCessionarioCommittente unit test stubs"""
@@ -39,7 +39,7 @@ class TestRappresentanteFiscaleCessionarioCommittente(unittest.TestCase):
                 denominazione = '',
                 nome = '',
                 cognome = '',
-                id_fiscale_iva = invoicetronic_invoice_sdk.models.id_fiscale_iva.IdFiscaleIVA(
+                id_fiscale_iva = invoicetronic_sdk.models.id_fiscale_iva.IdFiscaleIVA(
                     id_paese = '', 
                     id_codice = '', )
             )

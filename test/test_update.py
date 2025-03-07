@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.update import Update
+from invoicetronic_sdk.models.update import Update
 
 class TestUpdate(unittest.TestCase):
     """Update unit test stubs"""
@@ -49,7 +49,7 @@ class TestUpdate(unittest.TestCase):
                 description = '',
                 message_id = '',
                 errors = [
-                    invoicetronic_invoice_sdk.models.error.Error(
+                    invoicetronic_sdk.models.error.Error(
                         code = '', 
                         description = '', 
                         hint = '', )

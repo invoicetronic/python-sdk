@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "invoicetronic_invoice_sdk"
+name = "invoicetronic_sdk"
 version = "1"
 description = "Invoicetronic API"
 authors = ["Invoicetronic <support@invoicetronic.com>"]
 license = "NoLicense"
 readme = "README.md"
-repository = "https://github.com/invoicetronic/invoice-python-sdk"
+repository = "https://github.com/invoicetronic/python-sdk"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Invoicetronic API"]
-include = ["invoicetronic_invoice_sdk/py.typed"]
+include = ["invoicetronic_sdk/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -35,7 +35,7 @@ extension-pkg-whitelist = "pydantic"
 
 [tool.mypy]
 files = [
-  "invoicetronic_invoice_sdk",
+  "invoicetronic_sdk",
   #"test",  # auto-generated tests
   "tests", # hand-written tests
 ]
@@ -73,7 +73,7 @@ disallow_any_generics = true
 
 [[tool.mypy.overrides]]
 module = [
-  "invoicetronic_invoice_sdk.configuration",
+  "invoicetronic_sdk.configuration",
 ]
 warn_unused_ignores = true
 strict_equality = true

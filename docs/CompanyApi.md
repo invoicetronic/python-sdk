@@ -1,4 +1,4 @@
-# invoicetronic_invoice_sdk.CompanyApi
+# invoicetronic_sdk.CompanyApi
 
 All URIs are relative to *https://api.invoicetronic.com*
 
@@ -23,14 +23,14 @@ Companies are the entities that send and receive invoices. As you send invoices,
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.company import Company
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.company import Company
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -40,15 +40,15 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.CompanyApi(api_client)
+    api_instance = invoicetronic_sdk.CompanyApi(api_client)
     page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
     page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
     sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)
@@ -108,14 +108,14 @@ Companies are the entities that send and receive invoices. As you send invoices,
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.company import Company
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.company import Company
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -125,15 +125,15 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.CompanyApi(api_client)
+    api_instance = invoicetronic_sdk.CompanyApi(api_client)
     id = 56 # int | Item id
 
     try:
@@ -190,14 +190,14 @@ Companies are the entities that send and receive invoices. As you send invoices,
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.company import Company
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.company import Company
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -207,15 +207,15 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.CompanyApi(api_client)
+    api_instance = invoicetronic_sdk.CompanyApi(api_client)
     id = 56 # int | Item id
 
     try:
@@ -270,14 +270,14 @@ Companies are the entities that send and receive invoices. As you send invoices,
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.company import Company
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.company import Company
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -287,16 +287,16 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.CompanyApi(api_client)
-    company = invoicetronic_invoice_sdk.Company() # Company | 
+    api_instance = invoicetronic_sdk.CompanyApi(api_client)
+    company = invoicetronic_sdk.Company() # Company | 
 
     try:
         # Add a company
@@ -351,14 +351,14 @@ Companies are the entities that send and receive invoices. As you send invoices,
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.company import Company
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.company import Company
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -368,16 +368,16 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.CompanyApi(api_client)
-    company = invoicetronic_invoice_sdk.Company() # Company | 
+    api_instance = invoicetronic_sdk.CompanyApi(api_client)
+    company = invoicetronic_sdk.Company() # Company | 
 
     try:
         # Update a company

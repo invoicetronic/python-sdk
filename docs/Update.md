@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from invoicetronic_invoice_sdk.models.update import Update
+from invoicetronic_sdk.models.update import Update
 
 # TODO update the JSON string below
 json = "{}"

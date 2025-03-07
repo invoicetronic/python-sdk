@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.id_fiscale_iva import IdFiscaleIVA
+from invoicetronic_sdk.models.id_fiscale_iva import IdFiscaleIVA
 
 class TestIdFiscaleIVA(unittest.TestCase):
     """IdFiscaleIVA unit test stubs"""

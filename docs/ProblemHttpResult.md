@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from invoicetronic_invoice_sdk.models.problem_http_result import ProblemHttpResult
+from invoicetronic_sdk.models.problem_http_result import ProblemHttpResult
 
 # TODO update the JSON string below
 json = "{}"

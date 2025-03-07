@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.api.log_api import LogApi
+from invoicetronic_sdk.api.log_api import LogApi
 
 
 class TestLogApi(unittest.TestCase):

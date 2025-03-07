@@ -1,4 +1,4 @@
-# invoicetronic_invoice_sdk.SendApi
+# invoicetronic_sdk.SendApi
 
 All URIs are relative to *https://api.invoicetronic.com*
 
@@ -28,14 +28,14 @@ Send invoices are the invoices that are sent to the SDI. They are preserved for 
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.send import Send
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.send import Send
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -45,15 +45,15 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
+    api_instance = invoicetronic_sdk.SendApi(api_client)
     file = None # bytearray | 
     validate = False # bool | Validate the document first, and reject it on failure. (optional) (default to False)
     signature = Auto # str | Whether to digitally sign the document. (optional) (default to Auto)
@@ -113,14 +113,14 @@ test **markdown**.
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.send import Send
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.send import Send
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -130,15 +130,15 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
+    api_instance = invoicetronic_sdk.SendApi(api_client)
     company_id = 56 # int | Company id (optional)
     identifier = 'identifier_example' # str | SDI identifier. (optional)
     committente = 'committente_example' # str | Vat number or fiscal code. (optional)
@@ -222,14 +222,14 @@ Send invoices are the invoices that are sent to the SDI. They are preserved for 
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.send import Send
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.send import Send
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -239,15 +239,15 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
+    api_instance = invoicetronic_sdk.SendApi(api_client)
     id = 56 # int | Item id
 
     try:
@@ -302,15 +302,15 @@ Send invoices are the invoices that are sent to the SDI. They are preserved for 
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.fattura_ordinaria import FatturaOrdinaria
-from invoicetronic_invoice_sdk.models.send import Send
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.fattura_ordinaria import FatturaOrdinaria
+from invoicetronic_sdk.models.send import Send
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -320,16 +320,16 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
-    fattura_ordinaria = invoicetronic_invoice_sdk.FatturaOrdinaria() # FatturaOrdinaria | 
+    api_instance = invoicetronic_sdk.SendApi(api_client)
+    fattura_ordinaria = invoicetronic_sdk.FatturaOrdinaria() # FatturaOrdinaria | 
     validate = False # bool | Validate the document first, and reject it on failure. (optional) (default to False)
     signature = Auto # str | Whether to digitally sign the document. (optional) (default to Auto)
 
@@ -388,14 +388,14 @@ Send invoices are the invoices that are sent to the SDI. They are preserved for 
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.send import Send
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.send import Send
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -405,16 +405,16 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
-    send = invoicetronic_invoice_sdk.Send() # Send | 
+    api_instance = invoicetronic_sdk.SendApi(api_client)
+    send = invoicetronic_sdk.Send() # Send | 
     validate = False # bool | Validate the document first, and reject it on failure. (optional) (default to False)
     signature = Auto # str | Whether to digitally sign the document. (optional) (default to Auto)
 
@@ -473,13 +473,13 @@ Send invoices are the invoices that are sent to the SDI. They are preserved for 
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -489,15 +489,15 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
+    api_instance = invoicetronic_sdk.SendApi(api_client)
     files = None # List[bytearray] | 
 
     try:
@@ -551,14 +551,14 @@ Send invoices are the invoices that are sent to the SDI. They are preserved for 
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.fattura_ordinaria import FatturaOrdinaria
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.fattura_ordinaria import FatturaOrdinaria
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -568,16 +568,16 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
-    fattura_ordinaria = invoicetronic_invoice_sdk.FatturaOrdinaria() # FatturaOrdinaria | 
+    api_instance = invoicetronic_sdk.SendApi(api_client)
+    fattura_ordinaria = invoicetronic_sdk.FatturaOrdinaria() # FatturaOrdinaria | 
 
     try:
         # Validate an invoice by json
@@ -630,14 +630,14 @@ Send invoices are the invoices that are sent to the SDI. They are preserved for 
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.send import Send
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.send import Send
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -647,16 +647,16 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
-    send = invoicetronic_invoice_sdk.Send() # Send | 
+    api_instance = invoicetronic_sdk.SendApi(api_client)
+    send = invoicetronic_sdk.Send() # Send | 
 
     try:
         # Validate an invoice
@@ -709,14 +709,14 @@ Send invoices are the invoices that are sent to the SDI. They are preserved for 
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.fattura_ordinaria import FatturaOrdinaria
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.fattura_ordinaria import FatturaOrdinaria
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -726,16 +726,16 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
-    fattura_ordinaria = invoicetronic_invoice_sdk.FatturaOrdinaria() # FatturaOrdinaria | 
+    api_instance = invoicetronic_sdk.SendApi(api_client)
+    fattura_ordinaria = invoicetronic_sdk.FatturaOrdinaria() # FatturaOrdinaria | 
 
     try:
         # Validate an invoice by xml
@@ -788,15 +788,15 @@ Send invoices are the invoices that are sent to the SDI. They are preserved for 
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.fattura_ordinaria import FatturaOrdinaria
-from invoicetronic_invoice_sdk.models.send import Send
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.fattura_ordinaria import FatturaOrdinaria
+from invoicetronic_sdk.models.send import Send
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -806,16 +806,16 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.SendApi(api_client)
-    fattura_ordinaria = invoicetronic_invoice_sdk.FatturaOrdinaria() # FatturaOrdinaria | 
+    api_instance = invoicetronic_sdk.SendApi(api_client)
+    fattura_ordinaria = invoicetronic_sdk.FatturaOrdinaria() # FatturaOrdinaria | 
     validate = False # bool | Validate the document first, and reject it on failure. (optional) (default to False)
     signature = Auto # str | Whether to digitally sign the document. (optional) (default to Auto)
 

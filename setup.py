@@ -21,7 +21,7 @@ from setuptools import setup, find_packages  # noqa: H301
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
-NAME = "invoicetronic-invoice-sdk"
+NAME = "invoicetronic-sdk"
 VERSION = "1"
 PYTHON_REQUIRES = ">= 3.8"
 REQUIRES = [
@@ -46,5 +46,5 @@ setup(
     long_description="""\
     The [Invoicetronic API][2] is a RESTful service that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. It provides advanced features as encryption at rest, multi-language pre-flight invoice validation, multiple upload formats, webhooks, event logging, client SDKs, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
     """,  # noqa: E501
-    package_data={"invoicetronic_invoice_sdk": ["py.typed"]},
+    package_data={"invoicetronic_sdk": ["py.typed"]},
 )

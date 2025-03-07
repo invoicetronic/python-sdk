@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.dati_trasporto import DatiTrasporto
+from invoicetronic_sdk.models.dati_trasporto import DatiTrasporto
 
 class TestDatiTrasporto(unittest.TestCase):
     """DatiTrasporto unit test stubs"""
@@ -36,12 +36,12 @@ class TestDatiTrasporto(unittest.TestCase):
         model = DatiTrasporto()
         if include_optional:
             return DatiTrasporto(
-                dati_anagrafici_vettore = invoicetronic_invoice_sdk.models.dati_anagrafici_vettore.DatiAnagraficiVettore(
-                    id_fiscale_iva = invoicetronic_invoice_sdk.models.id_fiscale_iva.IdFiscaleIVA(
+                dati_anagrafici_vettore = invoicetronic_sdk.models.dati_anagrafici_vettore.DatiAnagraficiVettore(
+                    id_fiscale_iva = invoicetronic_sdk.models.id_fiscale_iva.IdFiscaleIVA(
                         id_paese = '', 
                         id_codice = '', ), 
                     codice_fiscale = '', 
-                    anagrafica = invoicetronic_invoice_sdk.models.anagrafica.Anagrafica(
+                    anagrafica = invoicetronic_sdk.models.anagrafica.Anagrafica(
                         denominazione = '', 
                         nome = '', 
                         cognome = '', 
@@ -58,7 +58,7 @@ class TestDatiTrasporto(unittest.TestCase):
                 data_ora_ritiro = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 data_inizio_trasporto = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 tipo_resa = '',
-                indirizzo_resa = invoicetronic_invoice_sdk.models.indirizzo_resa.IndirizzoResa(
+                indirizzo_resa = invoicetronic_sdk.models.indirizzo_resa.IndirizzoResa(
                     indirizzo = '', 
                     numero_civico = '', 
                     cap = '', 

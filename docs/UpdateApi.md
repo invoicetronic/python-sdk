@@ -1,4 +1,4 @@
-# invoicetronic_invoice_sdk.UpdateApi
+# invoicetronic_sdk.UpdateApi
 
 All URIs are relative to *https://api.invoicetronic.com*
 
@@ -20,14 +20,14 @@ Updates are notifications sent by the SDI about the status of invoices you sent.
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.update import Update
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.update import Update
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -37,15 +37,15 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.UpdateApi(api_client)
+    api_instance = invoicetronic_sdk.UpdateApi(api_client)
     company_id = 56 # int | Company id (optional)
     identifier = 'identifier_example' # str | SDI identifier. (optional)
     unread = True # bool | Unread items only. (optional)
@@ -123,14 +123,14 @@ Updates are notifications sent by the SDI about the status of invoices you sent.
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.update import Update
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.update import Update
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -140,15 +140,15 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.UpdateApi(api_client)
+    api_instance = invoicetronic_sdk.UpdateApi(api_client)
     id = 56 # int | Item id
 
     try:

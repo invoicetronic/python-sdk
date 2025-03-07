@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.anagrafica import Anagrafica
+from invoicetronic_sdk.models.anagrafica import Anagrafica
 
 class TestAnagrafica(unittest.TestCase):
     """Anagrafica unit test stubs"""

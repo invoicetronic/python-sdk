@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from invoicetronic_invoice_sdk.models.send import Send
+from invoicetronic_sdk.models.send import Send
 
 # TODO update the JSON string below
 json = "{}"

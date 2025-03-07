@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.fattura_principale import FatturaPrincipale
+from invoicetronic_sdk.models.fattura_principale import FatturaPrincipale
 
 class TestFatturaPrincipale(unittest.TestCase):
     """FatturaPrincipale unit test stubs"""

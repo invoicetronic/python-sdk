@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.dati_ricezione import DatiRicezione
+from invoicetronic_sdk.models.dati_ricezione import DatiRicezione
 
 class TestDatiRicezione(unittest.TestCase):
     """DatiRicezione unit test stubs"""

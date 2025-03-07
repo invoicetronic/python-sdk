@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.status import Status
+from invoicetronic_sdk.models.status import Status
 
 class TestStatus(unittest.TestCase):
     """Status unit test stubs"""

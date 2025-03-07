@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.id_trasmittente import IdTrasmittente
+from invoicetronic_sdk.models.id_trasmittente import IdTrasmittente
 
 class TestIdTrasmittente(unittest.TestCase):
     """IdTrasmittente unit test stubs"""

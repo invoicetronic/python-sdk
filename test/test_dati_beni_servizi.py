@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.dati_beni_servizi import DatiBeniServizi
+from invoicetronic_sdk.models.dati_beni_servizi import DatiBeniServizi
 
 class TestDatiBeniServizi(unittest.TestCase):
     """DatiBeniServizi unit test stubs"""
@@ -37,11 +37,11 @@ class TestDatiBeniServizi(unittest.TestCase):
         if include_optional:
             return DatiBeniServizi(
                 dettaglio_linee = [
-                    invoicetronic_invoice_sdk.models.dettaglio_linee.DettaglioLinee(
+                    invoicetronic_sdk.models.dettaglio_linee.DettaglioLinee(
                         numero_linea = 56, 
                         tipo_cessione_prestazione = '', 
                         codice_articolo = [
-                            invoicetronic_invoice_sdk.models.codice_articolo.CodiceArticolo(
+                            invoicetronic_sdk.models.codice_articolo.CodiceArticolo(
                                 codice_tipo = '', 
                                 codice_valore = '', )
                             ], 
@@ -52,7 +52,7 @@ class TestDatiBeniServizi(unittest.TestCase):
                         data_fine_periodo = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         prezzo_unitario = 1.337, 
                         sconto_maggiorazione = [
-                            invoicetronic_invoice_sdk.models.sconto_maggiorazione.ScontoMaggiorazione(
+                            invoicetronic_sdk.models.sconto_maggiorazione.ScontoMaggiorazione(
                                 tipo = '', 
                                 percentuale = 1.337, 
                                 importo = 1.337, )
@@ -63,7 +63,7 @@ class TestDatiBeniServizi(unittest.TestCase):
                         natura = '', 
                         riferimento_amministrazione = '', 
                         altri_dati_gestionali = [
-                            invoicetronic_invoice_sdk.models.altri_dati_gestionali.AltriDatiGestionali(
+                            invoicetronic_sdk.models.altri_dati_gestionali.AltriDatiGestionali(
                                 tipo_dato = '', 
                                 riferimento_testo = '', 
                                 riferimento_numero = 1.337, 
@@ -71,7 +71,7 @@ class TestDatiBeniServizi(unittest.TestCase):
                             ], )
                     ],
                 dati_riepilogo = [
-                    invoicetronic_invoice_sdk.models.dati_riepilogo.DatiRiepilogo(
+                    invoicetronic_sdk.models.dati_riepilogo.DatiRiepilogo(
                         aliquota_iva = 1.337, 
                         natura = '', 
                         spese_accessorie = 1.337, 

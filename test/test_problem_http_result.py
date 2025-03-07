@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.problem_http_result import ProblemHttpResult
+from invoicetronic_sdk.models.problem_http_result import ProblemHttpResult
 
 class TestProblemHttpResult(unittest.TestCase):
     """ProblemHttpResult unit test stubs"""

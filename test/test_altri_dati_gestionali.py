@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.altri_dati_gestionali import AltriDatiGestionali
+from invoicetronic_sdk.models.altri_dati_gestionali import AltriDatiGestionali
 
 class TestAltriDatiGestionali(unittest.TestCase):
     """AltriDatiGestionali unit test stubs"""

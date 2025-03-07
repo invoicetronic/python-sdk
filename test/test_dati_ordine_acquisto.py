@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.dati_ordine_acquisto import DatiOrdineAcquisto
+from invoicetronic_sdk.models.dati_ordine_acquisto import DatiOrdineAcquisto
 
 class TestDatiOrdineAcquisto(unittest.TestCase):
     """DatiOrdineAcquisto unit test stubs"""

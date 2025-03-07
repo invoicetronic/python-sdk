@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.stabile_organizzazione import StabileOrganizzazione
+from invoicetronic_sdk.models.stabile_organizzazione import StabileOrganizzazione
 
 class TestStabileOrganizzazione(unittest.TestCase):
     """StabileOrganizzazione unit test stubs"""

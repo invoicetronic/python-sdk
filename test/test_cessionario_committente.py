@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.cessionario_committente import CessionarioCommittente
+from invoicetronic_sdk.models.cessionario_committente import CessionarioCommittente
 
 class TestCessionarioCommittente(unittest.TestCase):
     """CessionarioCommittente unit test stubs"""
@@ -36,36 +36,36 @@ class TestCessionarioCommittente(unittest.TestCase):
         model = CessionarioCommittente()
         if include_optional:
             return CessionarioCommittente(
-                dati_anagrafici = invoicetronic_invoice_sdk.models.dati_anagrafici_cessionario_committente.DatiAnagraficiCessionarioCommittente(
-                    id_fiscale_iva = invoicetronic_invoice_sdk.models.id_fiscale_iva.IdFiscaleIVA(
+                dati_anagrafici = invoicetronic_sdk.models.dati_anagrafici_cessionario_committente.DatiAnagraficiCessionarioCommittente(
+                    id_fiscale_iva = invoicetronic_sdk.models.id_fiscale_iva.IdFiscaleIVA(
                         id_paese = '', 
                         id_codice = '', ), 
                     codice_fiscale = '', 
-                    anagrafica = invoicetronic_invoice_sdk.models.anagrafica.Anagrafica(
+                    anagrafica = invoicetronic_sdk.models.anagrafica.Anagrafica(
                         denominazione = '', 
                         nome = '', 
                         cognome = '', 
                         titolo = '', 
                         cod_eori = '', ), ),
-                sede = invoicetronic_invoice_sdk.models.sede_cessionario_committente.SedeCessionarioCommittente(
+                sede = invoicetronic_sdk.models.sede_cessionario_committente.SedeCessionarioCommittente(
                     indirizzo = '', 
                     numero_civico = '', 
                     cap = '', 
                     comune = '', 
                     provincia = '', 
                     nazione = 'IT', ),
-                stabile_organizzazione = invoicetronic_invoice_sdk.models.stabile_organizzazione.StabileOrganizzazione(
+                stabile_organizzazione = invoicetronic_sdk.models.stabile_organizzazione.StabileOrganizzazione(
                     indirizzo = '', 
                     numero_civico = '', 
                     cap = '', 
                     comune = '', 
                     provincia = '', 
                     nazione = 'IT', ),
-                rappresentante_fiscale = invoicetronic_invoice_sdk.models.rappresentante_fiscale_cessionario_committente.RappresentanteFiscaleCessionarioCommittente(
+                rappresentante_fiscale = invoicetronic_sdk.models.rappresentante_fiscale_cessionario_committente.RappresentanteFiscaleCessionarioCommittente(
                     denominazione = '', 
                     nome = '', 
                     cognome = '', 
-                    id_fiscale_iva = invoicetronic_invoice_sdk.models.id_fiscale_iva.IdFiscaleIVA(
+                    id_fiscale_iva = invoicetronic_sdk.models.id_fiscale_iva.IdFiscaleIVA(
                         id_paese = '', 
                         id_codice = '', ), )
             )

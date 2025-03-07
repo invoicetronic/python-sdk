@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.allegati import Allegati
+from invoicetronic_sdk.models.allegati import Allegati
 
 class TestAllegati(unittest.TestCase):
     """Allegati unit test stubs"""

@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.terzo_intermediario_o_soggetto_emittente import TerzoIntermediarioOSoggettoEmittente
+from invoicetronic_sdk.models.terzo_intermediario_o_soggetto_emittente import TerzoIntermediarioOSoggettoEmittente
 
 class TestTerzoIntermediarioOSoggettoEmittente(unittest.TestCase):
     """TerzoIntermediarioOSoggettoEmittente unit test stubs"""
@@ -36,12 +36,12 @@ class TestTerzoIntermediarioOSoggettoEmittente(unittest.TestCase):
         model = TerzoIntermediarioOSoggettoEmittente()
         if include_optional:
             return TerzoIntermediarioOSoggettoEmittente(
-                dati_anagrafici = invoicetronic_invoice_sdk.models.dati_anagrafici.DatiAnagrafici(
-                    id_fiscale_iva = invoicetronic_invoice_sdk.models.id_fiscale_iva.IdFiscaleIVA(
+                dati_anagrafici = invoicetronic_sdk.models.dati_anagrafici.DatiAnagrafici(
+                    id_fiscale_iva = invoicetronic_sdk.models.id_fiscale_iva.IdFiscaleIVA(
                         id_paese = '', 
                         id_codice = '', ), 
                     codice_fiscale = '', 
-                    anagrafica = invoicetronic_invoice_sdk.models.anagrafica.Anagrafica(
+                    anagrafica = invoicetronic_sdk.models.anagrafica.Anagrafica(
                         denominazione = '', 
                         nome = '', 
                         cognome = '', 

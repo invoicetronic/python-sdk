@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.dati_sal import DatiSAL
+from invoicetronic_sdk.models.dati_sal import DatiSAL
 
 class TestDatiSAL(unittest.TestCase):
     """DatiSAL unit test stubs"""

@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.api.webhook_api import WebhookApi
+from invoicetronic_sdk.api.webhook_api import WebhookApi
 
 
 class TestWebhookApi(unittest.TestCase):

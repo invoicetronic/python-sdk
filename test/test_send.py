@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.send import Send
+from invoicetronic_sdk.models.send import Send
 
 class TestSend(unittest.TestCase):
     """Send unit test stubs"""
@@ -50,7 +50,7 @@ class TestSend(unittest.TestCase):
                 last_update = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 date_sent = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 documents = [
-                    invoicetronic_invoice_sdk.models.document_data.DocumentData(
+                    invoicetronic_sdk.models.document_data.DocumentData(
                         number = '', 
                         date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
                     ],
@@ -58,7 +58,7 @@ class TestSend(unittest.TestCase):
                 meta_data = {
                     'key' : ''
                     },
-                company = invoicetronic_invoice_sdk.models.company.Company(
+                company = invoicetronic_sdk.models.company.Company(
                     id = 56, 
                     created = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     version = 56, 

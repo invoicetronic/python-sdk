@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.iscrizione_rea import IscrizioneREA
+from invoicetronic_sdk.models.iscrizione_rea import IscrizioneREA
 
 class TestIscrizioneREA(unittest.TestCase):
     """IscrizioneREA unit test stubs"""

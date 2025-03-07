@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from invoicetronic_invoice_sdk.models.fattura_principale import FatturaPrincipale
+from invoicetronic_sdk.models.fattura_principale import FatturaPrincipale
 
 # TODO update the JSON string below
 json = "{}"

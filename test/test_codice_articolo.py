@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.codice_articolo import CodiceArticolo
+from invoicetronic_sdk.models.codice_articolo import CodiceArticolo
 
 class TestCodiceArticolo(unittest.TestCase):
     """CodiceArticolo unit test stubs"""

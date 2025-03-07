@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.dati_generali_documento import DatiGeneraliDocumento
+from invoicetronic_sdk.models.dati_generali_documento import DatiGeneraliDocumento
 
 class TestDatiGeneraliDocumento(unittest.TestCase):
     """DatiGeneraliDocumento unit test stubs"""
@@ -41,17 +41,17 @@ class TestDatiGeneraliDocumento(unittest.TestCase):
                 data = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 numero = '',
                 dati_ritenuta = [
-                    invoicetronic_invoice_sdk.models.dati_ritenuta.DatiRitenuta(
+                    invoicetronic_sdk.models.dati_ritenuta.DatiRitenuta(
                         tipo_ritenuta = '', 
                         importo_ritenuta = 1.337, 
                         aliquota_ritenuta = 1.337, 
                         causale_pagamento = '', )
                     ],
-                dati_bollo = invoicetronic_invoice_sdk.models.dati_bollo.DatiBollo(
+                dati_bollo = invoicetronic_sdk.models.dati_bollo.DatiBollo(
                     bollo_virtuale = '', 
                     importo_bollo = 1.337, ),
                 dati_cassa_previdenziale = [
-                    invoicetronic_invoice_sdk.models.dati_cassa_previdenziale.DatiCassaPrevidenziale(
+                    invoicetronic_sdk.models.dati_cassa_previdenziale.DatiCassaPrevidenziale(
                         tipo_cassa = '', 
                         al_cassa = 1.337, 
                         importo_contributo_cassa = 1.337, 
@@ -62,7 +62,7 @@ class TestDatiGeneraliDocumento(unittest.TestCase):
                         riferimento_amministrazione = '', )
                     ],
                 sconto_maggiorazione = [
-                    invoicetronic_invoice_sdk.models.sconto_maggiorazione.ScontoMaggiorazione(
+                    invoicetronic_sdk.models.sconto_maggiorazione.ScontoMaggiorazione(
                         tipo = '', 
                         percentuale = 1.337, 
                         importo = 1.337, )

@@ -1,4 +1,4 @@
-# invoicetronic_invoice_sdk.LogApi
+# invoicetronic_sdk.LogApi
 
 All URIs are relative to *https://api.invoicetronic.com*
 
@@ -20,14 +20,14 @@ Every API operation is logged and can be retrieved here. Log records are preserv
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.event import Event
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.event import Event
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -37,15 +37,15 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.LogApi(api_client)
+    api_instance = invoicetronic_sdk.LogApi(api_client)
     company_id = 56 # int | Company id (optional)
     endpoint = 'endpoint_example' # str |  (optional)
     method = 'method_example' # str |  (optional)
@@ -127,14 +127,14 @@ Every API operation is logged and can be retrieved here. Log records are preserv
 * Basic Authentication (Basic):
 
 ```python
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.models.event import Event
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.models.event import Event
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -144,15 +144,15 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.LogApi(api_client)
+    api_instance = invoicetronic_sdk.LogApi(api_client)
     id = 56 # int | Item id
 
     try:

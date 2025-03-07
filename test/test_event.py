@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.models.event import Event
+from invoicetronic_sdk.models.event import Event
 
 class TestEvent(unittest.TestCase):
     """Event unit test stubs"""

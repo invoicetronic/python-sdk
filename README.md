@@ -25,13 +25,13 @@ Python 3.8+
 If the python package is hosted on a repository, you can install directly using:
 
 ```sh
-pip install git+https://github.com/invoicetronic/invoice-python-sdk.git
+pip install git+https://github.com/invoicetronic/python-sdk.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/invoicetronic/invoice-python-sdk.git`)
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/invoicetronic/python-sdk.git`)
 
 Then import the package:
 ```python
-import invoicetronic_invoice_sdk
+import invoicetronic_sdk
 ```
 
 ### Setuptools
@@ -45,7 +45,7 @@ python setup.py install --user
 
 Then import the package:
 ```python
-import invoicetronic_invoice_sdk
+import invoicetronic_sdk
 ```
 
 ### Tests
@@ -58,13 +58,13 @@ Please follow the [installation procedure](#installation--usage) and then run th
 
 ```python
 
-import invoicetronic_invoice_sdk
-from invoicetronic_invoice_sdk.rest import ApiException
+import invoicetronic_sdk
+from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.invoicetronic.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
@@ -74,16 +74,16 @@ configuration = invoicetronic_invoice_sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: Basic
-configuration = invoicetronic_invoice_sdk.Configuration(
+configuration = invoicetronic_sdk.Configuration(
     username = os.environ["USERNAME"],
     password = os.environ["PASSWORD"]
 )
 
 
 # Enter a context with an instance of the API client
-with invoicetronic_invoice_sdk.ApiClient(configuration) as api_client:
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = invoicetronic_invoice_sdk.CompanyApi(api_client)
+    api_instance = invoicetronic_sdk.CompanyApi(api_client)
     page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
     page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
     sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)

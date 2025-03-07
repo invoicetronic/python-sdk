@@ -15,7 +15,7 @@
 
 import unittest
 
-from invoicetronic_invoice_sdk.api.status_api import StatusApi
+from invoicetronic_sdk.api.status_api import StatusApi
 
 
 class TestStatusApi(unittest.TestCase):
