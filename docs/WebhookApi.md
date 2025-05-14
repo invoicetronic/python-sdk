@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **webhook_get**
-> List[WebHook] webhook_get(page=page, page_size=page_size, sort=sort)
+> List[WebHook] webhook_get(company_id=company_id, page=page, page_size=page_size, sort=sort, description=description, enabled=enabled, events=events, url=url)
 
 List webhooks
 
@@ -51,13 +51,18 @@ configuration = invoicetronic_sdk.Configuration(
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_sdk.WebhookApi(api_client)
+    company_id = 56 # int | Company id (optional)
     page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
     page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
     sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)
+    description = 'description_example' # str |  (optional)
+    enabled = True # bool |  (optional)
+    events = 'events_example' # str |  (optional)
+    url = 'url_example' # str |  (optional)
 
     try:
         # List webhooks
-        api_response = api_instance.webhook_get(page=page, page_size=page_size, sort=sort)
+        api_response = api_instance.webhook_get(company_id=company_id, page=page, page_size=page_size, sort=sort, description=description, enabled=enabled, events=events, url=url)
         print("The response of WebhookApi->webhook_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -71,9 +76,14 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **company_id** | **int**| Company id | [optional] 
  **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
  **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
  **sort** | **str**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] 
+ **description** | **str**|  | [optional] 
+ **enabled** | **bool**|  | [optional] 
+ **events** | **str**|  | [optional] 
+ **url** | **str**|  | [optional] 
 
 ### Return type
 
@@ -423,7 +433,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **webhookhistory_get**
-> List[WebHookHistory] webhookhistory_get(page=page, page_size=page_size, sort=sort)
+> List[WebHookHistory] webhookhistory_get(page=page, page_size=page_size, sort=sort, webhook_id=webhook_id)
 
 List webhook history items
 
@@ -463,10 +473,11 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
     page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
     page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
     sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)
+    webhook_id = 56 # int | WebHook id (optional)
 
     try:
         # List webhook history items
-        api_response = api_instance.webhookhistory_get(page=page, page_size=page_size, sort=sort)
+        api_response = api_instance.webhookhistory_get(page=page, page_size=page_size, sort=sort, webhook_id=webhook_id)
         print("The response of WebhookApi->webhookhistory_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -483,6 +494,7 @@ Name | Type | Description  | Notes
  **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
  **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
  **sort** | **str**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] 
+ **webhook_id** | **int**| WebHook id | [optional] 
 
 ### Return type
 

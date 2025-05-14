@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from invoicetronic_sdk.models.web_hook import WebHook
@@ -44,9 +44,14 @@ class WebhookApi:
     @validate_call
     def webhook_get(
         self,
+        company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
         page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
+        description: Optional[StrictStr] = None,
+        enabled: Optional[StrictBool] = None,
+        events: Optional[StrictStr] = None,
+        url: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -64,12 +69,22 @@ class WebhookApi:
 
         Webhooks are used to notify external services about write events that occur in the API. You can subscribe to specific events and receive a notification when they occur.
 
+        :param company_id: Company id
+        :type company_id: int
         :param page: Page number. Defaults to 1.
         :type page: int
         :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
+        :param description:
+        :type description: str
+        :param enabled:
+        :type enabled: bool
+        :param events:
+        :type events: str
+        :param url:
+        :type url: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -93,9 +108,14 @@ class WebhookApi:
         """ # noqa: E501
 
         _param = self._webhook_get_serialize(
+            company_id=company_id,
             page=page,
             page_size=page_size,
             sort=sort,
+            description=description,
+            enabled=enabled,
+            events=events,
+            url=url,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -121,9 +141,14 @@ class WebhookApi:
     @validate_call
     def webhook_get_with_http_info(
         self,
+        company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
         page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
+        description: Optional[StrictStr] = None,
+        enabled: Optional[StrictBool] = None,
+        events: Optional[StrictStr] = None,
+        url: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -141,12 +166,22 @@ class WebhookApi:
 
         Webhooks are used to notify external services about write events that occur in the API. You can subscribe to specific events and receive a notification when they occur.
 
+        :param company_id: Company id
+        :type company_id: int
         :param page: Page number. Defaults to 1.
         :type page: int
         :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
+        :param description:
+        :type description: str
+        :param enabled:
+        :type enabled: bool
+        :param events:
+        :type events: str
+        :param url:
+        :type url: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -170,9 +205,14 @@ class WebhookApi:
         """ # noqa: E501
 
         _param = self._webhook_get_serialize(
+            company_id=company_id,
             page=page,
             page_size=page_size,
             sort=sort,
+            description=description,
+            enabled=enabled,
+            events=events,
+            url=url,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -198,9 +238,14 @@ class WebhookApi:
     @validate_call
     def webhook_get_without_preload_content(
         self,
+        company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
         page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
+        description: Optional[StrictStr] = None,
+        enabled: Optional[StrictBool] = None,
+        events: Optional[StrictStr] = None,
+        url: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -218,12 +263,22 @@ class WebhookApi:
 
         Webhooks are used to notify external services about write events that occur in the API. You can subscribe to specific events and receive a notification when they occur.
 
+        :param company_id: Company id
+        :type company_id: int
         :param page: Page number. Defaults to 1.
         :type page: int
         :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
+        :param description:
+        :type description: str
+        :param enabled:
+        :type enabled: bool
+        :param events:
+        :type events: str
+        :param url:
+        :type url: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -247,9 +302,14 @@ class WebhookApi:
         """ # noqa: E501
 
         _param = self._webhook_get_serialize(
+            company_id=company_id,
             page=page,
             page_size=page_size,
             sort=sort,
+            description=description,
+            enabled=enabled,
+            events=events,
+            url=url,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -270,9 +330,14 @@ class WebhookApi:
 
     def _webhook_get_serialize(
         self,
+        company_id,
         page,
         page_size,
         sort,
+        description,
+        enabled,
+        events,
+        url,
         _request_auth,
         _content_type,
         _headers,
@@ -295,6 +360,10 @@ class WebhookApi:
 
         # process the path parameters
         # process the query parameters
+        if company_id is not None:
+            
+            _query_params.append(('company_id', company_id))
+            
         if page is not None:
             
             _query_params.append(('page', page))
@@ -306,6 +375,22 @@ class WebhookApi:
         if sort is not None:
             
             _query_params.append(('sort', sort))
+            
+        if description is not None:
+            
+            _query_params.append(('description', description))
+            
+        if enabled is not None:
+            
+            _query_params.append(('enabled', enabled))
+            
+        if events is not None:
+            
+            _query_params.append(('events', events))
+            
+        if url is not None:
+            
+            _query_params.append(('url', url))
             
         # process the header parameters
         # process the form parameters
@@ -1444,6 +1529,7 @@ class WebhookApi:
         page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
+        webhook_id: Annotated[Optional[StrictInt], Field(description="WebHook id")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1467,6 +1553,8 @@ class WebhookApi:
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
+        :param webhook_id: WebHook id
+        :type webhook_id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1493,6 +1581,7 @@ class WebhookApi:
             page=page,
             page_size=page_size,
             sort=sort,
+            webhook_id=webhook_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1521,6 +1610,7 @@ class WebhookApi:
         page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
+        webhook_id: Annotated[Optional[StrictInt], Field(description="WebHook id")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1544,6 +1634,8 @@ class WebhookApi:
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
+        :param webhook_id: WebHook id
+        :type webhook_id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1570,6 +1662,7 @@ class WebhookApi:
             page=page,
             page_size=page_size,
             sort=sort,
+            webhook_id=webhook_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1598,6 +1691,7 @@ class WebhookApi:
         page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
+        webhook_id: Annotated[Optional[StrictInt], Field(description="WebHook id")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1621,6 +1715,8 @@ class WebhookApi:
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
+        :param webhook_id: WebHook id
+        :type webhook_id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1647,6 +1743,7 @@ class WebhookApi:
             page=page,
             page_size=page_size,
             sort=sort,
+            webhook_id=webhook_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1670,6 +1767,7 @@ class WebhookApi:
         page,
         page_size,
         sort,
+        webhook_id,
         _request_auth,
         _content_type,
         _headers,
@@ -1703,6 +1801,10 @@ class WebhookApi:
         if sort is not None:
             
             _query_params.append(('sort', sort))
+            
+        if webhook_id is not None:
+            
+            _query_params.append(('webhook_id', webhook_id))
             
         # process the header parameters
         # process the form parameters

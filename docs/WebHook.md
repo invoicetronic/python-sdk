@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **user_id** | **int** | User id. | [optional] 
 **company_id** | **int** | Company id. | [optional] 
 **url** | **str** | The url of your application&#39;s endpoint that will receive a POST request when the webhook is fired. | [optional] 
-**enabled** | **bool** | Wetehr the webhooks is enabled or not. On creation, this is set to &#x60;true&#x60;. | [optional] 
+**enabled** | **bool** | Wether the webhook is enabled. On creation, this is set to &#x60;true&#x60;. | [optional] 
 **secret** | **str** | The secret used to generate webhook signatures, only returned on creation. You should store this value securely and validate it on every call, to ensure that the caller is InvoicetronicApi. | [optional] 
 **description** | **str** | An optional description. | [optional] 
 **events** | **List[str]** | List of events to that trigger the webhook.  See Invoicetronic.SupportedEvents.Available for a list of valid event names. | [optional] 
