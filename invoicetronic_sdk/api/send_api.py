@@ -1810,9 +1810,9 @@ class SendApi:
 
 
     @validate_call
-    def send_validate_files_post(
+    def send_validate_file_post(
         self,
-        files: List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]],
+        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1826,12 +1826,12 @@ class SendApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """Validate an invoice by file
+        """Validate an invoice file
 
         Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
-        :param files: (required)
-        :type files: List[bytearray]
+        :param file: (required)
+        :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1854,8 +1854,8 @@ class SendApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._send_validate_files_post_serialize(
-            files=files,
+        _param = self._send_validate_file_post_serialize(
+            file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1879,9 +1879,9 @@ class SendApi:
 
 
     @validate_call
-    def send_validate_files_post_with_http_info(
+    def send_validate_file_post_with_http_info(
         self,
-        files: List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]],
+        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1895,12 +1895,12 @@ class SendApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """Validate an invoice by file
+        """Validate an invoice file
 
         Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
-        :param files: (required)
-        :type files: List[bytearray]
+        :param file: (required)
+        :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1923,8 +1923,8 @@ class SendApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._send_validate_files_post_serialize(
-            files=files,
+        _param = self._send_validate_file_post_serialize(
+            file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1948,9 +1948,9 @@ class SendApi:
 
 
     @validate_call
-    def send_validate_files_post_without_preload_content(
+    def send_validate_file_post_without_preload_content(
         self,
-        files: List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]],
+        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1964,12 +1964,12 @@ class SendApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Validate an invoice by file
+        """Validate an invoice file
 
         Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
-        :param files: (required)
-        :type files: List[bytearray]
+        :param file: (required)
+        :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1992,8 +1992,8 @@ class SendApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._send_validate_files_post_serialize(
-            files=files,
+        _param = self._send_validate_file_post_serialize(
+            file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2012,9 +2012,9 @@ class SendApi:
         return response_data.response
 
 
-    def _send_validate_files_post_serialize(
+    def _send_validate_file_post_serialize(
         self,
-        files,
+        file,
         _request_auth,
         _content_type,
         _headers,
@@ -2024,7 +2024,6 @@ class SendApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'files': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -2040,8 +2039,8 @@ class SendApi:
         # process the query parameters
         # process the header parameters
         # process the form parameters
-        if files is not None:
-            _files['files'] = files
+        if file is not None:
+            _files['file'] = file
         # process the body parameter
 
 
@@ -2074,7 +2073,7 @@ class SendApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/send/validate/files',
+            resource_path='/send/validate/file',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

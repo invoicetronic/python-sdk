@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**send_id_get**](SendApi.md#send_id_get) | **GET** /send/{id} | Get a invoice by id
 [**send_json_post**](SendApi.md#send_json_post) | **POST** /send/json | Add an invoice by json
 [**send_post**](SendApi.md#send_post) | **POST** /send | Add an invoice
-[**send_validate_files_post**](SendApi.md#send_validate_files_post) | **POST** /send/validate/files | Validate an invoice by file
+[**send_validate_file_post**](SendApi.md#send_validate_file_post) | **POST** /send/validate/file | Validate an invoice file
 [**send_validate_json_post**](SendApi.md#send_validate_json_post) | **POST** /send/validate/json | Validate an invoice by json
 [**send_validate_post**](SendApi.md#send_validate_post) | **POST** /send/validate | Validate an invoice
 [**send_validate_xml_post**](SendApi.md#send_validate_xml_post) | **POST** /send/validate/xml | Validate an invoice by xml
@@ -461,10 +461,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **send_validate_files_post**
-> send_validate_files_post(files)
+# **send_validate_file_post**
+> send_validate_file_post(file)
 
-Validate an invoice by file
+Validate an invoice file
 
 Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
@@ -498,13 +498,13 @@ configuration = invoicetronic_sdk.Configuration(
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_sdk.SendApi(api_client)
-    files = None # List[bytearray] | 
+    file = None # bytearray | 
 
     try:
-        # Validate an invoice by file
-        api_instance.send_validate_files_post(files)
+        # Validate an invoice file
+        api_instance.send_validate_file_post(file)
     except Exception as e:
-        print("Exception when calling SendApi->send_validate_files_post: %s\n" % e)
+        print("Exception when calling SendApi->send_validate_file_post: %s\n" % e)
 ```
 
 
@@ -514,7 +514,7 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **files** | **List[bytearray]**|  | 
+ **file** | **bytearray**|  | 
 
 ### Return type
 

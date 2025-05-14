@@ -62,10 +62,10 @@ class TestSendApi(unittest.TestCase):
         """
         pass
 
-    def test_send_validate_files_post(self) -> None:
-        """Test case for send_validate_files_post
+    def test_send_validate_file_post(self) -> None:
+        """Test case for send_validate_file_post
 
-        Validate an invoice by file
+        Validate an invoice file
         """
         pass
 
