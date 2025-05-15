@@ -21,6 +21,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from invoicetronic_sdk.models.document_data import DocumentData
 from invoicetronic_sdk.models.error import Error
 from typing import Optional, Set
 from typing_extensions import Self
@@ -43,7 +44,9 @@ class Update(BaseModel):
     message_id: Optional[StrictStr] = Field(default=None, description="SDI message id.")
     errors: Optional[List[Error]] = Field(default=None, description="SDI errors, if any.")
     is_read: Optional[StrictBool] = Field(default=None, description="Wether the item has been read at least once.")
-    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "send_id", "date_sent", "last_update", "identifier", "state", "description", "message_id", "errors", "is_read"]
+    meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Metadata from the Send item this update refers to.")
+    documents: Optional[List[DocumentData]] = Field(default=None, description="Invoice references from the Send item this update refers to.")
+    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "send_id", "date_sent", "last_update", "identifier", "state", "description", "message_id", "errors", "is_read", "meta_data", "documents"]
 
     @field_validator('state')
     def state_validate_enum(cls, value):
@@ -101,6 +104,13 @@ class Update(BaseModel):
                 if _item_errors:
                     _items.append(_item_errors.to_dict())
             _dict['errors'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in documents (list)
+        _items = []
+        if self.documents:
+            for _item_documents in self.documents:
+                if _item_documents:
+                    _items.append(_item_documents.to_dict())
+            _dict['documents'] = _items
         # set to None if date_sent (nullable) is None
         # and model_fields_set contains the field
         if self.date_sent is None and "date_sent" in self.model_fields_set:
@@ -125,6 +135,16 @@ class Update(BaseModel):
         # and model_fields_set contains the field
         if self.errors is None and "errors" in self.model_fields_set:
             _dict['errors'] = None
+
+        # set to None if meta_data (nullable) is None
+        # and model_fields_set contains the field
+        if self.meta_data is None and "meta_data" in self.model_fields_set:
+            _dict['meta_data'] = None
+
+        # set to None if documents (nullable) is None
+        # and model_fields_set contains the field
+        if self.documents is None and "documents" in self.model_fields_set:
+            _dict['documents'] = None
 
         return _dict
 
@@ -151,7 +171,9 @@ class Update(BaseModel):
             "description": obj.get("description"),
             "message_id": obj.get("message_id"),
             "errors": [Error.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
-            "is_read": obj.get("is_read")
+            "is_read": obj.get("is_read"),
+            "meta_data": obj.get("meta_data"),
+            "documents": [DocumentData.from_dict(_item) for _item in obj["documents"]] if obj.get("documents") is not None else None
         })
         return _obj
 

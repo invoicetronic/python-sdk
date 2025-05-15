@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **message_id** | **str** | SDI message id. | [optional] 
 **errors** | [**List[Error]**](Error.md) | SDI errors, if any. | [optional] 
 **is_read** | **bool** | Wether the item has been read at least once. | [optional] 
+**meta_data** | **Dict[str, str]** | Metadata from the Send item this update refers to. | [optional] 
+**documents** | [**List[DocumentData]**](DocumentData.md) | Invoice references from the Send item this update refers to. | [optional] 
 
 ## Example
 

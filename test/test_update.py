@@ -54,7 +54,15 @@ class TestUpdate(unittest.TestCase):
                         description = '', 
                         hint = '', )
                     ],
-                is_read = True
+                is_read = True,
+                meta_data = {
+                    'key' : ''
+                    },
+                documents = [
+                    invoicetronic_sdk.models.document_data.DocumentData(
+                        number = '', 
+                        date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
+                    ]
             )
         else:
             return Update(
