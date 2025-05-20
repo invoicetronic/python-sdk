@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **is_read** | **bool** | Wether the item has been read at least once. | [optional] 
 **meta_data** | **Dict[str, str]** | Metadata from the Send item this update refers to. | [optional] 
 **documents** | [**List[DocumentData]**](DocumentData.md) | Invoice references from the Send item this update refers to. | [optional] 
+**prestatore** | **str** | Prestatore reference from the Send item this status refers to. | [optional] 
 
 ## Example
 

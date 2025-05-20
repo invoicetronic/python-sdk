@@ -46,7 +46,8 @@ class Update(BaseModel):
     is_read: Optional[StrictBool] = Field(default=None, description="Wether the item has been read at least once.")
     meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Metadata from the Send item this update refers to.")
     documents: Optional[List[DocumentData]] = Field(default=None, description="Invoice references from the Send item this update refers to.")
-    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "send_id", "date_sent", "last_update", "identifier", "state", "description", "message_id", "errors", "is_read", "meta_data", "documents"]
+    prestatore: Optional[StrictStr] = Field(default=None, description="Prestatore reference from the Send item this status refers to.")
+    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "send_id", "date_sent", "last_update", "identifier", "state", "description", "message_id", "errors", "is_read", "meta_data", "documents", "prestatore"]
 
     @field_validator('state')
     def state_validate_enum(cls, value):
@@ -146,6 +147,11 @@ class Update(BaseModel):
         if self.documents is None and "documents" in self.model_fields_set:
             _dict['documents'] = None
 
+        # set to None if prestatore (nullable) is None
+        # and model_fields_set contains the field
+        if self.prestatore is None and "prestatore" in self.model_fields_set:
+            _dict['prestatore'] = None
+
         return _dict
 
     @classmethod
@@ -173,7 +179,8 @@ class Update(BaseModel):
             "errors": [Error.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
             "is_read": obj.get("is_read"),
             "meta_data": obj.get("meta_data"),
-            "documents": [DocumentData.from_dict(_item) for _item in obj["documents"]] if obj.get("documents") is not None else None
+            "documents": [DocumentData.from_dict(_item) for _item in obj["documents"]] if obj.get("documents") is not None else None,
+            "prestatore": obj.get("prestatore")
         })
         return _obj
 

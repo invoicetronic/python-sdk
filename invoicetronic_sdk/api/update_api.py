@@ -46,6 +46,7 @@ class UpdateApi:
         self,
         company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
         identifier: Annotated[Optional[StrictStr], Field(description="SDI identifier.")] = None,
+        prestatore: Annotated[Optional[StrictStr], Field(description="Vat number or fiscal code.")] = None,
         unread: Annotated[Optional[StrictBool], Field(description="Unread items only.")] = None,
         send_id: Annotated[Optional[StrictInt], Field(description="Send item's id.")] = None,
         state: Annotated[Optional[StrictStr], Field(description="SDI state")] = None,
@@ -77,6 +78,8 @@ class UpdateApi:
         :type company_id: int
         :param identifier: SDI identifier.
         :type identifier: str
+        :param prestatore: Vat number or fiscal code.
+        :type prestatore: str
         :param unread: Unread items only.
         :type unread: bool
         :param send_id: Send item's id.
@@ -122,6 +125,7 @@ class UpdateApi:
         _param = self._update_get_serialize(
             company_id=company_id,
             identifier=identifier,
+            prestatore=prestatore,
             unread=unread,
             send_id=send_id,
             state=state,
@@ -159,6 +163,7 @@ class UpdateApi:
         self,
         company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
         identifier: Annotated[Optional[StrictStr], Field(description="SDI identifier.")] = None,
+        prestatore: Annotated[Optional[StrictStr], Field(description="Vat number or fiscal code.")] = None,
         unread: Annotated[Optional[StrictBool], Field(description="Unread items only.")] = None,
         send_id: Annotated[Optional[StrictInt], Field(description="Send item's id.")] = None,
         state: Annotated[Optional[StrictStr], Field(description="SDI state")] = None,
@@ -190,6 +195,8 @@ class UpdateApi:
         :type company_id: int
         :param identifier: SDI identifier.
         :type identifier: str
+        :param prestatore: Vat number or fiscal code.
+        :type prestatore: str
         :param unread: Unread items only.
         :type unread: bool
         :param send_id: Send item's id.
@@ -235,6 +242,7 @@ class UpdateApi:
         _param = self._update_get_serialize(
             company_id=company_id,
             identifier=identifier,
+            prestatore=prestatore,
             unread=unread,
             send_id=send_id,
             state=state,
@@ -272,6 +280,7 @@ class UpdateApi:
         self,
         company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
         identifier: Annotated[Optional[StrictStr], Field(description="SDI identifier.")] = None,
+        prestatore: Annotated[Optional[StrictStr], Field(description="Vat number or fiscal code.")] = None,
         unread: Annotated[Optional[StrictBool], Field(description="Unread items only.")] = None,
         send_id: Annotated[Optional[StrictInt], Field(description="Send item's id.")] = None,
         state: Annotated[Optional[StrictStr], Field(description="SDI state")] = None,
@@ -303,6 +312,8 @@ class UpdateApi:
         :type company_id: int
         :param identifier: SDI identifier.
         :type identifier: str
+        :param prestatore: Vat number or fiscal code.
+        :type prestatore: str
         :param unread: Unread items only.
         :type unread: bool
         :param send_id: Send item's id.
@@ -348,6 +359,7 @@ class UpdateApi:
         _param = self._update_get_serialize(
             company_id=company_id,
             identifier=identifier,
+            prestatore=prestatore,
             unread=unread,
             send_id=send_id,
             state=state,
@@ -380,6 +392,7 @@ class UpdateApi:
         self,
         company_id,
         identifier,
+        prestatore,
         unread,
         send_id,
         state,
@@ -419,6 +432,10 @@ class UpdateApi:
         if identifier is not None:
             
             _query_params.append(('identifier', identifier))
+            
+        if prestatore is not None:
+            
+            _query_params.append(('prestatore', prestatore))
             
         if unread is not None:
             
