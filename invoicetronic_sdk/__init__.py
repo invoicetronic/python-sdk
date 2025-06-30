@@ -17,83 +17,164 @@
 
 __version__ = "1"
 
+# Define package exports
+__all__ = [
+    "CompanyApi",
+    "LogApi",
+    "ReceiveApi",
+    "SendApi",
+    "StatusApi",
+    "UpdateApi",
+    "WebhookApi",
+    "ApiResponse",
+    "ApiClient",
+    "Configuration",
+    "OpenApiException",
+    "ApiTypeError",
+    "ApiValueError",
+    "ApiKeyError",
+    "ApiAttributeError",
+    "ApiException",
+    "Allegati",
+    "AltriDatiGestionali",
+    "Anagrafica",
+    "CedentePrestatore",
+    "CessionarioCommittente",
+    "CodiceArticolo",
+    "Company",
+    "Contatti",
+    "ContattiTrasmittente",
+    "DatiAnagrafici",
+    "DatiAnagraficiCedentePrestatore",
+    "DatiAnagraficiCessionarioCommittente",
+    "DatiAnagraficiVettore",
+    "DatiBeniServizi",
+    "DatiBollo",
+    "DatiCassaPrevidenziale",
+    "DatiContratto",
+    "DatiConvenzione",
+    "DatiDDT",
+    "DatiFattureCollegate",
+    "DatiGenerali",
+    "DatiGeneraliDocumento",
+    "DatiOrdineAcquisto",
+    "DatiPagamento",
+    "DatiRicezione",
+    "DatiRiepilogo",
+    "DatiRitenuta",
+    "DatiSAL",
+    "DatiTrasmissione",
+    "DatiTrasporto",
+    "DatiVeicoli",
+    "DettaglioLinee",
+    "DettaglioPagamento",
+    "DocumentData",
+    "Error",
+    "Event",
+    "FatturaElettronicaBody",
+    "FatturaElettronicaHeader",
+    "FatturaOrdinaria",
+    "FatturaPrincipale",
+    "IdFiscaleIVA",
+    "IdTrasmittente",
+    "IndirizzoResa",
+    "IscrizioneREA",
+    "ProblemDetails",
+    "ProblemHttpResult",
+    "RappresentanteFiscale",
+    "RappresentanteFiscaleCessionarioCommittente",
+    "Receive",
+    "ScontoMaggiorazione",
+    "SedeCedentePrestatore",
+    "SedeCessionarioCommittente",
+    "Send",
+    "SendReduced",
+    "StabileOrganizzazione",
+    "Status",
+    "TerzoIntermediarioOSoggettoEmittente",
+    "Update",
+    "WebHook",
+    "WebHookHistory",
+]
+
 # import apis into sdk package
-from invoicetronic_sdk.api.company_api import CompanyApi
-from invoicetronic_sdk.api.log_api import LogApi
-from invoicetronic_sdk.api.receive_api import ReceiveApi
-from invoicetronic_sdk.api.send_api import SendApi
-from invoicetronic_sdk.api.status_api import StatusApi
-from invoicetronic_sdk.api.update_api import UpdateApi
-from invoicetronic_sdk.api.webhook_api import WebhookApi
+from invoicetronic_sdk.api.company_api import CompanyApi as CompanyApi
+from invoicetronic_sdk.api.log_api import LogApi as LogApi
+from invoicetronic_sdk.api.receive_api import ReceiveApi as ReceiveApi
+from invoicetronic_sdk.api.send_api import SendApi as SendApi
+from invoicetronic_sdk.api.status_api import StatusApi as StatusApi
+from invoicetronic_sdk.api.update_api import UpdateApi as UpdateApi
+from invoicetronic_sdk.api.webhook_api import WebhookApi as WebhookApi
 
 # import ApiClient
-from invoicetronic_sdk.api_response import ApiResponse
-from invoicetronic_sdk.api_client import ApiClient
-from invoicetronic_sdk.configuration import Configuration
-from invoicetronic_sdk.exceptions import OpenApiException
-from invoicetronic_sdk.exceptions import ApiTypeError
-from invoicetronic_sdk.exceptions import ApiValueError
-from invoicetronic_sdk.exceptions import ApiKeyError
-from invoicetronic_sdk.exceptions import ApiAttributeError
-from invoicetronic_sdk.exceptions import ApiException
+from invoicetronic_sdk.api_response import ApiResponse as ApiResponse
+from invoicetronic_sdk.api_client import ApiClient as ApiClient
+from invoicetronic_sdk.configuration import Configuration as Configuration
+from invoicetronic_sdk.exceptions import OpenApiException as OpenApiException
+from invoicetronic_sdk.exceptions import ApiTypeError as ApiTypeError
+from invoicetronic_sdk.exceptions import ApiValueError as ApiValueError
+from invoicetronic_sdk.exceptions import ApiKeyError as ApiKeyError
+from invoicetronic_sdk.exceptions import ApiAttributeError as ApiAttributeError
+from invoicetronic_sdk.exceptions import ApiException as ApiException
 
 # import models into sdk package
-from invoicetronic_sdk.models.allegati import Allegati
-from invoicetronic_sdk.models.altri_dati_gestionali import AltriDatiGestionali
-from invoicetronic_sdk.models.anagrafica import Anagrafica
-from invoicetronic_sdk.models.cedente_prestatore import CedentePrestatore
-from invoicetronic_sdk.models.cessionario_committente import CessionarioCommittente
-from invoicetronic_sdk.models.codice_articolo import CodiceArticolo
-from invoicetronic_sdk.models.company import Company
-from invoicetronic_sdk.models.contatti import Contatti
-from invoicetronic_sdk.models.contatti_trasmittente import ContattiTrasmittente
-from invoicetronic_sdk.models.dati_anagrafici import DatiAnagrafici
-from invoicetronic_sdk.models.dati_anagrafici_cedente_prestatore import DatiAnagraficiCedentePrestatore
-from invoicetronic_sdk.models.dati_anagrafici_cessionario_committente import DatiAnagraficiCessionarioCommittente
-from invoicetronic_sdk.models.dati_anagrafici_vettore import DatiAnagraficiVettore
-from invoicetronic_sdk.models.dati_beni_servizi import DatiBeniServizi
-from invoicetronic_sdk.models.dati_bollo import DatiBollo
-from invoicetronic_sdk.models.dati_cassa_previdenziale import DatiCassaPrevidenziale
-from invoicetronic_sdk.models.dati_contratto import DatiContratto
-from invoicetronic_sdk.models.dati_convenzione import DatiConvenzione
-from invoicetronic_sdk.models.dati_ddt import DatiDDT
-from invoicetronic_sdk.models.dati_fatture_collegate import DatiFattureCollegate
-from invoicetronic_sdk.models.dati_generali import DatiGenerali
-from invoicetronic_sdk.models.dati_generali_documento import DatiGeneraliDocumento
-from invoicetronic_sdk.models.dati_ordine_acquisto import DatiOrdineAcquisto
-from invoicetronic_sdk.models.dati_pagamento import DatiPagamento
-from invoicetronic_sdk.models.dati_ricezione import DatiRicezione
-from invoicetronic_sdk.models.dati_riepilogo import DatiRiepilogo
-from invoicetronic_sdk.models.dati_ritenuta import DatiRitenuta
-from invoicetronic_sdk.models.dati_sal import DatiSAL
-from invoicetronic_sdk.models.dati_trasmissione import DatiTrasmissione
-from invoicetronic_sdk.models.dati_trasporto import DatiTrasporto
-from invoicetronic_sdk.models.dati_veicoli import DatiVeicoli
-from invoicetronic_sdk.models.dettaglio_linee import DettaglioLinee
-from invoicetronic_sdk.models.dettaglio_pagamento import DettaglioPagamento
-from invoicetronic_sdk.models.document_data import DocumentData
-from invoicetronic_sdk.models.error import Error
-from invoicetronic_sdk.models.event import Event
-from invoicetronic_sdk.models.fattura_elettronica_body import FatturaElettronicaBody
-from invoicetronic_sdk.models.fattura_elettronica_header import FatturaElettronicaHeader
-from invoicetronic_sdk.models.fattura_ordinaria import FatturaOrdinaria
-from invoicetronic_sdk.models.fattura_principale import FatturaPrincipale
-from invoicetronic_sdk.models.id_fiscale_iva import IdFiscaleIVA
-from invoicetronic_sdk.models.id_trasmittente import IdTrasmittente
-from invoicetronic_sdk.models.indirizzo_resa import IndirizzoResa
-from invoicetronic_sdk.models.iscrizione_rea import IscrizioneREA
-from invoicetronic_sdk.models.problem_details import ProblemDetails
-from invoicetronic_sdk.models.problem_http_result import ProblemHttpResult
-from invoicetronic_sdk.models.rappresentante_fiscale import RappresentanteFiscale
-from invoicetronic_sdk.models.rappresentante_fiscale_cessionario_committente import RappresentanteFiscaleCessionarioCommittente
-from invoicetronic_sdk.models.receive import Receive
-from invoicetronic_sdk.models.sconto_maggiorazione import ScontoMaggiorazione
-from invoicetronic_sdk.models.sede_cedente_prestatore import SedeCedentePrestatore
-from invoicetronic_sdk.models.sede_cessionario_committente import SedeCessionarioCommittente
-from invoicetronic_sdk.models.send import Send
-from invoicetronic_sdk.models.stabile_organizzazione import StabileOrganizzazione
-from invoicetronic_sdk.models.status import Status
-from invoicetronic_sdk.models.terzo_intermediario_o_soggetto_emittente import TerzoIntermediarioOSoggettoEmittente
-from invoicetronic_sdk.models.update import Update
-from invoicetronic_sdk.models.web_hook import WebHook
-from invoicetronic_sdk.models.web_hook_history import WebHookHistory
+from invoicetronic_sdk.models.allegati import Allegati as Allegati
+from invoicetronic_sdk.models.altri_dati_gestionali import AltriDatiGestionali as AltriDatiGestionali
+from invoicetronic_sdk.models.anagrafica import Anagrafica as Anagrafica
+from invoicetronic_sdk.models.cedente_prestatore import CedentePrestatore as CedentePrestatore
+from invoicetronic_sdk.models.cessionario_committente import CessionarioCommittente as CessionarioCommittente
+from invoicetronic_sdk.models.codice_articolo import CodiceArticolo as CodiceArticolo
+from invoicetronic_sdk.models.company import Company as Company
+from invoicetronic_sdk.models.contatti import Contatti as Contatti
+from invoicetronic_sdk.models.contatti_trasmittente import ContattiTrasmittente as ContattiTrasmittente
+from invoicetronic_sdk.models.dati_anagrafici import DatiAnagrafici as DatiAnagrafici
+from invoicetronic_sdk.models.dati_anagrafici_cedente_prestatore import DatiAnagraficiCedentePrestatore as DatiAnagraficiCedentePrestatore
+from invoicetronic_sdk.models.dati_anagrafici_cessionario_committente import DatiAnagraficiCessionarioCommittente as DatiAnagraficiCessionarioCommittente
+from invoicetronic_sdk.models.dati_anagrafici_vettore import DatiAnagraficiVettore as DatiAnagraficiVettore
+from invoicetronic_sdk.models.dati_beni_servizi import DatiBeniServizi as DatiBeniServizi
+from invoicetronic_sdk.models.dati_bollo import DatiBollo as DatiBollo
+from invoicetronic_sdk.models.dati_cassa_previdenziale import DatiCassaPrevidenziale as DatiCassaPrevidenziale
+from invoicetronic_sdk.models.dati_contratto import DatiContratto as DatiContratto
+from invoicetronic_sdk.models.dati_convenzione import DatiConvenzione as DatiConvenzione
+from invoicetronic_sdk.models.dati_ddt import DatiDDT as DatiDDT
+from invoicetronic_sdk.models.dati_fatture_collegate import DatiFattureCollegate as DatiFattureCollegate
+from invoicetronic_sdk.models.dati_generali import DatiGenerali as DatiGenerali
+from invoicetronic_sdk.models.dati_generali_documento import DatiGeneraliDocumento as DatiGeneraliDocumento
+from invoicetronic_sdk.models.dati_ordine_acquisto import DatiOrdineAcquisto as DatiOrdineAcquisto
+from invoicetronic_sdk.models.dati_pagamento import DatiPagamento as DatiPagamento
+from invoicetronic_sdk.models.dati_ricezione import DatiRicezione as DatiRicezione
+from invoicetronic_sdk.models.dati_riepilogo import DatiRiepilogo as DatiRiepilogo
+from invoicetronic_sdk.models.dati_ritenuta import DatiRitenuta as DatiRitenuta
+from invoicetronic_sdk.models.dati_sal import DatiSAL as DatiSAL
+from invoicetronic_sdk.models.dati_trasmissione import DatiTrasmissione as DatiTrasmissione
+from invoicetronic_sdk.models.dati_trasporto import DatiTrasporto as DatiTrasporto
+from invoicetronic_sdk.models.dati_veicoli import DatiVeicoli as DatiVeicoli
+from invoicetronic_sdk.models.dettaglio_linee import DettaglioLinee as DettaglioLinee
+from invoicetronic_sdk.models.dettaglio_pagamento import DettaglioPagamento as DettaglioPagamento
+from invoicetronic_sdk.models.document_data import DocumentData as DocumentData
+from invoicetronic_sdk.models.error import Error as Error
+from invoicetronic_sdk.models.event import Event as Event
+from invoicetronic_sdk.models.fattura_elettronica_body import FatturaElettronicaBody as FatturaElettronicaBody
+from invoicetronic_sdk.models.fattura_elettronica_header import FatturaElettronicaHeader as FatturaElettronicaHeader
+from invoicetronic_sdk.models.fattura_ordinaria import FatturaOrdinaria as FatturaOrdinaria
+from invoicetronic_sdk.models.fattura_principale import FatturaPrincipale as FatturaPrincipale
+from invoicetronic_sdk.models.id_fiscale_iva import IdFiscaleIVA as IdFiscaleIVA
+from invoicetronic_sdk.models.id_trasmittente import IdTrasmittente as IdTrasmittente
+from invoicetronic_sdk.models.indirizzo_resa import IndirizzoResa as IndirizzoResa
+from invoicetronic_sdk.models.iscrizione_rea import IscrizioneREA as IscrizioneREA
+from invoicetronic_sdk.models.problem_details import ProblemDetails as ProblemDetails
+from invoicetronic_sdk.models.problem_http_result import ProblemHttpResult as ProblemHttpResult
+from invoicetronic_sdk.models.rappresentante_fiscale import RappresentanteFiscale as RappresentanteFiscale
+from invoicetronic_sdk.models.rappresentante_fiscale_cessionario_committente import RappresentanteFiscaleCessionarioCommittente as RappresentanteFiscaleCessionarioCommittente
+from invoicetronic_sdk.models.receive import Receive as Receive
+from invoicetronic_sdk.models.sconto_maggiorazione import ScontoMaggiorazione as ScontoMaggiorazione
+from invoicetronic_sdk.models.sede_cedente_prestatore import SedeCedentePrestatore as SedeCedentePrestatore
+from invoicetronic_sdk.models.sede_cessionario_committente import SedeCessionarioCommittente as SedeCessionarioCommittente
+from invoicetronic_sdk.models.send import Send as Send
+from invoicetronic_sdk.models.send_reduced import SendReduced as SendReduced
+from invoicetronic_sdk.models.stabile_organizzazione import StabileOrganizzazione as StabileOrganizzazione
+from invoicetronic_sdk.models.status import Status as Status
+from invoicetronic_sdk.models.terzo_intermediario_o_soggetto_emittente import TerzoIntermediarioOSoggettoEmittente as TerzoIntermediarioOSoggettoEmittente
+from invoicetronic_sdk.models.update import Update as Update
+from invoicetronic_sdk.models.web_hook import WebHook as WebHook
+from invoicetronic_sdk.models.web_hook_history import WebHookHistory as WebHookHistory

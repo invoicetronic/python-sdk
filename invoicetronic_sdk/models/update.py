@@ -21,8 +21,8 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from invoicetronic_sdk.models.document_data import DocumentData
 from invoicetronic_sdk.models.error import Error
+from invoicetronic_sdk.models.send_reduced import SendReduced
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -36,18 +36,14 @@ class Update(BaseModel):
     user_id: Optional[StrictInt] = Field(default=None, description="User id.")
     company_id: Optional[StrictInt] = Field(default=None, description="Company id.")
     send_id: Optional[StrictInt] = Field(default=None, description="Send id. This is the id of the sent invoice to which this update refers to.")
-    date_sent: Optional[datetime] = Field(default=None, description="When the document was sent to the SDI.")
     last_update: Optional[datetime] = Field(default=None, description="Last update from SDI.")
-    identifier: Optional[StrictStr] = Field(default=None, description="SDI identifier. This is set by the SDI and it is unique within the SDI system.")
     state: Optional[StrictStr] = Field(default=None, description="State of the document. Theses are the possible values, as per the SDI documentation:")
     description: Optional[StrictStr] = Field(default=None, description="Description for the state.")
     message_id: Optional[StrictStr] = Field(default=None, description="SDI message id.")
     errors: Optional[List[Error]] = Field(default=None, description="SDI errors, if any.")
     is_read: Optional[StrictBool] = Field(default=None, description="Wether the item has been read at least once.")
-    meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Metadata from the Send item this update refers to.")
-    documents: Optional[List[DocumentData]] = Field(default=None, description="Invoice references from the Send item this update refers to.")
-    prestatore: Optional[StrictStr] = Field(default=None, description="Prestatore reference from the Send item this status refers to.")
-    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "send_id", "date_sent", "last_update", "identifier", "state", "description", "message_id", "errors", "is_read", "meta_data", "documents", "prestatore"]
+    send: Optional[SendReduced] = None
+    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "send_id", "last_update", "state", "description", "message_id", "errors", "is_read", "send"]
 
     @field_validator('state')
     def state_validate_enum(cls, value):
@@ -105,23 +101,9 @@ class Update(BaseModel):
                 if _item_errors:
                     _items.append(_item_errors.to_dict())
             _dict['errors'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in documents (list)
-        _items = []
-        if self.documents:
-            for _item_documents in self.documents:
-                if _item_documents:
-                    _items.append(_item_documents.to_dict())
-            _dict['documents'] = _items
-        # set to None if date_sent (nullable) is None
-        # and model_fields_set contains the field
-        if self.date_sent is None and "date_sent" in self.model_fields_set:
-            _dict['date_sent'] = None
-
-        # set to None if identifier (nullable) is None
-        # and model_fields_set contains the field
-        if self.identifier is None and "identifier" in self.model_fields_set:
-            _dict['identifier'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of send
+        if self.send:
+            _dict['send'] = self.send.to_dict()
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
@@ -136,21 +118,6 @@ class Update(BaseModel):
         # and model_fields_set contains the field
         if self.errors is None and "errors" in self.model_fields_set:
             _dict['errors'] = None
-
-        # set to None if meta_data (nullable) is None
-        # and model_fields_set contains the field
-        if self.meta_data is None and "meta_data" in self.model_fields_set:
-            _dict['meta_data'] = None
-
-        # set to None if documents (nullable) is None
-        # and model_fields_set contains the field
-        if self.documents is None and "documents" in self.model_fields_set:
-            _dict['documents'] = None
-
-        # set to None if prestatore (nullable) is None
-        # and model_fields_set contains the field
-        if self.prestatore is None and "prestatore" in self.model_fields_set:
-            _dict['prestatore'] = None
 
         return _dict
 
@@ -170,17 +137,13 @@ class Update(BaseModel):
             "user_id": obj.get("user_id"),
             "company_id": obj.get("company_id"),
             "send_id": obj.get("send_id"),
-            "date_sent": obj.get("date_sent"),
             "last_update": obj.get("last_update"),
-            "identifier": obj.get("identifier"),
             "state": obj.get("state"),
             "description": obj.get("description"),
             "message_id": obj.get("message_id"),
             "errors": [Error.from_dict(_item) for _item in obj["errors"]] if obj.get("errors") is not None else None,
             "is_read": obj.get("is_read"),
-            "meta_data": obj.get("meta_data"),
-            "documents": [DocumentData.from_dict(_item) for _item in obj["documents"]] if obj.get("documents") is not None else None,
-            "prestatore": obj.get("prestatore")
+            "send": SendReduced.from_dict(obj["send"]) if obj.get("send") is not None else None
         })
         return _obj
 

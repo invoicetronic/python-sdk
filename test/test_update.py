@@ -42,9 +42,7 @@ class TestUpdate(unittest.TestCase):
                 user_id = 56,
                 company_id = 56,
                 send_id = 56,
-                date_sent = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 last_update = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                identifier = '',
                 state = 'Inviato',
                 description = '',
                 message_id = '',
@@ -55,15 +53,18 @@ class TestUpdate(unittest.TestCase):
                         hint = '', )
                     ],
                 is_read = True,
-                meta_data = {
-                    'key' : ''
-                    },
-                documents = [
-                    invoicetronic_sdk.models.document_data.DocumentData(
-                        number = '', 
-                        date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
-                    ],
-                prestatore = ''
+                send = invoicetronic_sdk.models.send_reduced.SendReduced(
+                    identifier = '', 
+                    prestatore = '', 
+                    meta_data = {
+                        'key' : ''
+                        }, 
+                    documents = [
+                        invoicetronic_sdk.models.document_data.DocumentData(
+                            number = '', 
+                            date = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
+                        ], 
+                    date_sent = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
             )
         else:
             return Update(

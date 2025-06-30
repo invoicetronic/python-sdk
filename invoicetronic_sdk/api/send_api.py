@@ -371,6 +371,7 @@ class SendApi:
         document_date_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_date_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_number: Annotated[Optional[StrictStr], Field(description="Document number.")] = None,
+        include_payload: Annotated[Optional[StrictBool], Field(description="Include payload in the response. Defaults to false.")] = None,
         page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
@@ -415,6 +416,8 @@ class SendApi:
         :type document_date_to: datetime
         :param document_number: Document number.
         :type document_number: str
+        :param include_payload: Include payload in the response. Defaults to false.
+        :type include_payload: bool
         :param page: Page number. Defaults to 1.
         :type page: int
         :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
@@ -456,6 +459,7 @@ class SendApi:
             document_date_from=document_date_from,
             document_date_to=document_date_to,
             document_number=document_number,
+            include_payload=include_payload,
             page=page,
             page_size=page_size,
             sort=sort,
@@ -496,6 +500,7 @@ class SendApi:
         document_date_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_date_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_number: Annotated[Optional[StrictStr], Field(description="Document number.")] = None,
+        include_payload: Annotated[Optional[StrictBool], Field(description="Include payload in the response. Defaults to false.")] = None,
         page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
@@ -540,6 +545,8 @@ class SendApi:
         :type document_date_to: datetime
         :param document_number: Document number.
         :type document_number: str
+        :param include_payload: Include payload in the response. Defaults to false.
+        :type include_payload: bool
         :param page: Page number. Defaults to 1.
         :type page: int
         :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
@@ -581,6 +588,7 @@ class SendApi:
             document_date_from=document_date_from,
             document_date_to=document_date_to,
             document_number=document_number,
+            include_payload=include_payload,
             page=page,
             page_size=page_size,
             sort=sort,
@@ -621,6 +629,7 @@ class SendApi:
         document_date_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_date_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         document_number: Annotated[Optional[StrictStr], Field(description="Document number.")] = None,
+        include_payload: Annotated[Optional[StrictBool], Field(description="Include payload in the response. Defaults to false.")] = None,
         page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
@@ -665,6 +674,8 @@ class SendApi:
         :type document_date_to: datetime
         :param document_number: Document number.
         :type document_number: str
+        :param include_payload: Include payload in the response. Defaults to false.
+        :type include_payload: bool
         :param page: Page number. Defaults to 1.
         :type page: int
         :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
@@ -706,6 +717,7 @@ class SendApi:
             document_date_from=document_date_from,
             document_date_to=document_date_to,
             document_number=document_number,
+            include_payload=include_payload,
             page=page,
             page_size=page_size,
             sort=sort,
@@ -741,6 +753,7 @@ class SendApi:
         document_date_from,
         document_date_to,
         document_number,
+        include_payload,
         page,
         page_size,
         sort,
@@ -867,6 +880,10 @@ class SendApi:
         if document_number is not None:
             
             _query_params.append(('document_number', document_number))
+            
+        if include_payload is not None:
+            
+            _query_params.append(('include_payload', include_payload))
             
         if page is not None:
             

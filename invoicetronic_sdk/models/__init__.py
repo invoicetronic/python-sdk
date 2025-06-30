@@ -68,6 +68,7 @@ from invoicetronic_sdk.models.sconto_maggiorazione import ScontoMaggiorazione
 from invoicetronic_sdk.models.sede_cedente_prestatore import SedeCedentePrestatore
 from invoicetronic_sdk.models.sede_cessionario_committente import SedeCessionarioCommittente
 from invoicetronic_sdk.models.send import Send
+from invoicetronic_sdk.models.send_reduced import SendReduced
 from invoicetronic_sdk.models.stabile_organizzazione import StabileOrganizzazione
 from invoicetronic_sdk.models.status import Status
 from invoicetronic_sdk.models.terzo_intermediario_o_soggetto_emittente import TerzoIntermediarioOSoggettoEmittente

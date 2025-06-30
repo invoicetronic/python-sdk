@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_get**
-> List[Send] send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, page=page, page_size=page_size, sort=sort)
+> List[Send] send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, include_payload=include_payload, page=page, page_size=page_size, sort=sort)
 
 List invoices
 
@@ -151,13 +151,14 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
     document_date_from = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
     document_date_to = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
     document_number = 'document_number_example' # str | Document number. (optional)
+    include_payload = True # bool | Include payload in the response. Defaults to false. (optional)
     page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
     page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
     sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)
 
     try:
         # List invoices
-        api_response = api_instance.send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, page=page, page_size=page_size, sort=sort)
+        api_response = api_instance.send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, include_payload=include_payload, page=page, page_size=page_size, sort=sort)
         print("The response of SendApi->send_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -183,6 +184,7 @@ Name | Type | Description  | Notes
  **document_date_from** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
  **document_date_to** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
  **document_number** | **str**| Document number. | [optional] 
+ **include_payload** | **bool**| Include payload in the response. Defaults to false. | [optional] 
  **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
  **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
  **sort** | **str**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] 

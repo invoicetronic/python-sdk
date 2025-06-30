@@ -11,17 +11,13 @@ Name | Type | Description | Notes
 **user_id** | **int** | User id. | [optional] 
 **company_id** | **int** | Company id. | [optional] 
 **send_id** | **int** | Send id. This is the id of the sent invoice to which this update refers to. | [optional] 
-**date_sent** | **datetime** | When the document was sent to the SDI. | [optional] 
 **last_update** | **datetime** | Last update from SDI. | [optional] 
-**identifier** | **str** | SDI identifier. This is set by the SDI and it is unique within the SDI system. | [optional] 
 **state** | **str** | State of the document. Theses are the possible values, as per the SDI documentation: | [optional] 
 **description** | **str** | Description for the state. | [optional] 
 **message_id** | **str** | SDI message id. | [optional] 
 **errors** | [**List[Error]**](Error.md) | SDI errors, if any. | [optional] 
 **is_read** | **bool** | Wether the item has been read at least once. | [optional] 
-**meta_data** | **Dict[str, str]** | Metadata from the Send item this update refers to. | [optional] 
-**documents** | [**List[DocumentData]**](DocumentData.md) | Invoice references from the Send item this update refers to. | [optional] 
-**prestatore** | **str** | Prestatore reference from the Send item this status refers to. | [optional] 
+**send** | [**SendReduced**](SendReduced.md) |  | [optional] 
 
 ## Example
 
