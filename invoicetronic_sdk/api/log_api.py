@@ -51,8 +51,8 @@ class LogApi:
         status_code: Annotated[Optional[StrictInt], Field(description="Response status code")] = None,
         date_created_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         date_created_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
         query: Optional[StrictStr] = None,
         success: Optional[StrictBool] = None,
@@ -89,9 +89,9 @@ class LogApi:
         :type date_created_from: datetime
         :param date_created_to: UTC ISO 8601 (2024-11-29T12:34:56Z)
         :type date_created_to: datetime
-        :param page: Page number. Defaults to 1.
+        :param page: Page number.
         :type page: int
-        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
+        :param page_size: Items per page. Cannot be greater than 200.
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
@@ -172,8 +172,8 @@ class LogApi:
         status_code: Annotated[Optional[StrictInt], Field(description="Response status code")] = None,
         date_created_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         date_created_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
         query: Optional[StrictStr] = None,
         success: Optional[StrictBool] = None,
@@ -210,9 +210,9 @@ class LogApi:
         :type date_created_from: datetime
         :param date_created_to: UTC ISO 8601 (2024-11-29T12:34:56Z)
         :type date_created_to: datetime
-        :param page: Page number. Defaults to 1.
+        :param page: Page number.
         :type page: int
-        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
+        :param page_size: Items per page. Cannot be greater than 200.
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
@@ -293,8 +293,8 @@ class LogApi:
         status_code: Annotated[Optional[StrictInt], Field(description="Response status code")] = None,
         date_created_from: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
         date_created_to: Annotated[Optional[datetime], Field(description="UTC ISO 8601 (2024-11-29T12:34:56Z)")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
         query: Optional[StrictStr] = None,
         success: Optional[StrictBool] = None,
@@ -331,9 +331,9 @@ class LogApi:
         :type date_created_from: datetime
         :param date_created_to: UTC ISO 8601 (2024-11-29T12:34:56Z)
         :type date_created_to: datetime
-        :param page: Page number. Defaults to 1.
+        :param page: Page number.
         :type page: int
-        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
+        :param page_size: Items per page. Cannot be greater than 200.
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str

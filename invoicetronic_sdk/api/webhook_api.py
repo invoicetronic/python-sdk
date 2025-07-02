@@ -45,8 +45,8 @@ class WebhookApi:
     def webhook_get(
         self,
         company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
         description: Optional[StrictStr] = None,
         enabled: Optional[StrictBool] = None,
@@ -71,9 +71,9 @@ class WebhookApi:
 
         :param company_id: Company id
         :type company_id: int
-        :param page: Page number. Defaults to 1.
+        :param page: Page number.
         :type page: int
-        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
+        :param page_size: Items per page. Cannot be greater than 200.
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
@@ -142,8 +142,8 @@ class WebhookApi:
     def webhook_get_with_http_info(
         self,
         company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
         description: Optional[StrictStr] = None,
         enabled: Optional[StrictBool] = None,
@@ -168,9 +168,9 @@ class WebhookApi:
 
         :param company_id: Company id
         :type company_id: int
-        :param page: Page number. Defaults to 1.
+        :param page: Page number.
         :type page: int
-        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
+        :param page_size: Items per page. Cannot be greater than 200.
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
@@ -239,8 +239,8 @@ class WebhookApi:
     def webhook_get_without_preload_content(
         self,
         company_id: Annotated[Optional[StrictInt], Field(description="Company id")] = None,
-        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
         description: Optional[StrictStr] = None,
         enabled: Optional[StrictBool] = None,
@@ -265,9 +265,9 @@ class WebhookApi:
 
         :param company_id: Company id
         :type company_id: int
-        :param page: Page number. Defaults to 1.
+        :param page: Page number.
         :type page: int
-        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
+        :param page_size: Items per page. Cannot be greater than 200.
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
@@ -1526,8 +1526,8 @@ class WebhookApi:
     @validate_call
     def webhookhistory_get(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
         webhook_id: Annotated[Optional[StrictInt], Field(description="WebHook id")] = None,
         _request_timeout: Union[
@@ -1547,9 +1547,9 @@ class WebhookApi:
 
         Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 in both the live and sandbox environments.
 
-        :param page: Page number. Defaults to 1.
+        :param page: Page number.
         :type page: int
-        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
+        :param page_size: Items per page. Cannot be greater than 200.
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
@@ -1607,8 +1607,8 @@ class WebhookApi:
     @validate_call
     def webhookhistory_get_with_http_info(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
         webhook_id: Annotated[Optional[StrictInt], Field(description="WebHook id")] = None,
         _request_timeout: Union[
@@ -1628,9 +1628,9 @@ class WebhookApi:
 
         Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 in both the live and sandbox environments.
 
-        :param page: Page number. Defaults to 1.
+        :param page: Page number.
         :type page: int
-        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
+        :param page_size: Items per page. Cannot be greater than 200.
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
@@ -1688,8 +1688,8 @@ class WebhookApi:
     @validate_call
     def webhookhistory_get_without_preload_content(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
         webhook_id: Annotated[Optional[StrictInt], Field(description="WebHook id")] = None,
         _request_timeout: Union[
@@ -1709,9 +1709,9 @@ class WebhookApi:
 
         Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 in both the live and sandbox environments.
 
-        :param page: Page number. Defaults to 1.
+        :param page: Page number.
         :type page: int
-        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
+        :param page_size: Items per page. Cannot be greater than 200.
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str

@@ -49,8 +49,8 @@ configuration = invoicetronic_sdk.Configuration(
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_sdk.CompanyApi(api_client)
-    page = 1 # int | Page number. Defaults to 1. (optional) (default to 1)
-    page_size = 100 # int | Items per page. Defaults to 50. Cannot be greater than 200. (optional) (default to 100)
+    page = 1 # int | Page number. (optional) (default to 1)
+    page_size = 100 # int | Items per page. Cannot be greater than 200. (optional) (default to 100)
     sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)
 
     try:
@@ -69,8 +69,8 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1]
- **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100]
+ **page** | **int**| Page number. | [optional] [default to 1]
+ **page_size** | **int**| Items per page. Cannot be greater than 200. | [optional] [default to 100]
  **sort** | **str**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] 
 
 ### Return type

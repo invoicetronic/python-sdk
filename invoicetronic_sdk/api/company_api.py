@@ -43,8 +43,8 @@ class CompanyApi:
     @validate_call
     def company_get(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
         _request_timeout: Union[
             None,
@@ -63,9 +63,9 @@ class CompanyApi:
 
         Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
 
-        :param page: Page number. Defaults to 1.
+        :param page: Page number.
         :type page: int
-        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
+        :param page_size: Items per page. Cannot be greater than 200.
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
@@ -120,8 +120,8 @@ class CompanyApi:
     @validate_call
     def company_get_with_http_info(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
         _request_timeout: Union[
             None,
@@ -140,9 +140,9 @@ class CompanyApi:
 
         Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
 
-        :param page: Page number. Defaults to 1.
+        :param page: Page number.
         :type page: int
-        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
+        :param page_size: Items per page. Cannot be greater than 200.
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
@@ -197,8 +197,8 @@ class CompanyApi:
     @validate_call
     def company_get_without_preload_content(
         self,
-        page: Annotated[Optional[StrictInt], Field(description="Page number. Defaults to 1.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Defaults to 50. Cannot be greater than 200.")] = None,
+        page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
+        page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
         _request_timeout: Union[
             None,
@@ -217,9 +217,9 @@ class CompanyApi:
 
         Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
 
-        :param page: Page number. Defaults to 1.
+        :param page: Page number.
         :type page: int
-        :param page_size: Items per page. Defaults to 50. Cannot be greater than 200.
+        :param page_size: Items per page. Cannot be greater than 200.
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
