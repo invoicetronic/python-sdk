@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **receive_id_get**
-> Receive receive_id_get(id)
+> Receive receive_id_get(id, include_payload=include_payload)
 
 Get an incoming invoice by id
 
@@ -243,10 +243,11 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_sdk.ReceiveApi(api_client)
     id = 56 # int | Item id
+    include_payload = False # bool |  (optional) (default to False)
 
     try:
         # Get an incoming invoice by id
-        api_response = api_instance.receive_id_get(id)
+        api_response = api_instance.receive_id_get(id, include_payload=include_payload)
         print("The response of ReceiveApi->receive_id_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -261,6 +262,7 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Item id | 
+ **include_payload** | **bool**|  | [optional] [default to False]
 
 ### Return type
 

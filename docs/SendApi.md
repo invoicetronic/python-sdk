@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**send_file_post**](SendApi.md#send_file_post) | **POST** /send/file | Add an invoice by file
 [**send_get**](SendApi.md#send_get) | **GET** /send | List invoices
 [**send_id_get**](SendApi.md#send_id_get) | **GET** /send/{id} | Get a invoice by id
+[**send_identifier_get**](SendApi.md#send_identifier_get) | **GET** /send/{identifier} | Get a invoice by identifier
 [**send_json_post**](SendApi.md#send_json_post) | **POST** /send/json | Add an invoice by json
 [**send_post**](SendApi.md#send_post) | **POST** /send | Add an invoice
 [**send_validate_file_post**](SendApi.md#send_validate_file_post) | **POST** /send/validate/file | Validate an invoice file
@@ -213,7 +214,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_id_get**
-> Send send_id_get(id)
+> Send send_id_get(id, include_payload=include_payload)
 
 Get a invoice by id
 
@@ -251,10 +252,11 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_sdk.SendApi(api_client)
     id = 56 # int | Item id
+    include_payload = False # bool |  (optional) (default to False)
 
     try:
         # Get a invoice by id
-        api_response = api_instance.send_id_get(id)
+        api_response = api_instance.send_id_get(id, include_payload=include_payload)
         print("The response of SendApi->send_id_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -269,6 +271,7 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Item id | 
+ **include_payload** | **bool**|  | [optional] [default to False]
 
 ### Return type
 
@@ -289,6 +292,89 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **send_identifier_get**
+> Send send_identifier_get(identifier, include_payload=include_payload)
+
+Get a invoice by identifier
+
+Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
+
+### Example
+
+* Basic Authentication (Basic):
+
+```python
+import invoicetronic_sdk
+from invoicetronic_sdk.models.send import Send
+from invoicetronic_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.invoicetronic.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = invoicetronic_sdk.Configuration(
+    host = "https://api.invoicetronic.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = invoicetronic_sdk.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
+
+# Enter a context with an instance of the API client
+with invoicetronic_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = invoicetronic_sdk.SendApi(api_client)
+    identifier = 'identifier_example' # str | 
+    include_payload = False # bool |  (optional) (default to False)
+
+    try:
+        # Get a invoice by identifier
+        api_response = api_instance.send_identifier_get(identifier, include_payload=include_payload)
+        print("The response of SendApi->send_identifier_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SendApi->send_identifier_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **str**|  | 
+ **include_payload** | **bool**|  | [optional] [default to False]
+
+### Return type
+
+[**Send**](Send.md)
+
+### Authorization
+
+[Basic](../README.md#Basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**400** | Bad Request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

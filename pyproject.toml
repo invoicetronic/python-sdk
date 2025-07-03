@@ -3,7 +3,7 @@ name = "invoicetronic_sdk"
 version = "1"
 description = "Invoicetronic API"
 authors = [
-  {name = "Invoicetronic",email = "support@invoicetronic.com"},
+  {name = "Invoicetronic",email = "info@invoicetronic.com"},
 ]
 license = "NoLicense"
 readme = "README.md"

@@ -117,6 +117,7 @@ Class | Method | HTTP request | Description
 *SendApi* | [**send_file_post**](docs/SendApi.md#send_file_post) | **POST** /send/file | Add an invoice by file
 *SendApi* | [**send_get**](docs/SendApi.md#send_get) | **GET** /send | List invoices
 *SendApi* | [**send_id_get**](docs/SendApi.md#send_id_get) | **GET** /send/{id} | Get a invoice by id
+*SendApi* | [**send_identifier_get**](docs/SendApi.md#send_identifier_get) | **GET** /send/{identifier} | Get a invoice by identifier
 *SendApi* | [**send_json_post**](docs/SendApi.md#send_json_post) | **POST** /send/json | Add an invoice by json
 *SendApi* | [**send_post**](docs/SendApi.md#send_post) | **POST** /send | Add an invoice
 *SendApi* | [**send_validate_file_post**](docs/SendApi.md#send_validate_file_post) | **POST** /send/validate/file | Validate an invoice file
@@ -213,6 +214,6 @@ Authentication schemes defined for the API:
 
 ## Author
 
-support@invoicetronic.com
+info@invoicetronic.com
 
 
