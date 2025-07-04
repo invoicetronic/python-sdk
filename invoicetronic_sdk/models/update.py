@@ -51,8 +51,8 @@ class Update(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['Inviato', 'Consegnato', 'NonConsegnato', 'Scartato', 'AccettatoDalDestinatario', 'RifiutatoDalDestinatario', 'ImpossibilitaDiRecapito', 'DecorrenzaTermini', 'AttestazioneTrasmissioneFattura']):
-            raise ValueError("must be one of enum values ('Inviato', 'Consegnato', 'NonConsegnato', 'Scartato', 'AccettatoDalDestinatario', 'RifiutatoDalDestinatario', 'ImpossibilitaDiRecapito', 'DecorrenzaTermini', 'AttestazioneTrasmissioneFattura')")
+        if value not in set(['Inviato', 'Consegnato', 'NonConsegnato', 'Scartato', 'AccettatoDalDestinatario', 'RifiutatoDalDestinatario', 'ImpossibilitàDiRecapito', 'DecorrenzaTermini', 'AttestazioneTrasmissioneFattura']):
+            raise ValueError("must be one of enum values ('Inviato', 'Consegnato', 'NonConsegnato', 'Scartato', 'AccettatoDalDestinatario', 'RifiutatoDalDestinatario', 'ImpossibilitàDiRecapito', 'DecorrenzaTermini', 'AttestazioneTrasmissioneFattura')")
         return value
 
     model_config = ConfigDict(
