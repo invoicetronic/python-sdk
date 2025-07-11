@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **vat** | **str** | Vat number. Must include the country code. | 
 **fiscal_code** | **str** | Fiscal code. In most cases it&#39;s the same as the vat number. | 
 **name** | **str** | Name | 
-**counter** | **int** | Holds the last unique value used to generate a XML filename. This is automatically updated by the system   when a raw XML file is uploaded. Normally, you do not need or want to change this value. | [optional] 
 
 ## Example
 

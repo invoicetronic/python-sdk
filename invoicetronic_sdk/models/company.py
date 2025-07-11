@@ -36,8 +36,7 @@ class Company(BaseModel):
     vat: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Vat number. Must include the country code.")
     fiscal_code: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Fiscal code. In most cases it's the same as the vat number.")
     name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Name")
-    counter: Optional[StrictInt] = Field(default=None, description="Holds the last unique value used to generate a XML filename. This is automatically updated by the system   when a raw XML file is uploaded. Normally, you do not need or want to change this value.")
-    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "vat", "fiscal_code", "name", "counter"]
+    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "vat", "fiscal_code", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,8 +95,7 @@ class Company(BaseModel):
             "user_id": obj.get("user_id"),
             "vat": obj.get("vat"),
             "fiscal_code": obj.get("fiscal_code"),
-            "name": obj.get("name"),
-            "counter": obj.get("counter")
+            "name": obj.get("name")
         })
         return _obj
 

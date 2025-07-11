@@ -42,8 +42,7 @@ class TestCompany(unittest.TestCase):
                 user_id = 56,
                 vat = 'IT01234567891',
                 fiscal_code = 'RSSMRA70A01F205V',
-                name = 'Mario Rossi Srl',
-                counter = 56
+                name = 'Mario Rossi Srl'
             )
         else:
             return Company(

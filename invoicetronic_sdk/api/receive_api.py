@@ -910,7 +910,7 @@ class ReceiveApi:
     def receive_id_get(
         self,
         id: Annotated[StrictInt, Field(description="Item id")],
-        include_payload: Optional[StrictBool] = None,
+        include_payload: Annotated[Optional[StrictBool], Field(description="Include payload in the response. Defaults to false.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -930,7 +930,7 @@ class ReceiveApi:
 
         :param id: Item id (required)
         :type id: int
-        :param include_payload:
+        :param include_payload: Include payload in the response. Defaults to false.
         :type include_payload: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -982,7 +982,7 @@ class ReceiveApi:
     def receive_id_get_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="Item id")],
-        include_payload: Optional[StrictBool] = None,
+        include_payload: Annotated[Optional[StrictBool], Field(description="Include payload in the response. Defaults to false.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1002,7 +1002,7 @@ class ReceiveApi:
 
         :param id: Item id (required)
         :type id: int
-        :param include_payload:
+        :param include_payload: Include payload in the response. Defaults to false.
         :type include_payload: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1054,7 +1054,7 @@ class ReceiveApi:
     def receive_id_get_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="Item id")],
-        include_payload: Optional[StrictBool] = None,
+        include_payload: Annotated[Optional[StrictBool], Field(description="Include payload in the response. Defaults to false.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1074,7 +1074,7 @@ class ReceiveApi:
 
         :param id: Item id (required)
         :type id: int
-        :param include_payload:
+        :param include_payload: Include payload in the response. Defaults to false.
         :type include_payload: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1148,7 +1148,7 @@ class ReceiveApi:
         # process the query parameters
         if include_payload is not None:
             
-            _query_params.append(('includePayload', include_payload))
+            _query_params.append(('include_payload', include_payload))
             
         # process the header parameters
         # process the form parameters

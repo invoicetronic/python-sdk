@@ -252,7 +252,7 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_sdk.SendApi(api_client)
     id = 56 # int | Item id
-    include_payload = False # bool |  (optional) (default to False)
+    include_payload = False # bool | Include payload in the response. Defaults to false. (optional) (default to False)
 
     try:
         # Get a invoice by id
@@ -271,7 +271,7 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Item id | 
- **include_payload** | **bool**|  | [optional] [default to False]
+ **include_payload** | **bool**| Include payload in the response. Defaults to false. | [optional] [default to False]
 
 ### Return type
 
@@ -334,7 +334,7 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_sdk.SendApi(api_client)
     identifier = 'identifier_example' # str | 
-    include_payload = False # bool |  (optional) (default to False)
+    include_payload = False # bool | Include payload in the response. Defaults to false. (optional) (default to False)
 
     try:
         # Get a invoice by identifier
@@ -353,7 +353,7 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **str**|  | 
- **include_payload** | **bool**|  | [optional] [default to False]
+ **include_payload** | **bool**| Include payload in the response. Defaults to false. | [optional] [default to False]
 
 ### Return type
 
