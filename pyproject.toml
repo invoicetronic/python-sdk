@@ -1,11 +1,11 @@
 [project]
 name = "invoicetronic_sdk"
-version = "1.0.0"
+version = "main"
 description = "Invoicetronic API"
 authors = [
   {name = "Invoicetronic",email = "info@invoicetronic.com"},
 ]
-license = "NoLicense"
+license = "MIT"
 readme = "README.md"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Invoicetronic API"]
 requires-python = ">=3.9"
