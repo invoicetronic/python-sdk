@@ -37,7 +37,7 @@ setup(
     description="Invoicetronic API",
     author="Invoicetronic",
     author_email="info@invoicetronic.com",
-    url="",
+    url="https://invoicetronic.com",
     keywords=["OpenAPI", "OpenAPI-Generator", "Invoicetronic API"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
