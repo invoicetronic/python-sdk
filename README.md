@@ -22,6 +22,13 @@ Python 3.9+
 ## Installation & Usage
 ### pip install
 
+You can install our python package directly using:
+
+```sh
+pip install invoicetronic-sdk
+```
+(you may need to run `pip` with root permission: `sudo pip install invoicetronic-sdk`)
+
 If the python package is hosted on a repository, you can install directly using:
 
 ```sh
