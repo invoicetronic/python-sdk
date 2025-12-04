@@ -13,7 +13,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from invoicetronic_sdk.models.allegati import Allegati
 from invoicetronic_sdk.models.altri_dati_gestionali import AltriDatiGestionali
@@ -75,3 +74,4 @@ from invoicetronic_sdk.models.terzo_intermediario_o_soggetto_emittente import Te
 from invoicetronic_sdk.models.update import Update
 from invoicetronic_sdk.models.web_hook import WebHook
 from invoicetronic_sdk.models.web_hook_history import WebHookHistory
+

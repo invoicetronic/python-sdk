@@ -35,15 +35,16 @@ class Event(BaseModel):
     api_key_id: Optional[StrictInt] = Field(default=None, description="Api key id.")
     company_id: Optional[StrictInt] = Field(default=None, description="Company id.")
     method: Optional[StrictStr] = Field(default=None, description="Request method.")
-    query: Optional[StrictStr] = Field(default=None, description="Request query.")
     endpoint: Optional[StrictStr] = Field(default=None, description="API endpoint.")
     api_version: Optional[StrictInt] = Field(default=None, description="Api version.")
     status_code: Optional[StrictInt] = Field(default=None, description="Status code returned by the API.")
     date_time: Optional[datetime] = Field(default=None, description="Date and time of the request.")
     error: Optional[StrictStr] = Field(default=None, description="Response error.")
+    resource_id: Optional[StrictInt] = Field(default=None, description="ID of the resource created or modified by this request.")
     success: Optional[StrictBool] = Field(default=None, description="Wether the request was successful.")
+    query: Optional[StrictStr] = Field(default=None, description="Request query. Only used for internal logging, not sent to webhooks.")
     response_body: Optional[StrictStr] = Field(default=None, description="Response payload. It is guaranteed to be cyphered at rest.")
-    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "api_key_id", "company_id", "method", "query", "endpoint", "api_version", "status_code", "date_time", "error", "success", "response_body"]
+    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "api_key_id", "company_id", "method", "endpoint", "api_version", "status_code", "date_time", "error", "resource_id", "success", "query", "response_body"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,11 +97,6 @@ class Event(BaseModel):
         if self.method is None and "method" in self.model_fields_set:
             _dict['method'] = None
 
-        # set to None if query (nullable) is None
-        # and model_fields_set contains the field
-        if self.query is None and "query" in self.model_fields_set:
-            _dict['query'] = None
-
         # set to None if endpoint (nullable) is None
         # and model_fields_set contains the field
         if self.endpoint is None and "endpoint" in self.model_fields_set:
@@ -110,6 +106,16 @@ class Event(BaseModel):
         # and model_fields_set contains the field
         if self.error is None and "error" in self.model_fields_set:
             _dict['error'] = None
+
+        # set to None if resource_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.resource_id is None and "resource_id" in self.model_fields_set:
+            _dict['resource_id'] = None
+
+        # set to None if query (nullable) is None
+        # and model_fields_set contains the field
+        if self.query is None and "query" in self.model_fields_set:
+            _dict['query'] = None
 
         # set to None if response_body (nullable) is None
         # and model_fields_set contains the field
@@ -135,13 +141,14 @@ class Event(BaseModel):
             "api_key_id": obj.get("api_key_id"),
             "company_id": obj.get("company_id"),
             "method": obj.get("method"),
-            "query": obj.get("query"),
             "endpoint": obj.get("endpoint"),
             "api_version": obj.get("api_version"),
             "status_code": obj.get("status_code"),
             "date_time": obj.get("date_time"),
             "error": obj.get("error"),
+            "resource_id": obj.get("resource_id"),
             "success": obj.get("success"),
+            "query": obj.get("query"),
             "response_body": obj.get("response_body")
         })
         return _obj

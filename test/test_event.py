@@ -43,13 +43,14 @@ class TestEvent(unittest.TestCase):
                 api_key_id = 56,
                 company_id = 56,
                 method = '',
-                query = '',
                 endpoint = '',
                 api_version = 56,
                 status_code = 56,
                 date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 error = '',
+                resource_id = 56,
                 success = True,
+                query = '',
                 response_body = ''
             )
         else:

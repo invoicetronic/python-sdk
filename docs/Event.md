@@ -12,13 +12,14 @@ Name | Type | Description | Notes
 **api_key_id** | **int** | Api key id. | [optional] 
 **company_id** | **int** | Company id. | [optional] 
 **method** | **str** | Request method. | [optional] 
-**query** | **str** | Request query. | [optional] 
 **endpoint** | **str** | API endpoint. | [optional] 
 **api_version** | **int** | Api version. | [optional] 
 **status_code** | **int** | Status code returned by the API. | [optional] 
 **date_time** | **datetime** | Date and time of the request. | [optional] 
 **error** | **str** | Response error. | [optional] 
+**resource_id** | **int** | ID of the resource created or modified by this request. | [optional] 
 **success** | **bool** | Wether the request was successful. | [optional] [readonly] 
+**query** | **str** | Request query. Only used for internal logging, not sent to webhooks. | [optional] 
 **response_body** | **str** | Response payload. It is guaranteed to be cyphered at rest. | [optional] 
 
 ## Example

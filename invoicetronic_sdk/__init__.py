@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.0.1"
+__version__ = "1.1"
 
 # Define package exports
 __all__ = [
@@ -178,3 +178,4 @@ from invoicetronic_sdk.models.terzo_intermediario_o_soggetto_emittente import Te
 from invoicetronic_sdk.models.update import Update as Update
 from invoicetronic_sdk.models.web_hook import WebHook as WebHook
 from invoicetronic_sdk.models.web_hook_history import WebHookHistory as WebHookHistory
+
