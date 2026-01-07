@@ -1,6 +1,6 @@
 [project]
 name = "invoicetronic_sdk"
-version = "1.1.6"
+version = "1.1.7"
 description = "Invoicetronic API"
 authors = [
   {name = "Invoicetronic",email = "info@invoicetronic.com"},
