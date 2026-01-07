@@ -21,6 +21,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -34,8 +35,8 @@ class Event(BaseModel):
     user_id: Optional[StrictInt] = Field(default=None, description="User id.")
     api_key_id: Optional[StrictInt] = Field(default=None, description="Api key id.")
     company_id: Optional[StrictInt] = Field(default=None, description="Company id.")
-    method: Optional[StrictStr] = Field(default=None, description="Request method.")
-    endpoint: Optional[StrictStr] = Field(default=None, description="API endpoint.")
+    method: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Request method.")
+    endpoint: Annotated[str, Field(min_length=1, strict=True)] = Field(description="API endpoint.")
     api_version: Optional[StrictInt] = Field(default=None, description="Api version.")
     status_code: Optional[StrictInt] = Field(default=None, description="Status code returned by the API.")
     date_time: Optional[datetime] = Field(default=None, description="Date and time of the request.")
@@ -91,16 +92,6 @@ class Event(BaseModel):
         # and model_fields_set contains the field
         if self.company_id is None and "company_id" in self.model_fields_set:
             _dict['company_id'] = None
-
-        # set to None if method (nullable) is None
-        # and model_fields_set contains the field
-        if self.method is None and "method" in self.model_fields_set:
-            _dict['method'] = None
-
-        # set to None if endpoint (nullable) is None
-        # and model_fields_set contains the field
-        if self.endpoint is None and "endpoint" in self.model_fields_set:
-            _dict['endpoint'] = None
 
         # set to None if error (nullable) is None
         # and model_fields_set contains the field

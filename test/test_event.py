@@ -42,8 +42,8 @@ class TestEvent(unittest.TestCase):
                 user_id = 56,
                 api_key_id = 56,
                 company_id = 56,
-                method = '',
-                endpoint = '',
+                method = '0',
+                endpoint = '0',
                 api_version = 56,
                 status_code = 56,
                 date_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
@@ -55,6 +55,8 @@ class TestEvent(unittest.TestCase):
             )
         else:
             return Event(
+                method = '0',
+                endpoint = '0',
         )
         """
 

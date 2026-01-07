@@ -46,7 +46,7 @@ class TestSend(unittest.TestCase):
                 identifier = '',
                 file_name = '',
                 format = '',
-                payload = '',
+                payload = '0',
                 last_update = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 date_sent = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
                 documents = [
@@ -69,6 +69,7 @@ class TestSend(unittest.TestCase):
             )
         else:
             return Send(
+                payload = '0',
         )
         """
 

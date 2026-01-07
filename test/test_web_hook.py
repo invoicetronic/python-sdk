@@ -41,7 +41,7 @@ class TestWebHook(unittest.TestCase):
                 version = 56,
                 user_id = 56,
                 company_id = 56,
-                url = '',
+                url = '0',
                 enabled = True,
                 secret = '',
                 description = '',
@@ -51,6 +51,7 @@ class TestWebHook(unittest.TestCase):
             )
         else:
             return WebHook(
+                url = '0',
         )
         """
 

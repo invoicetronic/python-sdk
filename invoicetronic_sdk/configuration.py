@@ -165,7 +165,7 @@ class Configuration:
     :param ca_cert_data: verify the peer using concatenated CA certificate data
       in PEM (str) or DER (bytes) format.
     :param cert_file: the path to a client certificate file, for mTLS.
-    :param key_file: the path to a client key file, for mTLS. 
+    :param key_file: the path to a client key file, for mTLS.
 
     :Example:
 
@@ -503,6 +503,7 @@ conf = invoicetronic_sdk.Configuration(
         password = ""
         if self.password is not None:
             password = self.password
+
         return urllib3.util.make_headers(
             basic_auth=username + ':' + password
         ).get('authorization')
@@ -531,7 +532,7 @@ conf = invoicetronic_sdk.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1\n"\
-               "SDK Package Version: 1.1".\
+               "SDK Package Version: 1.1.1".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self) -> List[HostSetting]:
@@ -579,6 +580,7 @@ conf = invoicetronic_sdk.Configuration(
                 variable_name, variable['default_value'])
 
             if 'enum_values' in variable \
+                    and variable['enum_values'] \
                     and used_value not in variable['enum_values']:
                 raise ValueError(
                     "The variable `{0}` in the host URL has invalid value "

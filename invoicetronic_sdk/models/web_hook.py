@@ -21,6 +21,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -33,7 +34,7 @@ class WebHook(BaseModel):
     version: Optional[StrictInt] = Field(default=None, description="Row version, for optimistic concurrency. It is set automatically.")
     user_id: Optional[StrictInt] = Field(default=None, description="User id.")
     company_id: Optional[StrictInt] = Field(default=None, description="Company id.")
-    url: Optional[StrictStr] = Field(default=None, description="The url of your application's endpoint that will receive a POST request when the webhook is fired.")
+    url: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The url of your application's endpoint that will receive a POST request when the webhook is fired.")
     enabled: Optional[StrictBool] = Field(default=None, description="Wether the webhook is enabled. On creation, this is set to `true`.")
     secret: Optional[StrictStr] = Field(default=None, description="The secret used to generate webhook signatures, only returned on creation. You should store this value securely and validate it on every call, to ensure that the caller is InvoicetronicApi.")
     description: Optional[StrictStr] = Field(default=None, description="An optional description.")
@@ -83,11 +84,6 @@ class WebHook(BaseModel):
         # and model_fields_set contains the field
         if self.company_id is None and "company_id" in self.model_fields_set:
             _dict['company_id'] = None
-
-        # set to None if url (nullable) is None
-        # and model_fields_set contains the field
-        if self.url is None and "url" in self.model_fields_set:
-            _dict['url'] = None
 
         # set to None if secret (nullable) is None
         # and model_fields_set contains the field

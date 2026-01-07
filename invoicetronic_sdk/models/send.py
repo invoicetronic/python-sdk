@@ -21,6 +21,7 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from invoicetronic_sdk.models.company import Company
 from invoicetronic_sdk.models.document_data import DocumentData
 from typing import Optional, Set
@@ -40,7 +41,7 @@ class Send(BaseModel):
     identifier: Optional[StrictStr] = Field(default=None, description="SDI identifier. This is set by the SDI and is guaranted to be unique within the SDI system.")
     file_name: Optional[StrictStr] = Field(default=None, description="Xml file name.")
     format: Optional[StrictStr] = Field(default=None, description="SDI format (FPA12, FPR12, FSM10, ...)")
-    payload: Optional[StrictStr] = Field(default=None, description="Xml payloaad. This is the actual xml content, as string. On send, it can be base64 encoded. If it's not, it will be encoded before sending. It is guaranteed to be cyphered at rest.")
+    payload: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Xml payloaad. This is the actual xml content, as string. On send, it can be base64 encoded. If it's not, it will be encoded before sending. It is guaranteed to be cyphered at rest.")
     last_update: Optional[datetime] = Field(default=None, description="Last update from SDI.")
     date_sent: Optional[datetime] = Field(default=None, description="When the invoice was sent to SDI.")
     documents: Optional[List[DocumentData]] = Field(default=None, description="The invoices included in the payload. This is set by the system, based on the xml content.")
@@ -132,11 +133,6 @@ class Send(BaseModel):
         # and model_fields_set contains the field
         if self.format is None and "format" in self.model_fields_set:
             _dict['format'] = None
-
-        # set to None if payload (nullable) is None
-        # and model_fields_set contains the field
-        if self.payload is None and "payload" in self.model_fields_set:
-            _dict['payload'] = None
 
         # set to None if last_update (nullable) is None
         # and model_fields_set contains the field
