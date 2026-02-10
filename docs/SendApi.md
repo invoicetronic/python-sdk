@@ -22,7 +22,11 @@ Method | HTTP request | Description
 
 Add an invoice by file
 
-Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
+Add a new invoice by uploading a file. Supported formats are XML (FatturaPA) and P7M (signed). The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.
+
+**Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
+
+You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
 
 ### Example
 
@@ -107,7 +111,9 @@ Name | Type | Description  | Notes
 
 List invoices
 
-test **markdown**.
+Retrieve a paginated list of send invoices. Results can be filtered by various criteria such as company, date ranges, and document number. Returns invoice metadata; set `include_payload` to true to include the full invoice content.
+
+**Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
 ### Example
 
@@ -218,7 +224,9 @@ Name | Type | Description  | Notes
 
 Get a invoice by id
 
-Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
+Retrieve a send invoice by its internal id. The `id` is unique and assigned by the system when the invoice is created. Returns invoice metadata; set `include_payload` to true to include the full invoice content.
+
+**Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
 ### Example
 
@@ -300,7 +308,9 @@ Name | Type | Description  | Notes
 
 Get a invoice by identifier
 
-Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
+Retrieve a send invoice by its SDI identifier. The `identifier` is assigned by the SDI and becomes available after the invoice has been accepted. Returns invoice metadata; set `include_payload` to true to include the full invoice content.
+
+**Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
 ### Example
 
@@ -383,7 +393,11 @@ Name | Type | Description  | Notes
 
 Add an invoice by json
 
-Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
+Add a new invoice using a FatturaPA JSON representation. The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.
+
+**Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
+
+You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
 
 ### Example
 
@@ -469,7 +483,11 @@ Name | Type | Description  | Notes
 
 Add an invoice
 
-Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
+Add a new invoice using a structured Send object. The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.
+
+**Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
+
+You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
 
 ### Example
 
@@ -554,7 +572,9 @@ Name | Type | Description  | Notes
 
 Validate an invoice file
 
-Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
+Validate an invoice file without sending it to SDI. Supported formats are XML (FatturaPA) and P7M (signed). Use this to check for errors before actual submission. Returns validation results with any errors found.
+
+**Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
 ### Example
 
@@ -632,7 +652,9 @@ void (empty response body)
 
 Validate an invoice by json
 
-Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
+Validate a JSON invoice without sending it to SDI. Use this to check for errors before actual submission. Returns validation results with any errors found.
+
+**Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
 ### Example
 
@@ -711,7 +733,9 @@ void (empty response body)
 
 Validate an invoice
 
-Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
+Validate an invoice without sending it to SDI. Use this to check for errors before actual submission. Returns validation results with any errors found.
+
+**Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
 ### Example
 
@@ -790,7 +814,9 @@ void (empty response body)
 
 Validate an invoice by xml
 
-Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
+Validate an XML invoice document without sending it to SDI. Use this to check for errors before actual submission. Returns validation results with any errors found.
+
+**Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
 ### Example
 
@@ -869,7 +895,11 @@ void (empty response body)
 
 Add an invoice by xml
 
-Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
+Add a new invoice using a raw XML document in FatturaPA format. The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.
+
+**Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
+
+You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
 
 ### Example
 

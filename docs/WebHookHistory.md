@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **event** | **str** | Event name. | [optional] 
 **status_code** | **int** | Status code. | [optional] 
 **date_time** | **datetime** | Date and time of the request. | [optional] 
-**success** | **bool** | Wether the request was successful. | [optional] [readonly] 
+**success** | **bool** | Whether the request was successful. | [optional] [readonly] 
 
 ## Example
 

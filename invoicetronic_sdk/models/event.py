@@ -42,9 +42,9 @@ class Event(BaseModel):
     date_time: Optional[datetime] = Field(default=None, description="Date and time of the request.")
     error: Optional[StrictStr] = Field(default=None, description="Response error.")
     resource_id: Optional[StrictInt] = Field(default=None, description="ID of the resource created or modified by this request.")
-    success: Optional[StrictBool] = Field(default=None, description="Wether the request was successful.")
+    success: Optional[StrictBool] = Field(default=None, description="Whether the request was successful.")
     query: Optional[StrictStr] = Field(default=None, description="Request query. Only used for internal logging, not sent to webhooks.")
-    response_body: Optional[StrictStr] = Field(default=None, description="Response payload. It is guaranteed to be cyphered at rest.")
+    response_body: Optional[StrictStr] = Field(default=None, description="Response payload. It is guaranteed to be encrypted at rest.")
     __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "api_key_id", "company_id", "method", "endpoint", "api_version", "status_code", "date_time", "error", "resource_id", "success", "query", "response_body"]
 
     model_config = ConfigDict(

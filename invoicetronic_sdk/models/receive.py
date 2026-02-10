@@ -37,15 +37,15 @@ class Receive(BaseModel):
     company_id: Optional[StrictInt] = Field(default=None, description="Company id. On send, this is the sender and must be set in advance. On receive, it will be  automatically set based on the recipient's VAT number. If a matching company is not found, the invoice will be rejected until the company is created.")
     committente: Optional[StrictStr] = Field(default=None, description="VAT number of the Cessionario/Committente (customer). This is automatically set based on the recipient's VAT number.")
     prestatore: Optional[StrictStr] = Field(default=None, description="VAT number of the Cedente/Prestatore (vendor). This is automatically set based on the sender's VAT number.")
-    identifier: Optional[StrictStr] = Field(default=None, description="SDI identifier. This is set by the SDI and is guaranted to be unique within the SDI system.")
+    identifier: Optional[StrictStr] = Field(default=None, description="SDI identifier. This is set by the SDI and is guaranteed to be unique within the SDI system.")
     file_name: Optional[StrictStr] = Field(default=None, description="Xml file name.")
     format: Optional[StrictStr] = Field(default=None, description="SDI format (FPA12, FPR12, FSM10, ...)")
-    payload: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Xml payloaad. This is the actual xml content, as string. On send, it can be base64 encoded. If it's not, it will be encoded before sending. It is guaranteed to be cyphered at rest.")
+    payload: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Xml payload. This is the actual xml content, as string. On send, it can be base64 encoded. If it's not, it will be encoded before sending. It is guaranteed to be encrypted at rest.")
     last_update: Optional[datetime] = Field(default=None, description="Last update from SDI.")
     date_sent: Optional[datetime] = Field(default=None, description="When the invoice was sent to SDI.")
     documents: Optional[List[DocumentData]] = Field(default=None, description="The invoices included in the payload. This is set by the system, based on the xml content.")
     encoding: Optional[StrictStr] = Field(default=None, description="Whether the payload is Base64 encoded or a plain XML (text).")
-    is_read: Optional[StrictBool] = Field(default=None, description="Wether the invoice has been read at least once.")
+    is_read: Optional[StrictBool] = Field(default=None, description="Whether the invoice has been read at least once. Set to true only when the invoice is requested with include_payload=true.")
     message_id: Optional[StrictStr] = Field(default=None, description="SDI message id.")
     __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "committente", "prestatore", "identifier", "file_name", "format", "payload", "last_update", "date_sent", "documents", "encoding", "is_read", "message_id"]
 

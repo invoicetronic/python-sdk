@@ -37,11 +37,11 @@ class Update(BaseModel):
     company_id: Optional[StrictInt] = Field(default=None, description="Company id.")
     send_id: Optional[StrictInt] = Field(default=None, description="Send id. This is the id of the sent invoice to which this update refers to.")
     last_update: Optional[datetime] = Field(default=None, description="Last update from SDI.")
-    state: Optional[StrictStr] = Field(default=None, description="State of the document. Theses are the possible values, as per the SDI documentation:")
+    state: Optional[StrictStr] = Field(default=None, description="State of the document. These are the possible values, as per the SDI documentation:")
     description: Optional[StrictStr] = Field(default=None, description="Description for the state.")
     message_id: Optional[StrictStr] = Field(default=None, description="SDI message id.")
     errors: Optional[List[Error]] = Field(default=None, description="SDI errors, if any.")
-    is_read: Optional[StrictBool] = Field(default=None, description="Wether the item has been read at least once.")
+    is_read: Optional[StrictBool] = Field(default=None, description="Whether the item has been read at least once.")
     send: Optional[SendReduced] = None
     __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "send_id", "last_update", "state", "description", "message_id", "errors", "is_read", "send"]
 

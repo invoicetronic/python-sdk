@@ -35,10 +35,10 @@ class WebHook(BaseModel):
     user_id: Optional[StrictInt] = Field(default=None, description="User id.")
     company_id: Optional[StrictInt] = Field(default=None, description="Company id.")
     url: Annotated[str, Field(min_length=1, strict=True)] = Field(description="The url of your application's endpoint that will receive a POST request when the webhook is fired.")
-    enabled: Optional[StrictBool] = Field(default=None, description="Wether the webhook is enabled. On creation, this is set to `true`.")
+    enabled: Optional[StrictBool] = Field(default=None, description="Whether the webhook is enabled. On creation, this is set to `true`.")
     secret: Optional[StrictStr] = Field(default=None, description="The secret used to generate webhook signatures, only returned on creation. You should store this value securely and validate it on every call, to ensure that the caller is InvoicetronicApi.")
     description: Optional[StrictStr] = Field(default=None, description="An optional description.")
-    events: Optional[List[StrictStr]] = Field(default=None, description="List of events to that trigger the webhook.  See Invoicetronic.SupportedEvents.Available for a list of valid event names.")
+    events: Optional[List[StrictStr]] = Field(default=None, description="List of events that trigger the webhook.  See Invoicetronic.SupportedEvents.Available for a list of valid event names.")
     __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "url", "enabled", "secret", "description", "events"]
 
     model_config = ConfigDict(

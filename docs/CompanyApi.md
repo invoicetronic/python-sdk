@@ -16,7 +16,9 @@ Method | HTTP request | Description
 
 List companies
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+Retrieve a paginated list of companies.
+
+**Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
 ### Example
 
@@ -97,11 +99,17 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **company_id_delete**
-> Company company_id_delete(id)
+> Company company_id_delete(id, force=force)
 
 Delete a company
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+Delete a company by its internal id.
+
+**Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
+
+**Warning:** Deleting a company will permanently remove all associated data, including sent invoices, received invoices, invoice updates from SDI, logs, and webhooks.
+
+If the company has any linked invoices, you must explicitly confirm deletion by adding `?force=true` to the request. Without this parameter, the API will return `409 Conflict` with details about the linked data.
 
 ### Example
 
@@ -135,10 +143,11 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_sdk.CompanyApi(api_client)
     id = 56 # int | Item id
+    force = False # bool | Force delete including all related data. (optional) (default to False)
 
     try:
         # Delete a company
-        api_response = api_instance.company_id_delete(id)
+        api_response = api_instance.company_id_delete(id, force=force)
         print("The response of CompanyApi->company_id_delete:\n")
         pprint(api_response)
     except Exception as e:
@@ -153,6 +162,7 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Item id | 
+ **force** | **bool**| Force delete including all related data. | [optional] [default to False]
 
 ### Return type
 
@@ -174,6 +184,7 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **422** | Unprocessable Content |  -  |
 **400** | Bad Request |  -  |
+**409** | Conflict |  -  |
 **404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -183,7 +194,9 @@ Name | Type | Description  | Notes
 
 Get a company by id
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+Retrieve a company by its internal id.
+
+**Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
 ### Example
 
@@ -263,7 +276,9 @@ Name | Type | Description  | Notes
 
 Add a company
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+Add a new company.
+
+**Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
 ### Example
 
@@ -344,7 +359,9 @@ Name | Type | Description  | Notes
 
 Update a company
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+Update an existing company.
+
+**Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
 ### Example
 

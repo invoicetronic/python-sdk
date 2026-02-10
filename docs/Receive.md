@@ -12,15 +12,15 @@ Name | Type | Description | Notes
 **company_id** | **int** | Company id. On send, this is the sender and must be set in advance. On receive, it will be  automatically set based on the recipient&#39;s VAT number. If a matching company is not found, the invoice will be rejected until the company is created. | [optional] 
 **committente** | **str** | VAT number of the Cessionario/Committente (customer). This is automatically set based on the recipient&#39;s VAT number. | [optional] 
 **prestatore** | **str** | VAT number of the Cedente/Prestatore (vendor). This is automatically set based on the sender&#39;s VAT number. | [optional] 
-**identifier** | **str** | SDI identifier. This is set by the SDI and is guaranted to be unique within the SDI system. | [optional] 
+**identifier** | **str** | SDI identifier. This is set by the SDI and is guaranteed to be unique within the SDI system. | [optional] 
 **file_name** | **str** | Xml file name. | [optional] 
 **format** | **str** | SDI format (FPA12, FPR12, FSM10, ...) | [optional] 
-**payload** | **str** | Xml payloaad. This is the actual xml content, as string. On send, it can be base64 encoded. If it&#39;s not, it will be encoded before sending. It is guaranteed to be cyphered at rest. | 
+**payload** | **str** | Xml payload. This is the actual xml content, as string. On send, it can be base64 encoded. If it&#39;s not, it will be encoded before sending. It is guaranteed to be encrypted at rest. | 
 **last_update** | **datetime** | Last update from SDI. | [optional] 
 **date_sent** | **datetime** | When the invoice was sent to SDI. | [optional] 
 **documents** | [**List[DocumentData]**](DocumentData.md) | The invoices included in the payload. This is set by the system, based on the xml content. | [optional] 
 **encoding** | **str** | Whether the payload is Base64 encoded or a plain XML (text). | [optional] 
-**is_read** | **bool** | Wether the invoice has been read at least once. | [optional] 
+**is_read** | **bool** | Whether the invoice has been read at least once. Set to true only when the invoice is requested with include_payload&#x3D;true. | [optional] 
 **message_id** | **str** | SDI message id. | [optional] 
 
 ## Example

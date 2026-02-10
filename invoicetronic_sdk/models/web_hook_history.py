@@ -36,7 +36,7 @@ class WebHookHistory(BaseModel):
     event: Optional[StrictStr] = Field(default=None, description="Event name.")
     status_code: Optional[StrictInt] = Field(default=None, description="Status code.")
     date_time: Optional[datetime] = Field(default=None, description="Date and time of the request.")
-    success: Optional[StrictBool] = Field(default=None, description="Wether the request was successful.")
+    success: Optional[StrictBool] = Field(default=None, description="Whether the request was successful.")
     __properties: ClassVar[List[str]] = ["id", "created", "version", "web_hook_id", "user_id", "event", "status_code", "date_time", "success"]
 
     model_config = ConfigDict(

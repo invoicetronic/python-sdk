@@ -18,9 +18,9 @@ Name | Type | Description | Notes
 **date_time** | **datetime** | Date and time of the request. | [optional] 
 **error** | **str** | Response error. | [optional] 
 **resource_id** | **int** | ID of the resource created or modified by this request. | [optional] 
-**success** | **bool** | Wether the request was successful. | [optional] [readonly] 
+**success** | **bool** | Whether the request was successful. | [optional] [readonly] 
 **query** | **str** | Request query. Only used for internal logging, not sent to webhooks. | [optional] 
-**response_body** | **str** | Response payload. It is guaranteed to be cyphered at rest. | [optional] 
+**response_body** | **str** | Response payload. It is guaranteed to be encrypted at rest. | [optional] 
 
 ## Example
 

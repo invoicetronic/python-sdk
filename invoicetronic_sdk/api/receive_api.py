@@ -76,7 +76,7 @@ class ReceiveApi:
     ) -> List[Receive]:
         """List incoming invoices
 
-        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
+        Retrieve a paginated list of receive invoices. Results can be filtered by various criteria such as company, date ranges, sender, and document number. Returns invoice metadata; set `include_payload` to true to include the full invoice content. Invoices are marked as read (`is_read` = true) only when `include_payload` is true.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
         :param company_id: Company id
         :type company_id: int
@@ -209,7 +209,7 @@ class ReceiveApi:
     ) -> ApiResponse[List[Receive]]:
         """List incoming invoices
 
-        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
+        Retrieve a paginated list of receive invoices. Results can be filtered by various criteria such as company, date ranges, sender, and document number. Returns invoice metadata; set `include_payload` to true to include the full invoice content. Invoices are marked as read (`is_read` = true) only when `include_payload` is true.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
         :param company_id: Company id
         :type company_id: int
@@ -342,7 +342,7 @@ class ReceiveApi:
     ) -> RESTResponseType:
         """List incoming invoices
 
-        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
+        Retrieve a paginated list of receive invoices. Results can be filtered by various criteria such as company, date ranges, sender, and document number. Returns invoice metadata; set `include_payload` to true to include the full invoice content. Invoices are marked as read (`is_read` = true) only when `include_payload` is true.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
         :param company_id: Company id
         :type company_id: int
@@ -655,7 +655,7 @@ class ReceiveApi:
     ) -> Receive:
         """Delete an incoming invoice by id
 
-        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
+        Permanently delete a receive invoice by its internal id. This action cannot be undone.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
         :param id: Item id (required)
         :type id: int
@@ -693,6 +693,7 @@ class ReceiveApi:
             '200': "Receive",
             '422': "ProblemHttpResult",
             '400': "ProblemHttpResult",
+            '409': "ProblemHttpResult",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -725,7 +726,7 @@ class ReceiveApi:
     ) -> ApiResponse[Receive]:
         """Delete an incoming invoice by id
 
-        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
+        Permanently delete a receive invoice by its internal id. This action cannot be undone.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
         :param id: Item id (required)
         :type id: int
@@ -763,6 +764,7 @@ class ReceiveApi:
             '200': "Receive",
             '422': "ProblemHttpResult",
             '400': "ProblemHttpResult",
+            '409': "ProblemHttpResult",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -795,7 +797,7 @@ class ReceiveApi:
     ) -> RESTResponseType:
         """Delete an incoming invoice by id
 
-        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
+        Permanently delete a receive invoice by its internal id. This action cannot be undone.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
         :param id: Item id (required)
         :type id: int
@@ -833,6 +835,7 @@ class ReceiveApi:
             '200': "Receive",
             '422': "ProblemHttpResult",
             '400': "ProblemHttpResult",
+            '409': "ProblemHttpResult",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -926,7 +929,7 @@ class ReceiveApi:
     ) -> Receive:
         """Get an incoming invoice by id
 
-        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
+        Retrieve an incoming invoice by its internal id. The `id` is unique and assigned by the system when the invoice is received. Returns invoice metadata; set `include_payload` to true to include the full invoice content. The invoice is marked as read (`is_read` = true) only when `include_payload` is true.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
         :param id: Item id (required)
         :type id: int
@@ -998,7 +1001,7 @@ class ReceiveApi:
     ) -> ApiResponse[Receive]:
         """Get an incoming invoice by id
 
-        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
+        Retrieve an incoming invoice by its internal id. The `id` is unique and assigned by the system when the invoice is received. Returns invoice metadata; set `include_payload` to true to include the full invoice content. The invoice is marked as read (`is_read` = true) only when `include_payload` is true.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
         :param id: Item id (required)
         :type id: int
@@ -1070,7 +1073,7 @@ class ReceiveApi:
     ) -> RESTResponseType:
         """Get an incoming invoice by id
 
-        Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
+        Retrieve an incoming invoice by its internal id. The `id` is unique and assigned by the system when the invoice is received. Returns invoice metadata; set `include_payload` to true to include the full invoice content. The invoice is marked as read (`is_read` = true) only when `include_payload` is true.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
         :param id: Item id (required)
         :type id: int

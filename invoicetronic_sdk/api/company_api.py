@@ -17,7 +17,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictBool, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from invoicetronic_sdk.models.company import Company
@@ -61,7 +61,7 @@ class CompanyApi:
     ) -> List[Company]:
         """List companies
 
-        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+        Retrieve a paginated list of companies.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
         :param page: Page number.
         :type page: int
@@ -138,7 +138,7 @@ class CompanyApi:
     ) -> ApiResponse[List[Company]]:
         """List companies
 
-        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+        Retrieve a paginated list of companies.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
         :param page: Page number.
         :type page: int
@@ -215,7 +215,7 @@ class CompanyApi:
     ) -> RESTResponseType:
         """List companies
 
-        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+        Retrieve a paginated list of companies.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
         :param page: Page number.
         :type page: int
@@ -347,6 +347,7 @@ class CompanyApi:
     def company_id_delete(
         self,
         id: Annotated[StrictInt, Field(description="Item id")],
+        force: Annotated[Optional[StrictBool], Field(description="Force delete including all related data.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -362,10 +363,12 @@ class CompanyApi:
     ) -> Company:
         """Delete a company
 
-        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+        Delete a company by its internal id.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.  **Warning:** Deleting a company will permanently remove all associated data, including sent invoices, received invoices, invoice updates from SDI, logs, and webhooks.  If the company has any linked invoices, you must explicitly confirm deletion by adding `?force=true` to the request. Without this parameter, the API will return `409 Conflict` with details about the linked data.
 
         :param id: Item id (required)
         :type id: int
+        :param force: Force delete including all related data.
+        :type force: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -390,6 +393,7 @@ class CompanyApi:
 
         _param = self._company_id_delete_serialize(
             id=id,
+            force=force,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -400,6 +404,7 @@ class CompanyApi:
             '200': "Company",
             '422': "ProblemHttpResult",
             '400': "ProblemHttpResult",
+            '409': "ProblemHttpResult",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -417,6 +422,7 @@ class CompanyApi:
     def company_id_delete_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="Item id")],
+        force: Annotated[Optional[StrictBool], Field(description="Force delete including all related data.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -432,10 +438,12 @@ class CompanyApi:
     ) -> ApiResponse[Company]:
         """Delete a company
 
-        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+        Delete a company by its internal id.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.  **Warning:** Deleting a company will permanently remove all associated data, including sent invoices, received invoices, invoice updates from SDI, logs, and webhooks.  If the company has any linked invoices, you must explicitly confirm deletion by adding `?force=true` to the request. Without this parameter, the API will return `409 Conflict` with details about the linked data.
 
         :param id: Item id (required)
         :type id: int
+        :param force: Force delete including all related data.
+        :type force: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -460,6 +468,7 @@ class CompanyApi:
 
         _param = self._company_id_delete_serialize(
             id=id,
+            force=force,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -470,6 +479,7 @@ class CompanyApi:
             '200': "Company",
             '422': "ProblemHttpResult",
             '400': "ProblemHttpResult",
+            '409': "ProblemHttpResult",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -487,6 +497,7 @@ class CompanyApi:
     def company_id_delete_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="Item id")],
+        force: Annotated[Optional[StrictBool], Field(description="Force delete including all related data.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -502,10 +513,12 @@ class CompanyApi:
     ) -> RESTResponseType:
         """Delete a company
 
-        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+        Delete a company by its internal id.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.  **Warning:** Deleting a company will permanently remove all associated data, including sent invoices, received invoices, invoice updates from SDI, logs, and webhooks.  If the company has any linked invoices, you must explicitly confirm deletion by adding `?force=true` to the request. Without this parameter, the API will return `409 Conflict` with details about the linked data.
 
         :param id: Item id (required)
         :type id: int
+        :param force: Force delete including all related data.
+        :type force: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -530,6 +543,7 @@ class CompanyApi:
 
         _param = self._company_id_delete_serialize(
             id=id,
+            force=force,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -540,6 +554,7 @@ class CompanyApi:
             '200': "Company",
             '422': "ProblemHttpResult",
             '400': "ProblemHttpResult",
+            '409': "ProblemHttpResult",
             '404': None,
         }
         response_data = self.api_client.call_api(
@@ -552,6 +567,7 @@ class CompanyApi:
     def _company_id_delete_serialize(
         self,
         id,
+        force,
         _request_auth,
         _content_type,
         _headers,
@@ -576,6 +592,10 @@ class CompanyApi:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
+        if force is not None:
+            
+            _query_params.append(('force', force))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -632,7 +652,7 @@ class CompanyApi:
     ) -> Company:
         """Get a company by id
 
-        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+        Retrieve a company by its internal id.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
         :param id: Item id (required)
         :type id: int
@@ -700,7 +720,7 @@ class CompanyApi:
     ) -> ApiResponse[Company]:
         """Get a company by id
 
-        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+        Retrieve a company by its internal id.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
         :param id: Item id (required)
         :type id: int
@@ -768,7 +788,7 @@ class CompanyApi:
     ) -> RESTResponseType:
         """Get a company by id
 
-        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+        Retrieve a company by its internal id.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
         :param id: Item id (required)
         :type id: int
@@ -896,7 +916,7 @@ class CompanyApi:
     ) -> Company:
         """Add a company
 
-        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+        Add a new company.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
         :param company: (required)
         :type company: Company
@@ -965,7 +985,7 @@ class CompanyApi:
     ) -> ApiResponse[Company]:
         """Add a company
 
-        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+        Add a new company.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
         :param company: (required)
         :type company: Company
@@ -1034,7 +1054,7 @@ class CompanyApi:
     ) -> RESTResponseType:
         """Add a company
 
-        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+        Add a new company.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
         :param company: (required)
         :type company: Company
@@ -1176,7 +1196,7 @@ class CompanyApi:
     ) -> Company:
         """Update a company
 
-        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+        Update an existing company.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
         :param company: (required)
         :type company: Company
@@ -1245,7 +1265,7 @@ class CompanyApi:
     ) -> ApiResponse[Company]:
         """Update a company
 
-        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+        Update an existing company.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
         :param company: (required)
         :type company: Company
@@ -1314,7 +1334,7 @@ class CompanyApi:
     ) -> RESTResponseType:
         """Update a company
 
-        Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+        Update an existing company.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
         :param company: (required)
         :type company: Company

@@ -73,7 +73,7 @@ class LogApi:
     ) -> List[Event]:
         """List events
 
-        Every API operation is logged and can be retrieved here. Log records are preserved for 15 days.
+        Retrieve a paginated list of log events. Results can be filtered by various criteria such as endpoint, method, status code, and date ranges.  **Logs** record every API request. They are preserved for 15 days.  You can also view logs in the Events section of the [Dashboard](https://dashboard.invoicetronic.com).
 
         :param company_id: Company id
         :type company_id: int
@@ -194,7 +194,7 @@ class LogApi:
     ) -> ApiResponse[List[Event]]:
         """List events
 
-        Every API operation is logged and can be retrieved here. Log records are preserved for 15 days.
+        Retrieve a paginated list of log events. Results can be filtered by various criteria such as endpoint, method, status code, and date ranges.  **Logs** record every API request. They are preserved for 15 days.  You can also view logs in the Events section of the [Dashboard](https://dashboard.invoicetronic.com).
 
         :param company_id: Company id
         :type company_id: int
@@ -315,7 +315,7 @@ class LogApi:
     ) -> RESTResponseType:
         """List events
 
-        Every API operation is logged and can be retrieved here. Log records are preserved for 15 days.
+        Retrieve a paginated list of log events. Results can be filtered by various criteria such as endpoint, method, status code, and date ranges.  **Logs** record every API request. They are preserved for 15 days.  You can also view logs in the Events section of the [Dashboard](https://dashboard.invoicetronic.com).
 
         :param company_id: Company id
         :type company_id: int
@@ -586,7 +586,7 @@ class LogApi:
     ) -> Event:
         """Get an event by id
 
-        Every API operation is logged and can be retrieved here. Log records are preserved for 15 days.
+        Retrieve a log event by its internal id.  **Logs** record every API request. They are preserved for 15 days.  You can also view logs in the Events section of the [Dashboard](https://dashboard.invoicetronic.com).
 
         :param id: Item id (required)
         :type id: int
@@ -654,7 +654,7 @@ class LogApi:
     ) -> ApiResponse[Event]:
         """Get an event by id
 
-        Every API operation is logged and can be retrieved here. Log records are preserved for 15 days.
+        Retrieve a log event by its internal id.  **Logs** record every API request. They are preserved for 15 days.  You can also view logs in the Events section of the [Dashboard](https://dashboard.invoicetronic.com).
 
         :param id: Item id (required)
         :type id: int
@@ -722,7 +722,7 @@ class LogApi:
     ) -> RESTResponseType:
         """Get an event by id
 
-        Every API operation is logged and can be retrieved here. Log records are preserved for 15 days.
+        Retrieve a log event by its internal id.  **Logs** record every API request. They are preserved for 15 days.  You can also view logs in the Events section of the [Dashboard](https://dashboard.invoicetronic.com).
 
         :param id: Item id (required)
         :type id: int
