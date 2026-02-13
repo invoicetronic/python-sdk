@@ -2,6 +2,7 @@
 
 # import apis into api package
 from invoicetronic_sdk.api.company_api import CompanyApi
+from invoicetronic_sdk.api.export_api import ExportApi
 from invoicetronic_sdk.api.log_api import LogApi
 from invoicetronic_sdk.api.receive_api import ReceiveApi
 from invoicetronic_sdk.api.send_api import SendApi

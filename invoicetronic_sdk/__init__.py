@@ -15,11 +15,12 @@
 """  # noqa: E501
 
 
-__version__ = "1.2"
+__version__ = "1.3"
 
 # Define package exports
 __all__ = [
     "CompanyApi",
+    "ExportApi",
     "LogApi",
     "ReceiveApi",
     "SendApi",
@@ -99,6 +100,7 @@ __all__ = [
 
 # import apis into sdk package
 from invoicetronic_sdk.api.company_api import CompanyApi as CompanyApi
+from invoicetronic_sdk.api.export_api import ExportApi as ExportApi
 from invoicetronic_sdk.api.log_api import LogApi as LogApi
 from invoicetronic_sdk.api.receive_api import ReceiveApi as ReceiveApi
 from invoicetronic_sdk.api.send_api import SendApi as SendApi
