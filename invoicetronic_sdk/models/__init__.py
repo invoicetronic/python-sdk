@@ -15,9 +15,14 @@
 
 # import models into model package
 from invoicetronic_sdk.models.company import Company
+from invoicetronic_sdk.models.document_data import DocumentData
+from invoicetronic_sdk.models.error import Error
 from invoicetronic_sdk.models.event import Event
+from invoicetronic_sdk.models.problem_details import ProblemDetails
+from invoicetronic_sdk.models.problem_http_result import ProblemHttpResult
 from invoicetronic_sdk.models.receive import Receive
 from invoicetronic_sdk.models.send import Send
+from invoicetronic_sdk.models.send_reduced import SendReduced
 from invoicetronic_sdk.models.status import Status
 from invoicetronic_sdk.models.update import Update
 from invoicetronic_sdk.models.web_hook import WebHook

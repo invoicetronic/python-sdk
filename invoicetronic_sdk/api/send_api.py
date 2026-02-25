@@ -18,9 +18,8 @@ from typing_extensions import Annotated
 
 from datetime import datetime
 from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr, field_validator
-from typing import List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from invoicetronic_sdk.models.fattura_ordinaria import FatturaOrdinaria
 from invoicetronic_sdk.models.send import Send
 
 from invoicetronic_sdk.api_client import ApiClient, RequestSerialized
@@ -1765,7 +1764,7 @@ class SendApi:
     @validate_call
     def send_json_post(
         self,
-        fattura_ordinaria: FatturaOrdinaria,
+        body: Dict[str, Any],
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
         signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
@@ -1785,8 +1784,8 @@ class SendApi:
 
         Add a new invoice using a FatturaPA JSON representation. The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).  You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
 
-        :param fattura_ordinaria: (required)
-        :type fattura_ordinaria: FatturaOrdinaria
+        :param body: (required)
+        :type body: object
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
         :param signature: Whether to digitally sign the document.
@@ -1814,7 +1813,7 @@ class SendApi:
         """ # noqa: E501
 
         _param = self._send_json_post_serialize(
-            fattura_ordinaria=fattura_ordinaria,
+            body=body,
             validate=validate,
             signature=signature,
             _request_auth=_request_auth,
@@ -1842,7 +1841,7 @@ class SendApi:
     @validate_call
     def send_json_post_with_http_info(
         self,
-        fattura_ordinaria: FatturaOrdinaria,
+        body: Dict[str, Any],
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
         signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
@@ -1862,8 +1861,8 @@ class SendApi:
 
         Add a new invoice using a FatturaPA JSON representation. The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).  You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
 
-        :param fattura_ordinaria: (required)
-        :type fattura_ordinaria: FatturaOrdinaria
+        :param body: (required)
+        :type body: object
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
         :param signature: Whether to digitally sign the document.
@@ -1891,7 +1890,7 @@ class SendApi:
         """ # noqa: E501
 
         _param = self._send_json_post_serialize(
-            fattura_ordinaria=fattura_ordinaria,
+            body=body,
             validate=validate,
             signature=signature,
             _request_auth=_request_auth,
@@ -1919,7 +1918,7 @@ class SendApi:
     @validate_call
     def send_json_post_without_preload_content(
         self,
-        fattura_ordinaria: FatturaOrdinaria,
+        body: Dict[str, Any],
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
         signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
@@ -1939,8 +1938,8 @@ class SendApi:
 
         Add a new invoice using a FatturaPA JSON representation. The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).  You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
 
-        :param fattura_ordinaria: (required)
-        :type fattura_ordinaria: FatturaOrdinaria
+        :param body: (required)
+        :type body: object
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
         :param signature: Whether to digitally sign the document.
@@ -1968,7 +1967,7 @@ class SendApi:
         """ # noqa: E501
 
         _param = self._send_json_post_serialize(
-            fattura_ordinaria=fattura_ordinaria,
+            body=body,
             validate=validate,
             signature=signature,
             _request_auth=_request_auth,
@@ -1991,7 +1990,7 @@ class SendApi:
 
     def _send_json_post_serialize(
         self,
-        fattura_ordinaria,
+        body,
         validate,
         signature,
         _request_auth,
@@ -2027,8 +2026,8 @@ class SendApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if fattura_ordinaria is not None:
-            _body_params = fattura_ordinaria
+        if body is not None:
+            _body_params = body
 
 
         # set the HTTP header `Accept`
@@ -2673,7 +2672,7 @@ class SendApi:
     @validate_call
     def send_validate_json_post(
         self,
-        fattura_ordinaria: FatturaOrdinaria,
+        body: Dict[str, Any],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2691,8 +2690,8 @@ class SendApi:
 
         Validate a JSON invoice without sending it to SDI. Use this to check for errors before actual submission. Returns validation results with any errors found.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
-        :param fattura_ordinaria: (required)
-        :type fattura_ordinaria: FatturaOrdinaria
+        :param body: (required)
+        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2716,7 +2715,7 @@ class SendApi:
         """ # noqa: E501
 
         _param = self._send_validate_json_post_serialize(
-            fattura_ordinaria=fattura_ordinaria,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2742,7 +2741,7 @@ class SendApi:
     @validate_call
     def send_validate_json_post_with_http_info(
         self,
-        fattura_ordinaria: FatturaOrdinaria,
+        body: Dict[str, Any],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2760,8 +2759,8 @@ class SendApi:
 
         Validate a JSON invoice without sending it to SDI. Use this to check for errors before actual submission. Returns validation results with any errors found.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
-        :param fattura_ordinaria: (required)
-        :type fattura_ordinaria: FatturaOrdinaria
+        :param body: (required)
+        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2785,7 +2784,7 @@ class SendApi:
         """ # noqa: E501
 
         _param = self._send_validate_json_post_serialize(
-            fattura_ordinaria=fattura_ordinaria,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2811,7 +2810,7 @@ class SendApi:
     @validate_call
     def send_validate_json_post_without_preload_content(
         self,
-        fattura_ordinaria: FatturaOrdinaria,
+        body: Dict[str, Any],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2829,8 +2828,8 @@ class SendApi:
 
         Validate a JSON invoice without sending it to SDI. Use this to check for errors before actual submission. Returns validation results with any errors found.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
-        :param fattura_ordinaria: (required)
-        :type fattura_ordinaria: FatturaOrdinaria
+        :param body: (required)
+        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2854,7 +2853,7 @@ class SendApi:
         """ # noqa: E501
 
         _param = self._send_validate_json_post_serialize(
-            fattura_ordinaria=fattura_ordinaria,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2875,7 +2874,7 @@ class SendApi:
 
     def _send_validate_json_post_serialize(
         self,
-        fattura_ordinaria,
+        body,
         _request_auth,
         _content_type,
         _headers,
@@ -2901,8 +2900,8 @@ class SendApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if fattura_ordinaria is not None:
-            _body_params = fattura_ordinaria
+        if body is not None:
+            _body_params = body
 
 
         # set the HTTP header `Accept`
@@ -3233,7 +3232,7 @@ class SendApi:
     @validate_call
     def send_validate_xml_post(
         self,
-        fattura_ordinaria: FatturaOrdinaria,
+        body: Dict[str, Any],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3251,8 +3250,8 @@ class SendApi:
 
         Validate an XML invoice document without sending it to SDI. Use this to check for errors before actual submission. Returns validation results with any errors found.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
-        :param fattura_ordinaria: (required)
-        :type fattura_ordinaria: FatturaOrdinaria
+        :param body: (required)
+        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3276,7 +3275,7 @@ class SendApi:
         """ # noqa: E501
 
         _param = self._send_validate_xml_post_serialize(
-            fattura_ordinaria=fattura_ordinaria,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3302,7 +3301,7 @@ class SendApi:
     @validate_call
     def send_validate_xml_post_with_http_info(
         self,
-        fattura_ordinaria: FatturaOrdinaria,
+        body: Dict[str, Any],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3320,8 +3319,8 @@ class SendApi:
 
         Validate an XML invoice document without sending it to SDI. Use this to check for errors before actual submission. Returns validation results with any errors found.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
-        :param fattura_ordinaria: (required)
-        :type fattura_ordinaria: FatturaOrdinaria
+        :param body: (required)
+        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3345,7 +3344,7 @@ class SendApi:
         """ # noqa: E501
 
         _param = self._send_validate_xml_post_serialize(
-            fattura_ordinaria=fattura_ordinaria,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3371,7 +3370,7 @@ class SendApi:
     @validate_call
     def send_validate_xml_post_without_preload_content(
         self,
-        fattura_ordinaria: FatturaOrdinaria,
+        body: Dict[str, Any],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3389,8 +3388,8 @@ class SendApi:
 
         Validate an XML invoice document without sending it to SDI. Use this to check for errors before actual submission. Returns validation results with any errors found.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
-        :param fattura_ordinaria: (required)
-        :type fattura_ordinaria: FatturaOrdinaria
+        :param body: (required)
+        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3414,7 +3413,7 @@ class SendApi:
         """ # noqa: E501
 
         _param = self._send_validate_xml_post_serialize(
-            fattura_ordinaria=fattura_ordinaria,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3435,7 +3434,7 @@ class SendApi:
 
     def _send_validate_xml_post_serialize(
         self,
-        fattura_ordinaria,
+        body,
         _request_auth,
         _content_type,
         _headers,
@@ -3461,8 +3460,8 @@ class SendApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if fattura_ordinaria is not None:
-            _body_params = fattura_ordinaria
+        if body is not None:
+            _body_params = body
 
 
         # set the HTTP header `Accept`
@@ -3513,7 +3512,7 @@ class SendApi:
     @validate_call
     def send_xml_post(
         self,
-        fattura_ordinaria: FatturaOrdinaria,
+        body: Dict[str, Any],
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
         signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
@@ -3533,8 +3532,8 @@ class SendApi:
 
         Add a new invoice using a raw XML document in FatturaPA format. The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).  You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
 
-        :param fattura_ordinaria: (required)
-        :type fattura_ordinaria: FatturaOrdinaria
+        :param body: (required)
+        :type body: object
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
         :param signature: Whether to digitally sign the document.
@@ -3562,7 +3561,7 @@ class SendApi:
         """ # noqa: E501
 
         _param = self._send_xml_post_serialize(
-            fattura_ordinaria=fattura_ordinaria,
+            body=body,
             validate=validate,
             signature=signature,
             _request_auth=_request_auth,
@@ -3590,7 +3589,7 @@ class SendApi:
     @validate_call
     def send_xml_post_with_http_info(
         self,
-        fattura_ordinaria: FatturaOrdinaria,
+        body: Dict[str, Any],
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
         signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
@@ -3610,8 +3609,8 @@ class SendApi:
 
         Add a new invoice using a raw XML document in FatturaPA format. The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).  You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
 
-        :param fattura_ordinaria: (required)
-        :type fattura_ordinaria: FatturaOrdinaria
+        :param body: (required)
+        :type body: object
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
         :param signature: Whether to digitally sign the document.
@@ -3639,7 +3638,7 @@ class SendApi:
         """ # noqa: E501
 
         _param = self._send_xml_post_serialize(
-            fattura_ordinaria=fattura_ordinaria,
+            body=body,
             validate=validate,
             signature=signature,
             _request_auth=_request_auth,
@@ -3667,7 +3666,7 @@ class SendApi:
     @validate_call
     def send_xml_post_without_preload_content(
         self,
-        fattura_ordinaria: FatturaOrdinaria,
+        body: Dict[str, Any],
         validate: Annotated[Optional[StrictBool], Field(description="Validate the document first, and reject it on failure.")] = None,
         signature: Annotated[Optional[StrictStr], Field(description="Whether to digitally sign the document.")] = None,
         _request_timeout: Union[
@@ -3687,8 +3686,8 @@ class SendApi:
 
         Add a new invoice using a raw XML document in FatturaPA format. The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).  You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
 
-        :param fattura_ordinaria: (required)
-        :type fattura_ordinaria: FatturaOrdinaria
+        :param body: (required)
+        :type body: object
         :param validate: Validate the document first, and reject it on failure.
         :type validate: bool
         :param signature: Whether to digitally sign the document.
@@ -3716,7 +3715,7 @@ class SendApi:
         """ # noqa: E501
 
         _param = self._send_xml_post_serialize(
-            fattura_ordinaria=fattura_ordinaria,
+            body=body,
             validate=validate,
             signature=signature,
             _request_auth=_request_auth,
@@ -3739,7 +3738,7 @@ class SendApi:
 
     def _send_xml_post_serialize(
         self,
-        fattura_ordinaria,
+        body,
         validate,
         signature,
         _request_auth,
@@ -3775,8 +3774,8 @@ class SendApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if fattura_ordinaria is not None:
-            _body_params = fattura_ordinaria
+        if body is not None:
+            _body_params = body
 
 
         # set the HTTP header `Accept`

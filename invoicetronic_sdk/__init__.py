@@ -37,9 +37,14 @@ __all__ = [
     "ApiAttributeError",
     "ApiException",
     "Company",
+    "DocumentData",
+    "Error",
     "Event",
+    "ProblemDetails",
+    "ProblemHttpResult",
     "Receive",
     "Send",
+    "SendReduced",
     "Status",
     "Update",
     "WebHook",
@@ -69,9 +74,14 @@ from invoicetronic_sdk.exceptions import ApiException as ApiException
 
 # import models into sdk package
 from invoicetronic_sdk.models.company import Company as Company
+from invoicetronic_sdk.models.document_data import DocumentData as DocumentData
+from invoicetronic_sdk.models.error import Error as Error
 from invoicetronic_sdk.models.event import Event as Event
+from invoicetronic_sdk.models.problem_details import ProblemDetails as ProblemDetails
+from invoicetronic_sdk.models.problem_http_result import ProblemHttpResult as ProblemHttpResult
 from invoicetronic_sdk.models.receive import Receive as Receive
 from invoicetronic_sdk.models.send import Send as Send
+from invoicetronic_sdk.models.send_reduced import SendReduced as SendReduced
 from invoicetronic_sdk.models.status import Status as Status
 from invoicetronic_sdk.models.update import Update as Update
 from invoicetronic_sdk.models.web_hook import WebHook as WebHook

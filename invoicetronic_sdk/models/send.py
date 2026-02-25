@@ -23,6 +23,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_v
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from invoicetronic_sdk.models.company import Company
+from invoicetronic_sdk.models.document_data import DocumentData
 from typing import Optional, Set
 from typing_extensions import Self
 

@@ -151,9 +151,14 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Company](docs/Company.md)
+ - [DocumentData](docs/DocumentData.md)
+ - [Error](docs/Error.md)
  - [Event](docs/Event.md)
+ - [ProblemDetails](docs/ProblemDetails.md)
+ - [ProblemHttpResult](docs/ProblemHttpResult.md)
  - [Receive](docs/Receive.md)
  - [Send](docs/Send.md)
+ - [SendReduced](docs/SendReduced.md)
  - [Status](docs/Status.md)
  - [Update](docs/Update.md)
  - [WebHook](docs/WebHook.md)

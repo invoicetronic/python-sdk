@@ -473,7 +473,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_json_post**
-> Send send_json_post(fattura_ordinaria, validate=validate, signature=signature)
+> Send send_json_post(body, validate=validate, signature=signature)
 
 Add an invoice by json
 
@@ -489,7 +489,6 @@ You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic
 
 ```python
 import invoicetronic_sdk
-from invoicetronic_sdk.models.fattura_ordinaria import FatturaOrdinaria
 from invoicetronic_sdk.models.send import Send
 from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
@@ -515,13 +514,13 @@ configuration = invoicetronic_sdk.Configuration(
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_sdk.SendApi(api_client)
-    fattura_ordinaria = invoicetronic_sdk.FatturaOrdinaria() # FatturaOrdinaria | 
+    body = None # object | 
     validate = False # bool | Validate the document first, and reject it on failure. (optional) (default to False)
     signature = Auto # str | Whether to digitally sign the document. (optional) (default to Auto)
 
     try:
         # Add an invoice by json
-        api_response = api_instance.send_json_post(fattura_ordinaria, validate=validate, signature=signature)
+        api_response = api_instance.send_json_post(body, validate=validate, signature=signature)
         print("The response of SendApi->send_json_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -535,7 +534,7 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fattura_ordinaria** | [**FatturaOrdinaria**](FatturaOrdinaria.md)|  | 
+ **body** | **object**|  | 
  **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to False]
  **signature** | **str**| Whether to digitally sign the document. | [optional] [default to Auto]
 
@@ -732,7 +731,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_validate_json_post**
-> send_validate_json_post(fattura_ordinaria)
+> send_validate_json_post(body)
 
 Validate an invoice by json
 
@@ -746,7 +745,6 @@ Validate a JSON invoice without sending it to SDI. Use this to check for errors 
 
 ```python
 import invoicetronic_sdk
-from invoicetronic_sdk.models.fattura_ordinaria import FatturaOrdinaria
 from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
@@ -771,11 +769,11 @@ configuration = invoicetronic_sdk.Configuration(
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_sdk.SendApi(api_client)
-    fattura_ordinaria = invoicetronic_sdk.FatturaOrdinaria() # FatturaOrdinaria | 
+    body = None # object | 
 
     try:
         # Validate an invoice by json
-        api_instance.send_validate_json_post(fattura_ordinaria)
+        api_instance.send_validate_json_post(body)
     except Exception as e:
         print("Exception when calling SendApi->send_validate_json_post: %s\n" % e)
 ```
@@ -787,7 +785,7 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fattura_ordinaria** | [**FatturaOrdinaria**](FatturaOrdinaria.md)|  | 
+ **body** | **object**|  | 
 
 ### Return type
 
@@ -894,7 +892,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_validate_xml_post**
-> send_validate_xml_post(fattura_ordinaria)
+> send_validate_xml_post(body)
 
 Validate an invoice by xml
 
@@ -908,7 +906,6 @@ Validate an XML invoice document without sending it to SDI. Use this to check fo
 
 ```python
 import invoicetronic_sdk
-from invoicetronic_sdk.models.fattura_ordinaria import FatturaOrdinaria
 from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
 
@@ -933,11 +930,11 @@ configuration = invoicetronic_sdk.Configuration(
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_sdk.SendApi(api_client)
-    fattura_ordinaria = invoicetronic_sdk.FatturaOrdinaria() # FatturaOrdinaria | 
+    body = None # object | 
 
     try:
         # Validate an invoice by xml
-        api_instance.send_validate_xml_post(fattura_ordinaria)
+        api_instance.send_validate_xml_post(body)
     except Exception as e:
         print("Exception when calling SendApi->send_validate_xml_post: %s\n" % e)
 ```
@@ -949,7 +946,7 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fattura_ordinaria** | [**FatturaOrdinaria**](FatturaOrdinaria.md)|  | 
+ **body** | **object**|  | 
 
 ### Return type
 
@@ -975,7 +972,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_xml_post**
-> Send send_xml_post(fattura_ordinaria, validate=validate, signature=signature)
+> Send send_xml_post(body, validate=validate, signature=signature)
 
 Add an invoice by xml
 
@@ -991,7 +988,6 @@ You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic
 
 ```python
 import invoicetronic_sdk
-from invoicetronic_sdk.models.fattura_ordinaria import FatturaOrdinaria
 from invoicetronic_sdk.models.send import Send
 from invoicetronic_sdk.rest import ApiException
 from pprint import pprint
@@ -1017,13 +1013,13 @@ configuration = invoicetronic_sdk.Configuration(
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_sdk.SendApi(api_client)
-    fattura_ordinaria = invoicetronic_sdk.FatturaOrdinaria() # FatturaOrdinaria | 
+    body = None # object | 
     validate = False # bool | Validate the document first, and reject it on failure. (optional) (default to False)
     signature = Auto # str | Whether to digitally sign the document. (optional) (default to Auto)
 
     try:
         # Add an invoice by xml
-        api_response = api_instance.send_xml_post(fattura_ordinaria, validate=validate, signature=signature)
+        api_response = api_instance.send_xml_post(body, validate=validate, signature=signature)
         print("The response of SendApi->send_xml_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -1037,7 +1033,7 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fattura_ordinaria** | [**FatturaOrdinaria**](FatturaOrdinaria.md)|  | 
+ **body** | **object**|  | 
  **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to False]
  **signature** | **str**| Whether to digitally sign the document. | [optional] [default to Auto]
 

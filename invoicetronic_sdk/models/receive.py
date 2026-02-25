@@ -22,6 +22,7 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from invoicetronic_sdk.models.document_data import DocumentData
 from typing import Optional, Set
 from typing_extensions import Self
 
