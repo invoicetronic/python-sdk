@@ -21,14 +21,12 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from invoicetronic_sdk.models.error import Error
-from invoicetronic_sdk.models.send_reduced import SendReduced
 from typing import Optional, Set
 from typing_extensions import Self
 
 class Update(BaseModel):
     """
-    Update
+    An SDI status update for a sent invoice.
     """ # noqa: E501
     id: Optional[StrictInt] = Field(default=None, description="Unique identifier. Leave it at 0 for new records as it will be set automatically.")
     created: Optional[datetime] = Field(default=None, description="Creation date. It is set automatically.")

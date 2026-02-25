@@ -27,7 +27,7 @@ from typing_extensions import Self
 
 class Event(BaseModel):
     """
-    Event
+    An API request log entry.
     """ # noqa: E501
     id: Optional[StrictInt] = Field(default=None, description="Unique identifier. Leave it at 0 for new records as it will be set automatically.")
     created: Optional[datetime] = Field(default=None, description="Creation date. It is set automatically.")

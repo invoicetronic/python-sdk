@@ -23,13 +23,12 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_v
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from invoicetronic_sdk.models.company import Company
-from invoicetronic_sdk.models.document_data import DocumentData
 from typing import Optional, Set
 from typing_extensions import Self
 
 class Send(BaseModel):
     """
-    Send
+    A sent invoice.
     """ # noqa: E501
     id: Optional[StrictInt] = Field(default=None, description="Unique identifier. Leave it at 0 for new records as it will be set automatically.")
     created: Optional[datetime] = Field(default=None, description="Creation date. It is set automatically.")

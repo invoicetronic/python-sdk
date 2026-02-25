@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class Status(BaseModel):
     """
-    Status
+    Account status with remaining operations and signatures.
     """ # noqa: E501
     operation_left: Optional[StrictInt] = Field(default=None, description="Operations (invoices and validations) left.")
     signature_left: Optional[StrictInt] = Field(default=None, description="Signatures left.")

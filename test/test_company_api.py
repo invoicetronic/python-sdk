@@ -62,6 +62,13 @@ class TestCompanyApi(unittest.TestCase):
         """
         pass
 
+    def test_company_vat_get(self) -> None:
+        """Test case for company_vat_get
+
+        Get a company by vat number
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

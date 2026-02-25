@@ -48,6 +48,13 @@ class TestReceiveApi(unittest.TestCase):
         """
         pass
 
+    def test_receive_id_payload_get(self) -> None:
+        """Test case for receive_id_payload_get
+
+        Get a receive invoice payload by id
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

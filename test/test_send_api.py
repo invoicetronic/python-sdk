@@ -48,6 +48,13 @@ class TestSendApi(unittest.TestCase):
         """
         pass
 
+    def test_send_id_payload_get(self) -> None:
+        """Test case for send_id_payload_get
+
+        Get a send invoice payload by id
+        """
+        pass
+
     def test_send_identifier_get(self) -> None:
         """Test case for send_identifier_get
 
