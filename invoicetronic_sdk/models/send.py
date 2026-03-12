@@ -46,9 +46,10 @@ class Send(BaseModel):
     date_sent: Optional[datetime] = Field(default=None, description="When the invoice was sent to SDI.")
     documents: Optional[List[DocumentData]] = Field(default=None, description="The invoices included in the payload. This is set by the system, based on the xml content.")
     encoding: Optional[StrictStr] = Field(default=None, description="Whether the payload is Base64 encoded or a plain XML (text).")
+    nome_committente: Optional[StrictStr] = Field(default=None, description="Business name of the committente (client/buyer) extracted from the invoice XML.")
     meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Optional metadata, as json.")
     company: Optional[Company] = None
-    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "committente", "prestatore", "identifier", "file_name", "format", "payload", "last_update", "date_sent", "documents", "encoding", "meta_data", "company"]
+    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "committente", "prestatore", "identifier", "file_name", "format", "payload", "last_update", "date_sent", "documents", "encoding", "nome_committente", "meta_data", "company"]
 
     @field_validator('encoding')
     def encoding_validate_enum(cls, value):
@@ -149,6 +150,11 @@ class Send(BaseModel):
         if self.documents is None and "documents" in self.model_fields_set:
             _dict['documents'] = None
 
+        # set to None if nome_committente (nullable) is None
+        # and model_fields_set contains the field
+        if self.nome_committente is None and "nome_committente" in self.model_fields_set:
+            _dict['nome_committente'] = None
+
         # set to None if meta_data (nullable) is None
         # and model_fields_set contains the field
         if self.meta_data is None and "meta_data" in self.model_fields_set:
@@ -181,6 +187,7 @@ class Send(BaseModel):
             "date_sent": obj.get("date_sent"),
             "documents": [DocumentData.from_dict(_item) for _item in obj["documents"]] if obj.get("documents") is not None else None,
             "encoding": obj.get("encoding"),
+            "nome_committente": obj.get("nome_committente"),
             "meta_data": obj.get("meta_data"),
             "company": Company.from_dict(obj["company"]) if obj.get("company") is not None else None
         })

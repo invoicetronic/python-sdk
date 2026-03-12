@@ -45,6 +45,7 @@ class CompanyApi:
         page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
+        q: Annotated[Optional[StrictStr], Field(description="Full-text search across committente, prestatore, identifier, and file name.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,7 +61,7 @@ class CompanyApi:
     ) -> List[Company]:
         """List companies
 
-        Retrieve a paginated list of companies.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
+        Retrieve a paginated list of companies. Results can be filtered by free-text search (`q`) across name, VAT number, and fiscal code.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
         :param page: Page number.
         :type page: int
@@ -68,6 +69,8 @@ class CompanyApi:
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
+        :param q: Full-text search across committente, prestatore, identifier, and file name.
+        :type q: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -94,6 +97,7 @@ class CompanyApi:
             page=page,
             page_size=page_size,
             sort=sort,
+            q=q,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -122,6 +126,7 @@ class CompanyApi:
         page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
+        q: Annotated[Optional[StrictStr], Field(description="Full-text search across committente, prestatore, identifier, and file name.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -137,7 +142,7 @@ class CompanyApi:
     ) -> ApiResponse[List[Company]]:
         """List companies
 
-        Retrieve a paginated list of companies.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
+        Retrieve a paginated list of companies. Results can be filtered by free-text search (`q`) across name, VAT number, and fiscal code.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
         :param page: Page number.
         :type page: int
@@ -145,6 +150,8 @@ class CompanyApi:
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
+        :param q: Full-text search across committente, prestatore, identifier, and file name.
+        :type q: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -171,6 +178,7 @@ class CompanyApi:
             page=page,
             page_size=page_size,
             sort=sort,
+            q=q,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -199,6 +207,7 @@ class CompanyApi:
         page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
+        q: Annotated[Optional[StrictStr], Field(description="Full-text search across committente, prestatore, identifier, and file name.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -214,7 +223,7 @@ class CompanyApi:
     ) -> RESTResponseType:
         """List companies
 
-        Retrieve a paginated list of companies.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
+        Retrieve a paginated list of companies. Results can be filtered by free-text search (`q`) across name, VAT number, and fiscal code.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
         :param page: Page number.
         :type page: int
@@ -222,6 +231,8 @@ class CompanyApi:
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
+        :param q: Full-text search across committente, prestatore, identifier, and file name.
+        :type q: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -248,6 +259,7 @@ class CompanyApi:
             page=page,
             page_size=page_size,
             sort=sort,
+            q=q,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -271,6 +283,7 @@ class CompanyApi:
         page,
         page_size,
         sort,
+        q,
         _request_auth,
         _content_type,
         _headers,
@@ -304,6 +317,10 @@ class CompanyApi:
         if sort is not None:
             
             _query_params.append(('sort', sort))
+            
+        if q is not None:
+            
+            _query_params.append(('q', q))
             
         # process the header parameters
         # process the form parameters

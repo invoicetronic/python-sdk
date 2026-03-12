@@ -11,11 +11,11 @@ Method | HTTP request | Description
 
 
 # **receive_get**
-> List[Receive] receive_get(company_id=company_id, identifier=identifier, unread=unread, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, include_payload=include_payload, page=page, page_size=page_size, sort=sort)
+> List[Receive] receive_get(company_id=company_id, identifier=identifier, unread=unread, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, include_payload=include_payload, page=page, page_size=page_size, sort=sort, q=q)
 
 List incoming invoices
 
-Retrieve a paginated list of receive invoices. Results can be filtered by various criteria such as company, date ranges, sender, and document number. Returns invoice metadata; set `include_payload` to true to include the full invoice content. Invoices are marked as read (`is_read` = true) only when `include_payload` is true.
+Retrieve a paginated list of receive invoices. Results can be filtered by various criteria such as company, date ranges, sender, document number, and free-text search (`q`). Returns invoice metadata; set `include_payload` to true to include the full invoice content. Invoices are marked as read (`is_read` = true) only when `include_payload` is true.
 
 **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
@@ -67,10 +67,11 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
     page = 1 # int | Page number. (optional) (default to 1)
     page_size = 100 # int | Items per page. Cannot be greater than 200. (optional) (default to 100)
     sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)
+    q = 'q_example' # str | Full-text search across committente, prestatore, identifier, and file name. (optional)
 
     try:
         # List incoming invoices
-        api_response = api_instance.receive_get(company_id=company_id, identifier=identifier, unread=unread, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, include_payload=include_payload, page=page, page_size=page_size, sort=sort)
+        api_response = api_instance.receive_get(company_id=company_id, identifier=identifier, unread=unread, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, include_payload=include_payload, page=page, page_size=page_size, sort=sort, q=q)
         print("The response of ReceiveApi->receive_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -101,6 +102,7 @@ Name | Type | Description  | Notes
  **page** | **int**| Page number. | [optional] [default to 1]
  **page_size** | **int**| Items per page. Cannot be greater than 200. | [optional] [default to 100]
  **sort** | **str**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] 
+ **q** | **str**| Full-text search across committente, prestatore, identifier, and file name. | [optional] 
 
 ### Return type
 

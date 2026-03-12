@@ -373,6 +373,7 @@ class SendApi:
         page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
+        q: Annotated[Optional[StrictStr], Field(description="Full-text search across committente, prestatore, identifier, and file name.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -388,7 +389,7 @@ class SendApi:
     ) -> List[Send]:
         """List invoices
 
-        Retrieve a paginated list of send invoices. Results can be filtered by various criteria such as company, date ranges, and document number. Returns invoice metadata; set `include_payload` to true to include the full invoice content.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
+        Retrieve a paginated list of send invoices. Results can be filtered by various criteria such as company, date ranges, document number, and free-text search (`q`). Returns invoice metadata; set `include_payload` to true to include the full invoice content.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
         :param company_id: Company id
         :type company_id: int
@@ -422,6 +423,8 @@ class SendApi:
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
+        :param q: Full-text search across committente, prestatore, identifier, and file name.
+        :type q: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -461,6 +464,7 @@ class SendApi:
             page=page,
             page_size=page_size,
             sort=sort,
+            q=q,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -502,6 +506,7 @@ class SendApi:
         page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
+        q: Annotated[Optional[StrictStr], Field(description="Full-text search across committente, prestatore, identifier, and file name.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -517,7 +522,7 @@ class SendApi:
     ) -> ApiResponse[List[Send]]:
         """List invoices
 
-        Retrieve a paginated list of send invoices. Results can be filtered by various criteria such as company, date ranges, and document number. Returns invoice metadata; set `include_payload` to true to include the full invoice content.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
+        Retrieve a paginated list of send invoices. Results can be filtered by various criteria such as company, date ranges, document number, and free-text search (`q`). Returns invoice metadata; set `include_payload` to true to include the full invoice content.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
         :param company_id: Company id
         :type company_id: int
@@ -551,6 +556,8 @@ class SendApi:
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
+        :param q: Full-text search across committente, prestatore, identifier, and file name.
+        :type q: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -590,6 +597,7 @@ class SendApi:
             page=page,
             page_size=page_size,
             sort=sort,
+            q=q,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -631,6 +639,7 @@ class SendApi:
         page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
+        q: Annotated[Optional[StrictStr], Field(description="Full-text search across committente, prestatore, identifier, and file name.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -646,7 +655,7 @@ class SendApi:
     ) -> RESTResponseType:
         """List invoices
 
-        Retrieve a paginated list of send invoices. Results can be filtered by various criteria such as company, date ranges, and document number. Returns invoice metadata; set `include_payload` to true to include the full invoice content.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
+        Retrieve a paginated list of send invoices. Results can be filtered by various criteria such as company, date ranges, document number, and free-text search (`q`). Returns invoice metadata; set `include_payload` to true to include the full invoice content.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
         :param company_id: Company id
         :type company_id: int
@@ -680,6 +689,8 @@ class SendApi:
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
+        :param q: Full-text search across committente, prestatore, identifier, and file name.
+        :type q: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -719,6 +730,7 @@ class SendApi:
             page=page,
             page_size=page_size,
             sort=sort,
+            q=q,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -755,6 +767,7 @@ class SendApi:
         page,
         page_size,
         sort,
+        q,
         _request_auth,
         _content_type,
         _headers,
@@ -894,6 +907,10 @@ class SendApi:
         if sort is not None:
             
             _query_params.append(('sort', sort))
+            
+        if q is not None:
+            
+            _query_params.append(('q', q))
             
         # process the header parameters
         # process the form parameters

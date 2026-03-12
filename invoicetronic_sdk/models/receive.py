@@ -45,9 +45,10 @@ class Receive(BaseModel):
     date_sent: Optional[datetime] = Field(default=None, description="When the invoice was sent to SDI.")
     documents: Optional[List[DocumentData]] = Field(default=None, description="The invoices included in the payload. This is set by the system, based on the xml content.")
     encoding: Optional[StrictStr] = Field(default=None, description="Whether the payload is Base64 encoded or a plain XML (text).")
+    nome_prestatore: Optional[StrictStr] = Field(default=None, description="Business name of the prestatore (supplier/seller) extracted from the invoice XML.")
     is_read: Optional[StrictBool] = Field(default=None, description="Whether the invoice has been read at least once. Set to true only when the invoice is requested with include_payload=true.")
     message_id: Optional[StrictStr] = Field(default=None, description="SDI message id.")
-    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "committente", "prestatore", "identifier", "file_name", "format", "payload", "last_update", "date_sent", "documents", "encoding", "is_read", "message_id"]
+    __properties: ClassVar[List[str]] = ["id", "created", "version", "user_id", "company_id", "committente", "prestatore", "identifier", "file_name", "format", "payload", "last_update", "date_sent", "documents", "encoding", "nome_prestatore", "is_read", "message_id"]
 
     @field_validator('encoding')
     def encoding_validate_enum(cls, value):
@@ -145,6 +146,11 @@ class Receive(BaseModel):
         if self.documents is None and "documents" in self.model_fields_set:
             _dict['documents'] = None
 
+        # set to None if nome_prestatore (nullable) is None
+        # and model_fields_set contains the field
+        if self.nome_prestatore is None and "nome_prestatore" in self.model_fields_set:
+            _dict['nome_prestatore'] = None
+
         # set to None if message_id (nullable) is None
         # and model_fields_set contains the field
         if self.message_id is None and "message_id" in self.model_fields_set:
@@ -177,6 +183,7 @@ class Receive(BaseModel):
             "date_sent": obj.get("date_sent"),
             "documents": [DocumentData.from_dict(_item) for _item in obj["documents"]] if obj.get("documents") is not None else None,
             "encoding": obj.get("encoding"),
+            "nome_prestatore": obj.get("nome_prestatore"),
             "is_read": obj.get("is_read"),
             "message_id": obj.get("message_id")
         })

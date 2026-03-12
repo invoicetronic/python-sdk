@@ -108,11 +108,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_get**
-> List[Send] send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, include_payload=include_payload, page=page, page_size=page_size, sort=sort)
+> List[Send] send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, include_payload=include_payload, page=page, page_size=page_size, sort=sort, q=q)
 
 List invoices
 
-Retrieve a paginated list of send invoices. Results can be filtered by various criteria such as company, date ranges, and document number. Returns invoice metadata; set `include_payload` to true to include the full invoice content.
+Retrieve a paginated list of send invoices. Results can be filtered by various criteria such as company, date ranges, document number, and free-text search (`q`). Returns invoice metadata; set `include_payload` to true to include the full invoice content.
 
 **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
@@ -163,10 +163,11 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
     page = 1 # int | Page number. (optional) (default to 1)
     page_size = 100 # int | Items per page. Cannot be greater than 200. (optional) (default to 100)
     sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)
+    q = 'q_example' # str | Full-text search across committente, prestatore, identifier, and file name. (optional)
 
     try:
         # List invoices
-        api_response = api_instance.send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, include_payload=include_payload, page=page, page_size=page_size, sort=sort)
+        api_response = api_instance.send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, include_payload=include_payload, page=page, page_size=page_size, sort=sort, q=q)
         print("The response of SendApi->send_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -196,6 +197,7 @@ Name | Type | Description  | Notes
  **page** | **int**| Page number. | [optional] [default to 1]
  **page_size** | **int**| Items per page. Cannot be greater than 200. | [optional] [default to 100]
  **sort** | **str**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] 
+ **q** | **str**| Full-text search across committente, prestatore, identifier, and file name. | [optional] 
 
 ### Return type
 

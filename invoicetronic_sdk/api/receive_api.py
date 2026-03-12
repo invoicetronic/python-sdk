@@ -60,6 +60,7 @@ class ReceiveApi:
         page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
+        q: Annotated[Optional[StrictStr], Field(description="Full-text search across committente, prestatore, identifier, and file name.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -75,7 +76,7 @@ class ReceiveApi:
     ) -> List[Receive]:
         """List incoming invoices
 
-        Retrieve a paginated list of receive invoices. Results can be filtered by various criteria such as company, date ranges, sender, and document number. Returns invoice metadata; set `include_payload` to true to include the full invoice content. Invoices are marked as read (`is_read` = true) only when `include_payload` is true.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
+        Retrieve a paginated list of receive invoices. Results can be filtered by various criteria such as company, date ranges, sender, document number, and free-text search (`q`). Returns invoice metadata; set `include_payload` to true to include the full invoice content. Invoices are marked as read (`is_read` = true) only when `include_payload` is true.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
         :param company_id: Company id
         :type company_id: int
@@ -111,6 +112,8 @@ class ReceiveApi:
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
+        :param q: Full-text search across committente, prestatore, identifier, and file name.
+        :type q: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -151,6 +154,7 @@ class ReceiveApi:
             page=page,
             page_size=page_size,
             sort=sort,
+            q=q,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -193,6 +197,7 @@ class ReceiveApi:
         page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
+        q: Annotated[Optional[StrictStr], Field(description="Full-text search across committente, prestatore, identifier, and file name.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -208,7 +213,7 @@ class ReceiveApi:
     ) -> ApiResponse[List[Receive]]:
         """List incoming invoices
 
-        Retrieve a paginated list of receive invoices. Results can be filtered by various criteria such as company, date ranges, sender, and document number. Returns invoice metadata; set `include_payload` to true to include the full invoice content. Invoices are marked as read (`is_read` = true) only when `include_payload` is true.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
+        Retrieve a paginated list of receive invoices. Results can be filtered by various criteria such as company, date ranges, sender, document number, and free-text search (`q`). Returns invoice metadata; set `include_payload` to true to include the full invoice content. Invoices are marked as read (`is_read` = true) only when `include_payload` is true.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
         :param company_id: Company id
         :type company_id: int
@@ -244,6 +249,8 @@ class ReceiveApi:
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
+        :param q: Full-text search across committente, prestatore, identifier, and file name.
+        :type q: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -284,6 +291,7 @@ class ReceiveApi:
             page=page,
             page_size=page_size,
             sort=sort,
+            q=q,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -326,6 +334,7 @@ class ReceiveApi:
         page: Annotated[Optional[StrictInt], Field(description="Page number.")] = None,
         page_size: Annotated[Optional[StrictInt], Field(description="Items per page. Cannot be greater than 200.")] = None,
         sort: Annotated[Optional[StrictStr], Field(description="Sort by field. Prefix with '-' for descending order.")] = None,
+        q: Annotated[Optional[StrictStr], Field(description="Full-text search across committente, prestatore, identifier, and file name.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -341,7 +350,7 @@ class ReceiveApi:
     ) -> RESTResponseType:
         """List incoming invoices
 
-        Retrieve a paginated list of receive invoices. Results can be filtered by various criteria such as company, date ranges, sender, and document number. Returns invoice metadata; set `include_payload` to true to include the full invoice content. Invoices are marked as read (`is_read` = true) only when `include_payload` is true.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
+        Retrieve a paginated list of receive invoices. Results can be filtered by various criteria such as company, date ranges, sender, document number, and free-text search (`q`). Returns invoice metadata; set `include_payload` to true to include the full invoice content. Invoices are marked as read (`is_read` = true) only when `include_payload` is true.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
         :param company_id: Company id
         :type company_id: int
@@ -377,6 +386,8 @@ class ReceiveApi:
         :type page_size: int
         :param sort: Sort by field. Prefix with '-' for descending order.
         :type sort: str
+        :param q: Full-text search across committente, prestatore, identifier, and file name.
+        :type q: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -417,6 +428,7 @@ class ReceiveApi:
             page=page,
             page_size=page_size,
             sort=sort,
+            q=q,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -454,6 +466,7 @@ class ReceiveApi:
         page,
         page_size,
         sort,
+        q,
         _request_auth,
         _content_type,
         _headers,
@@ -597,6 +610,10 @@ class ReceiveApi:
         if sort is not None:
             
             _query_params.append(('sort', sort))
+            
+        if q is not None:
+            
+            _query_params.append(('q', q))
             
         # process the header parameters
         # process the form parameters

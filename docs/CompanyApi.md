@@ -13,11 +13,11 @@ Method | HTTP request | Description
 
 
 # **company_get**
-> List[Company] company_get(page=page, page_size=page_size, sort=sort)
+> List[Company] company_get(page=page, page_size=page_size, sort=sort, q=q)
 
 List companies
 
-Retrieve a paginated list of companies.
+Retrieve a paginated list of companies. Results can be filtered by free-text search (`q`) across name, VAT number, and fiscal code.
 
 **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
@@ -55,10 +55,11 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
     page = 1 # int | Page number. (optional) (default to 1)
     page_size = 100 # int | Items per page. Cannot be greater than 200. (optional) (default to 100)
     sort = 'sort_example' # str | Sort by field. Prefix with '-' for descending order. (optional)
+    q = 'q_example' # str | Full-text search across committente, prestatore, identifier, and file name. (optional)
 
     try:
         # List companies
-        api_response = api_instance.company_get(page=page, page_size=page_size, sort=sort)
+        api_response = api_instance.company_get(page=page, page_size=page_size, sort=sort, q=q)
         print("The response of CompanyApi->company_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -75,6 +76,7 @@ Name | Type | Description  | Notes
  **page** | **int**| Page number. | [optional] [default to 1]
  **page_size** | **int**| Items per page. Cannot be greater than 200. | [optional] [default to 100]
  **sort** | **str**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] 
+ **q** | **str**| Full-text search across committente, prestatore, identifier, and file name. | [optional] 
 
 ### Return type
 

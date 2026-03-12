@@ -65,7 +65,7 @@ configuration = invoicetronic_sdk.Configuration(
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_sdk.ExportApi(api_client)
-    type = Both # str |  (optional) (default to Both)
+    type = 'type_example' # str |  (optional)
     company_id = 56 # int | Company id (optional)
     year = 56 # int |  (optional)
     month = 56 # int |  (optional)
@@ -87,7 +87,7 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **type** | **str**|  | [optional] [default to Both]
+ **type** | **str**|  | [optional] 
  **company_id** | **int**| Company id | [optional] 
  **year** | **int**|  | [optional] 
  **month** | **int**|  | [optional] 
