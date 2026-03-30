@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **enabled** | **bool** | Whether the webhook is enabled. On creation, this is set to &#x60;true&#x60;. | [optional] 
 **secret** | **str** | The secret used to generate webhook signatures, only returned on creation. You should store this value securely and validate it on every call, to ensure that the caller is InvoicetronicApi. | [optional] 
 **description** | **str** | An optional description. | [optional] 
-**events** | **List[str]** | List of events that trigger the webhook.  See Invoicetronic.SupportedEvents.Available for a list of valid event names. | [optional] 
+**events** | **List[str]** | List of events that trigger the webhook. See Invoicetronic.SupportedEvents.Available for a list of valid event names. | [optional] 
 
 ## Example
 

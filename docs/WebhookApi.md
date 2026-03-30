@@ -28,7 +28,6 @@ For more information, see the **[Webhooks documentation page](https://invoicetro
 
 ### Example
 
-* Basic Authentication (Basic):
 
 ```python
 import invoicetronic_sdk
@@ -42,16 +41,6 @@ configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: Basic
-configuration = invoicetronic_sdk.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
 
 # Enter a context with an instance of the API client
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
@@ -97,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -110,7 +99,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **404** | Not Found |  -  |
-**400** | Bad Request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -129,7 +117,6 @@ For more information, see the **[Webhooks documentation page](https://invoicetro
 
 ### Example
 
-* Basic Authentication (Basic):
 
 ```python
 import invoicetronic_sdk
@@ -143,16 +130,6 @@ configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: Basic
-configuration = invoicetronic_sdk.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
 
 # Enter a context with an instance of the API client
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
@@ -184,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -196,9 +173,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
-**422** | Unprocessable Content |  -  |
-**400** | Bad Request |  -  |
-**409** | Conflict |  -  |
 **404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -218,7 +192,6 @@ For more information, see the **[Webhooks documentation page](https://invoicetro
 
 ### Example
 
-* Basic Authentication (Basic):
 
 ```python
 import invoicetronic_sdk
@@ -232,16 +205,6 @@ configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: Basic
-configuration = invoicetronic_sdk.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
 
 # Enter a context with an instance of the API client
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
@@ -273,7 +236,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -304,7 +267,6 @@ For more information, see the **[Webhooks documentation page](https://invoicetro
 
 ### Example
 
-* Basic Authentication (Basic):
 
 ```python
 import invoicetronic_sdk
@@ -318,16 +280,6 @@ configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: Basic
-configuration = invoicetronic_sdk.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
 
 # Enter a context with an instance of the API client
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
@@ -359,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -371,7 +323,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
-**400** | Bad Request |  -  |
 **422** | Unprocessable Content |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -391,7 +342,6 @@ For more information, see the **[Webhooks documentation page](https://invoicetro
 
 ### Example
 
-* Basic Authentication (Basic):
 
 ```python
 import invoicetronic_sdk
@@ -405,16 +355,6 @@ configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: Basic
-configuration = invoicetronic_sdk.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
 
 # Enter a context with an instance of the API client
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
@@ -446,7 +386,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -459,7 +399,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **422** | Unprocessable Content |  -  |
-**400** | Bad Request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -472,7 +411,6 @@ Webhook history items are stored in the database and can be accessed via the API
 
 ### Example
 
-* Basic Authentication (Basic):
 
 ```python
 import invoicetronic_sdk
@@ -486,16 +424,6 @@ configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: Basic
-configuration = invoicetronic_sdk.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
 
 # Enter a context with an instance of the API client
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
@@ -533,7 +461,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -546,7 +474,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **404** | Not Found |  -  |
-**400** | Bad Request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -559,7 +486,6 @@ Webhook history items are stored in the database and can be accessed via the API
 
 ### Example
 
-* Basic Authentication (Basic):
 
 ```python
 import invoicetronic_sdk
@@ -573,16 +499,6 @@ configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure HTTP basic authorization: Basic
-configuration = invoicetronic_sdk.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
 
 # Enter a context with an instance of the API client
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
@@ -614,7 +530,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Basic](../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
