@@ -16,6 +16,7 @@ Returns the health status of the API and its dependencies. No authentication req
 
 ### Example
 
+* Basic Authentication (Basic):
 
 ```python
 import invoicetronic_sdk
@@ -28,6 +29,16 @@ configuration = invoicetronic_sdk.Configuration(
     host = "https://api.invoicetronic.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: Basic
+configuration = invoicetronic_sdk.Configuration(
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
+)
 
 # Enter a context with an instance of the API client
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
@@ -53,7 +64,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Basic](../README.md#Basic)
 
 ### HTTP request headers
 
