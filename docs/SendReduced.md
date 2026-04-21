@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **meta_data** | **Dict[str, str]** | Optional metadata, as json. | [optional] 
 **documents** | [**List[DocumentData]**](DocumentData.md) | The invoices included in the payload. | [optional] 
 **date_sent** | **datetime** | When the invoice was sent to SDI. | [optional] 
+**latest_state** | **str** | Current SDI state of the invoice. Reflects the most recent update received from SDI. | [optional] 
 
 ## Example
 

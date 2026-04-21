@@ -19,6 +19,8 @@ Retrieve a paginated list of receive invoices. Results can be filtered by variou
 
 **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
+Inbound invoices are routed to your account via the recipient VAT number, so the recipient company must exist in Invoicetronic for the invoice to be matched. If an invoice arrives before its company has been registered, it is held by our SDI infrastructure and automatically re-processed once the company is created—no invoice is lost. See [Prerequisites](https://invoicetronic.com/en/docs/prerequisites/) for the recommended setup order.
+
 ### Example
 
 * Basic Authentication (Basic):
@@ -135,6 +137,8 @@ Permanently delete a receive invoice by its internal id. This action cannot be u
 
 **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
+Inbound invoices are routed to your account via the recipient VAT number, so the recipient company must exist in Invoicetronic for the invoice to be matched. If an invoice arrives before its company has been registered, it is held by our SDI infrastructure and automatically re-processed once the company is created—no invoice is lost. See [Prerequisites](https://invoicetronic.com/en/docs/prerequisites/) for the recommended setup order.
+
 ### Example
 
 * Basic Authentication (Basic):
@@ -216,6 +220,8 @@ Get an incoming invoice by id
 Retrieve an incoming invoice by its internal id. The `id` is unique and assigned by the system when the invoice is received. Returns invoice metadata; set `include_payload` to true to include the full invoice content. The invoice is marked as read (`is_read` = true) only when `include_payload` is true.
 
 **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
+
+Inbound invoices are routed to your account via the recipient VAT number, so the recipient company must exist in Invoicetronic for the invoice to be matched. If an invoice arrives before its company has been registered, it is held by our SDI infrastructure and automatically re-processed once the company is created—no invoice is lost. See [Prerequisites](https://invoicetronic.com/en/docs/prerequisites/) for the recommended setup order.
 
 ### Example
 
