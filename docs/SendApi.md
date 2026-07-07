@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **send_file_post**
-> Send send_file_post(file, validate=validate, signature=signature)
+> Send send_file_post(file, validate=validate, signature=signature, idempotency_key=idempotency_key)
 
 Add an invoice by file
 
@@ -28,6 +28,17 @@ Add a new invoice by uploading a file. Supported formats are XML (FatturaPA) and
 **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
 You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
+
+### Idempotency
+
+To protect against duplicate submissions caused by network retries, you can send an optional `Idempotency-Key` header with any unique, client-generated value (up to 255 characters).
+
+- The first request with a given key is processed normally, and its response (status, body and `Location`) is stored for 24 hours.
+- Any subsequent request that reuses the same key within that window replays the original response instead of sending a second invoice to SDI.
+- If a request with the same key is still being processed, the retry receives `409 Conflict`.
+- If the same key is reused with a **different** invoice payload, the request is rejected with `422 Unprocessable Entity`: a given key must always map to the same request.
+
+Keys are scoped per account, so different accounts can use the same key value without interfering. If the idempotency store is temporarily unavailable, the request is processed normally without idempotency protection.
 
 ### Example
 
@@ -63,10 +74,11 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
     file = None # bytearray | 
     validate = False # bool | Validate the document first, and reject it on failure. (optional) (default to False)
     signature = Auto # str | Whether to digitally sign the document. (optional) (default to Auto)
+    idempotency_key = 'idempotency_key_example' # str | Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice. (optional)
 
     try:
         # Add an invoice by file
-        api_response = api_instance.send_file_post(file, validate=validate, signature=signature)
+        api_response = api_instance.send_file_post(file, validate=validate, signature=signature, idempotency_key=idempotency_key)
         print("The response of SendApi->send_file_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -83,6 +95,7 @@ Name | Type | Description  | Notes
  **file** | **bytearray**|  | 
  **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to False]
  **signature** | **str**| Whether to digitally sign the document. | [optional] [default to Auto]
+ **idempotency_key** | **str**| Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice. | [optional] 
 
 ### Return type
 
@@ -107,11 +120,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_get**
-> List[Send] send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, include_payload=include_payload, ids=ids, page=page, page_size=page_size, sort=sort, q=q)
+> List[Send] send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, latest_state=latest_state, include_payload=include_payload, ids=ids, page=page, page_size=page_size, sort=sort, q=q)
 
 List invoices
 
-Retrieve a paginated list of send invoices. Results can be filtered by various criteria such as company, date ranges, document number, and free-text search (`q`). Use `ids` to fetch specific Send records in a single call (comma-separated, up to 100). Returns invoice metadata; set `include_payload` to true to include the full invoice content.
+Retrieve a paginated list of send invoices. Results can be filtered by various criteria such as company, date ranges, document number, current SDI state (`latest_state`), and free-text search (`q`). Use `ids` to fetch specific Send records in a single call (comma-separated, up to 100). Returns invoice metadata; set `include_payload` to true to include the full invoice content.
 
 **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
@@ -158,6 +171,7 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
     document_date_from = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
     document_date_to = '2013-10-20T19:20:30+01:00' # datetime | UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
     document_number = 'document_number_example' # str | Document number. (optional)
+    latest_state = 'latest_state_example' # str | Filter by the most recent SDI state for the invoice. Matches the `latest_state` field exposed inline on each Send. (optional)
     include_payload = True # bool | Include payload in the response. Defaults to false. (optional)
     ids = 'ids_example' # str | Comma-separated list of Send ids (max 100). Filters the collection to the matching rows; unknown or unauthorized ids are silently skipped. (optional)
     page = 1 # int | Page number. (optional) (default to 1)
@@ -167,7 +181,7 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
 
     try:
         # List invoices
-        api_response = api_instance.send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, include_payload=include_payload, ids=ids, page=page, page_size=page_size, sort=sort, q=q)
+        api_response = api_instance.send_get(company_id=company_id, identifier=identifier, committente=committente, prestatore=prestatore, file_name=file_name, last_update_from=last_update_from, last_update_to=last_update_to, date_sent_from=date_sent_from, date_sent_to=date_sent_to, document_date_from=document_date_from, document_date_to=document_date_to, document_number=document_number, latest_state=latest_state, include_payload=include_payload, ids=ids, page=page, page_size=page_size, sort=sort, q=q)
         print("The response of SendApi->send_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -193,6 +207,7 @@ Name | Type | Description  | Notes
  **document_date_from** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
  **document_date_to** | **datetime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] 
  **document_number** | **str**| Document number. | [optional] 
+ **latest_state** | **str**| Filter by the most recent SDI state for the invoice. Matches the &#x60;latest_state&#x60; field exposed inline on each Send. | [optional] 
  **include_payload** | **bool**| Include payload in the response. Defaults to false. | [optional] 
  **ids** | **str**| Comma-separated list of Send ids (max 100). Filters the collection to the matching rows; unknown or unauthorized ids are silently skipped. | [optional] 
  **page** | **int**| Page number. | [optional] [default to 1]
@@ -474,15 +489,26 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_json_post**
-> Send send_json_post(body, validate=validate, signature=signature)
+> Send send_json_post(body, validate=validate, signature=signature, idempotency_key=idempotency_key)
 
 Add an invoice by json
 
-Add a new invoice using a FatturaPA JSON representation. The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.
+Add a new invoice using a FatturaPA JSON representation. Property names mirror the FatturaPA XML schema (PascalCase, e.g. `FatturaElettronicaHeader`). The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.
 
 **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
 You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
+
+### Idempotency
+
+To protect against duplicate submissions caused by network retries, you can send an optional `Idempotency-Key` header with any unique, client-generated value (up to 255 characters).
+
+- The first request with a given key is processed normally, and its response (status, body and `Location`) is stored for 24 hours.
+- Any subsequent request that reuses the same key within that window replays the original response instead of sending a second invoice to SDI.
+- If a request with the same key is still being processed, the retry receives `409 Conflict`.
+- If the same key is reused with a **different** invoice payload, the request is rejected with `422 Unprocessable Entity`: a given key must always map to the same request.
+
+Keys are scoped per account, so different accounts can use the same key value without interfering. If the idempotency store is temporarily unavailable, the request is processed normally without idempotency protection.
 
 ### Example
 
@@ -518,10 +544,11 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
     body = None # object | 
     validate = False # bool | Validate the document first, and reject it on failure. (optional) (default to False)
     signature = Auto # str | Whether to digitally sign the document. (optional) (default to Auto)
+    idempotency_key = 'idempotency_key_example' # str | Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice. (optional)
 
     try:
         # Add an invoice by json
-        api_response = api_instance.send_json_post(body, validate=validate, signature=signature)
+        api_response = api_instance.send_json_post(body, validate=validate, signature=signature, idempotency_key=idempotency_key)
         print("The response of SendApi->send_json_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -538,6 +565,7 @@ Name | Type | Description  | Notes
  **body** | **object**|  | 
  **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to False]
  **signature** | **str**| Whether to digitally sign the document. | [optional] [default to Auto]
+ **idempotency_key** | **str**| Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice. | [optional] 
 
 ### Return type
 
@@ -562,7 +590,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_post**
-> Send send_post(send, validate=validate, signature=signature)
+> Send send_post(send, validate=validate, signature=signature, idempotency_key=idempotency_key)
 
 Add an invoice
 
@@ -571,6 +599,17 @@ Add a new invoice using a structured Send object. The invoice will be signed (if
 **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
 You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
+
+### Idempotency
+
+To protect against duplicate submissions caused by network retries, you can send an optional `Idempotency-Key` header with any unique, client-generated value (up to 255 characters).
+
+- The first request with a given key is processed normally, and its response (status, body and `Location`) is stored for 24 hours.
+- Any subsequent request that reuses the same key within that window replays the original response instead of sending a second invoice to SDI.
+- If a request with the same key is still being processed, the retry receives `409 Conflict`.
+- If the same key is reused with a **different** invoice payload, the request is rejected with `422 Unprocessable Entity`: a given key must always map to the same request.
+
+Keys are scoped per account, so different accounts can use the same key value without interfering. If the idempotency store is temporarily unavailable, the request is processed normally without idempotency protection.
 
 ### Example
 
@@ -606,10 +645,11 @@ with invoicetronic_sdk.ApiClient(configuration) as api_client:
     send = invoicetronic_sdk.Send() # Send | 
     validate = False # bool | Validate the document first, and reject it on failure. (optional) (default to False)
     signature = Auto # str | Whether to digitally sign the document. (optional) (default to Auto)
+    idempotency_key = 'idempotency_key_example' # str | Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice. (optional)
 
     try:
         # Add an invoice
-        api_response = api_instance.send_post(send, validate=validate, signature=signature)
+        api_response = api_instance.send_post(send, validate=validate, signature=signature, idempotency_key=idempotency_key)
         print("The response of SendApi->send_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -626,6 +666,7 @@ Name | Type | Description  | Notes
  **send** | [**Send**](Send.md)|  | 
  **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to False]
  **signature** | **str**| Whether to digitally sign the document. | [optional] [default to Auto]
+ **idempotency_key** | **str**| Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice. | [optional] 
 
 ### Return type
 
@@ -733,7 +774,7 @@ void (empty response body)
 
 Validate an invoice by json
 
-Validate a JSON invoice without sending it to SDI. Use this to check for errors before actual submission. Returns validation results with any errors found.
+Validate a FatturaPA JSON invoice without sending it to SDI. Property names mirror the FatturaPA XML schema (PascalCase, e.g. `FatturaElettronicaHeader`). Use this to check for errors before actual submission. Returns validation results with any errors found.
 
 **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
@@ -926,7 +967,92 @@ configuration = invoicetronic_sdk.Configuration(
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_sdk.SendApi(api_client)
-    body = None # object | 
+    body = <?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01234567890</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>00001</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>01234567890</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Prestatore Srl</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Roma 1</Indirizzo>
+        <CAP>00100</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>09876543210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Committente Srl</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Milano 2</Indirizzo>
+        <CAP>20100</CAP>
+        <Comune>Milano</Comune>
+        <Provincia>MI</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2025-01-01</Data>
+        <Numero>1</Numero>
+        <ImportoTotaleDocumento>122.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>Servizio di consulenza</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>100.00</PrezzoUnitario>
+        <PrezzoTotale>100.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>100.00</ImponibileImporto>
+        <Imposta>22.00</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP05</ModalitaPagamento>
+        <DataScadenzaPagamento>2025-01-31</DataScadenzaPagamento>
+        <ImportoPagamento>122.00</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica> # object | 
 
     try:
         # Validate an invoice by xml
@@ -967,7 +1093,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **send_xml_post**
-> Send send_xml_post(body, validate=validate, signature=signature)
+> Send send_xml_post(body, validate=validate, signature=signature, idempotency_key=idempotency_key)
 
 Add an invoice by xml
 
@@ -976,6 +1102,17 @@ Add a new invoice using a raw XML document in FatturaPA format. The invoice will
 **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
 You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
+
+### Idempotency
+
+To protect against duplicate submissions caused by network retries, you can send an optional `Idempotency-Key` header with any unique, client-generated value (up to 255 characters).
+
+- The first request with a given key is processed normally, and its response (status, body and `Location`) is stored for 24 hours.
+- Any subsequent request that reuses the same key within that window replays the original response instead of sending a second invoice to SDI.
+- If a request with the same key is still being processed, the retry receives `409 Conflict`.
+- If the same key is reused with a **different** invoice payload, the request is rejected with `422 Unprocessable Entity`: a given key must always map to the same request.
+
+Keys are scoped per account, so different accounts can use the same key value without interfering. If the idempotency store is temporarily unavailable, the request is processed normally without idempotency protection.
 
 ### Example
 
@@ -1008,13 +1145,99 @@ configuration = invoicetronic_sdk.Configuration(
 with invoicetronic_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = invoicetronic_sdk.SendApi(api_client)
-    body = None # object | 
+    body = <?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01234567890</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>00001</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>01234567890</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Prestatore Srl</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Roma 1</Indirizzo>
+        <CAP>00100</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>09876543210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Committente Srl</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Milano 2</Indirizzo>
+        <CAP>20100</CAP>
+        <Comune>Milano</Comune>
+        <Provincia>MI</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2025-01-01</Data>
+        <Numero>1</Numero>
+        <ImportoTotaleDocumento>122.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>Servizio di consulenza</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>100.00</PrezzoUnitario>
+        <PrezzoTotale>100.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>100.00</ImponibileImporto>
+        <Imposta>22.00</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP05</ModalitaPagamento>
+        <DataScadenzaPagamento>2025-01-31</DataScadenzaPagamento>
+        <ImportoPagamento>122.00</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica> # object | 
     validate = False # bool | Validate the document first, and reject it on failure. (optional) (default to False)
     signature = Auto # str | Whether to digitally sign the document. (optional) (default to Auto)
+    idempotency_key = 'idempotency_key_example' # str | Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice. (optional)
 
     try:
         # Add an invoice by xml
-        api_response = api_instance.send_xml_post(body, validate=validate, signature=signature)
+        api_response = api_instance.send_xml_post(body, validate=validate, signature=signature, idempotency_key=idempotency_key)
         print("The response of SendApi->send_xml_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -1031,6 +1254,7 @@ Name | Type | Description  | Notes
  **body** | **object**|  | 
  **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to False]
  **signature** | **str**| Whether to digitally sign the document. | [optional] [default to Auto]
+ **idempotency_key** | **str**| Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice. | [optional] 
 
 ### Return type
 
