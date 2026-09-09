@@ -21,6 +21,9 @@ Retrieve a paginated list of companies. Results can be filtered by free-text sea
 
 **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
+A company's `vat` and `fiscal_code` are unique platform-wide, not just within your account: incoming invoices are routed to their owner by VAT number alone, so a company belongs to one account at a time. Registering a company that is already active under another account is therefore not possible, and that account is not disclosed to you. Moving a company to your account is a transfer: contact support with the company's written authorization.
+
+
 ### Example
 
 * Basic Authentication (Basic):
@@ -108,6 +111,9 @@ Delete a company
 Delete a company by its internal id.
 
 **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
+
+A company's `vat` and `fiscal_code` are unique platform-wide, not just within your account: incoming invoices are routed to their owner by VAT number alone, so a company belongs to one account at a time. Registering a company that is already active under another account is therefore not possible, and that account is not disclosed to you. Moving a company to your account is a transfer: contact support with the company's written authorization.
+
 
 **Warning:** Deleting a company will permanently remove all associated data, including sent invoices, received invoices, invoice updates from SDI, logs, and webhooks.
 
@@ -197,6 +203,9 @@ Retrieve a company by its internal id.
 
 **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
+A company's `vat` and `fiscal_code` are unique platform-wide, not just within your account: incoming invoices are routed to their owner by VAT number alone, so a company belongs to one account at a time. Registering a company that is already active under another account is therefore not possible, and that account is not disclosed to you. Moving a company to your account is a transfer: contact support with the company's written authorization.
+
+
 ### Example
 
 * Basic Authentication (Basic):
@@ -277,7 +286,12 @@ Add a company
 
 Add a new company.
 
+When the company is already registered on the platform, the request fails with `400 Bad Request` and a problem details body whose `code` member is `company_already_registered`. Branch on `code`, not on `detail`, which is localized according to the `Accept-Language` header.
+
 **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
+
+A company's `vat` and `fiscal_code` are unique platform-wide, not just within your account: incoming invoices are routed to their owner by VAT number alone, so a company belongs to one account at a time. Registering a company that is already active under another account is therefore not possible, and that account is not disclosed to you. Moving a company to your account is a transfer: contact support with the company's written authorization.
+
 
 ### Example
 
@@ -341,13 +355,14 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**403** | Forbidden |  -  |
 **422** | Unprocessable Content |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -359,7 +374,12 @@ Update a company
 
 Update an existing company.
 
+Changing `vat` or `fiscal_code` to a value already registered on the platform fails with `400 Bad Request` and `code` = `company_already_registered`.
+
 **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
+
+A company's `vat` and `fiscal_code` are unique platform-wide, not just within your account: incoming invoices are routed to their owner by VAT number alone, so a company belongs to one account at a time. Registering a company that is already active under another account is therefore not possible, and that account is not disclosed to you. Moving a company to your account is a transfer: contact support with the company's written authorization.
+
 
 ### Example
 
@@ -423,7 +443,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -431,6 +451,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **422** | Unprocessable Content |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -442,6 +463,9 @@ Get a company by vat number
 Retrieve a company by its VAT number.
 
 **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
+
+A company's `vat` and `fiscal_code` are unique platform-wide, not just within your account: incoming invoices are routed to their owner by VAT number alone, so a company belongs to one account at a time. Registering a company that is already active under another account is therefore not possible, and that account is not disclosed to you. Moving a company to your account is a transfer: contact support with the company's written authorization.
+
 
 ### Example
 
