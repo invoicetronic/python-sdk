@@ -24,6 +24,8 @@ Retrieve a paginated list of webhooks. Results can be filtered by company, descr
 
 You can also manage webhooks via the [Dashboard](https://dashboard.invoicetronic.com).
 
+Failed deliveries (any non-2xx response except `410 Gone`, or a network error or timeout) are retried up to 7 times, about 1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours, 12 hours and 24 hours after the previous attempt: 8 attempts over about 45 hours. Delivery is therefore *at least once*: use the event `id` in the payload to discard duplicates. Each request carries an `Invoicetronic-Delivery-Attempt` header with the attempt number. Responding with `410 Gone` disables the webhook and stops the retries.
+
 A webhook that fails continuously for 7 days (no successful delivery in between) is automatically disabled (`enabled` set to `false`) and the account owner is notified by email. To resume deliveries, set `enabled` back to `true` from the Dashboard or via `PATCH /webhook/{id}`.
 
 For more information, see the **[Webhooks documentation page](https://invoicetronic.com/en/docs/webhooks/)**.
@@ -126,6 +128,8 @@ Delete a webhook subscription by its internal id.
 
 You can also manage webhooks via the [Dashboard](https://dashboard.invoicetronic.com).
 
+Failed deliveries (any non-2xx response except `410 Gone`, or a network error or timeout) are retried up to 7 times, about 1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours, 12 hours and 24 hours after the previous attempt: 8 attempts over about 45 hours. Delivery is therefore *at least once*: use the event `id` in the payload to discard duplicates. Each request carries an `Invoicetronic-Delivery-Attempt` header with the attempt number. Responding with `410 Gone` disables the webhook and stops the retries.
+
 A webhook that fails continuously for 7 days (no successful delivery in between) is automatically disabled (`enabled` set to `false`) and the account owner is notified by email. To resume deliveries, set `enabled` back to `true` from the Dashboard or via `PATCH /webhook/{id}`.
 
 For more information, see the **[Webhooks documentation page](https://invoicetronic.com/en/docs/webhooks/)**.
@@ -214,6 +218,8 @@ Retrieve a webhook by its internal id.
 
 You can also manage webhooks via the [Dashboard](https://dashboard.invoicetronic.com).
 
+Failed deliveries (any non-2xx response except `410 Gone`, or a network error or timeout) are retried up to 7 times, about 1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours, 12 hours and 24 hours after the previous attempt: 8 attempts over about 45 hours. Delivery is therefore *at least once*: use the event `id` in the payload to discard duplicates. Each request carries an `Invoicetronic-Delivery-Attempt` header with the attempt number. Responding with `410 Gone` disables the webhook and stops the retries.
+
 A webhook that fails continuously for 7 days (no successful delivery in between) is automatically disabled (`enabled` set to `false`) and the account owner is notified by email. To resume deliveries, set `enabled` back to `true` from the Dashboard or via `PATCH /webhook/{id}`.
 
 For more information, see the **[Webhooks documentation page](https://invoicetronic.com/en/docs/webhooks/)**.
@@ -301,6 +307,8 @@ Create a new webhook subscription.
 **Webhooks** allow you to receive notifications to an external service when specific events occur, such as invoice creation or status updates. You can subscribe to specific events and receive a notification when they occur.
 
 You can also manage webhooks via the [Dashboard](https://dashboard.invoicetronic.com).
+
+Failed deliveries (any non-2xx response except `410 Gone`, or a network error or timeout) are retried up to 7 times, about 1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours, 12 hours and 24 hours after the previous attempt: 8 attempts over about 45 hours. Delivery is therefore *at least once*: use the event `id` in the payload to discard duplicates. Each request carries an `Invoicetronic-Delivery-Attempt` header with the attempt number. Responding with `410 Gone` disables the webhook and stops the retries.
 
 A webhook that fails continuously for 7 days (no successful delivery in between) is automatically disabled (`enabled` set to `false`) and the account owner is notified by email. To resume deliveries, set `enabled` back to `true` from the Dashboard or via `PATCH /webhook/{id}`.
 
@@ -391,6 +399,8 @@ Update an existing webhook subscription.
 
 You can also manage webhooks via the [Dashboard](https://dashboard.invoicetronic.com).
 
+Failed deliveries (any non-2xx response except `410 Gone`, or a network error or timeout) are retried up to 7 times, about 1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours, 12 hours and 24 hours after the previous attempt: 8 attempts over about 45 hours. Delivery is therefore *at least once*: use the event `id` in the payload to discard duplicates. Each request carries an `Invoicetronic-Delivery-Attempt` header with the attempt number. Responding with `410 Gone` disables the webhook and stops the retries.
+
 A webhook that fails continuously for 7 days (no successful delivery in between) is automatically disabled (`enabled` set to `false`) and the account owner is notified by email. To resume deliveries, set `enabled` back to `true` from the Dashboard or via `PATCH /webhook/{id}`.
 
 For more information, see the **[Webhooks documentation page](https://invoicetronic.com/en/docs/webhooks/)**.
@@ -465,6 +475,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **422** | Unprocessable Content |  -  |
+**404** | Not Found |  -  |
 **403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -474,7 +485,9 @@ Name | Type | Description  | Notes
 
 List webhook history items
 
-Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 in both the live and sandbox environments.
+Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 days in both the live and sandbox environments.
+
+Each delivery attempt is recorded as a separate item: retries of the same event share the same `event_id` and have an increasing `attempt` number.
 
 ### Example
 
@@ -560,7 +573,9 @@ Name | Type | Description  | Notes
 
 Get a webhook history item by id
 
-Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 in both the live and sandbox environments.
+Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 days in both the live and sandbox environments.
+
+Each delivery attempt is recorded as a separate item: retries of the same event share the same `event_id` and have an increasing `attempt` number.
 
 ### Example
 
